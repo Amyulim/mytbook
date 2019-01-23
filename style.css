@@ -28,7 +28,7 @@ body {
   max-width: 960px;;
 }
 .logo{
-  width: 120px;
+  width: 140px;
 }
 
 /*-------------------- Links --------------------*/
@@ -50,6 +50,9 @@ a:hover {
 
 
 /*-------------------- Header --------------------*/
+header{
+  margin-bottom: 3rem !important;
+}
 .masthead {
   margin-bottom: 2rem;
 }
@@ -78,10 +81,6 @@ a:hover {
 .nav-masthead .active {
   color: #fff;
   border-bottom-color: #fff;
-}
-
-header{
-  margin-bottom: 4rem !important;
 }
 
 /*-------------------- Cover --------------------*/
@@ -182,14 +181,29 @@ textarea{
   border-radius: 0.3rem;
 }
 /*-------------------- Book List --------------------*/
-.list-box img{
-  max-height: 150px;
+h1{
+  margin: 0;
+  padding: 0;
 }
-.list-box{
-  border-bottom: 1px solid #fff;
+.lists img{
+  padding: 10px 0;
+  max-height: 200px;
+  object-fit: contain;
+}
+.book-img{
+ background-color: rgba(220,220,220,0.4);
+}
+.book-title{
+  font-size: 1.1rem;
+  padding: 10px 0;
+  font-weight: bold
+}
+.price{
+  color:#FFFFFF;
 }
 .book-des{
-  margin: 0 1rem;
+  margin: 0;
+  color:rgba(0,0,0,1) !important;
 }
 .book-des li{
   list-style: none;
@@ -197,6 +211,19 @@ textarea{
 }
 .book-des ul{
   padding: 0;
+  font-size: 0.8rem;
+}
+.list-title{
+  color:rgba(0,0,0,0.7);
+  display: inline-block;
+  width: 90px;
+}
+.card-body{
+  background-color: rgba(220,220,220,0.4);
+}
+.deal-status{
+  background-color:#3ca8f7;
+  color:#fff;
 }
 /*-------------------- Footer --------------------*/
 footer{
