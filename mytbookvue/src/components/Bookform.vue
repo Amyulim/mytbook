@@ -1,23 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title></title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> 
-        <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
-  <body>
-     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <header class="masthead mb-auto">
-        <div class="inner justify-content-center">
-          <img class="logo justify-content-center" src="imgs/logo.svg">
-          <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link active" href="#">Home</a>
-            <a class="nav-link" href="#">My tbooks</a>
-          </nav>
-        </div>
-      </header>
-
-        <div class="container">
+<template>
+  <div class="container">
 
         <div class="py-5 text-center">
           <h2>Book form</h2>
@@ -88,14 +70,10 @@
             </form>
           </div>
         </div>
-       </div>
+  </div>
+</template>
 
-
-      <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">&copy; Mytbook </p>
-
-      </footer>
-    </div>
-
-  </body>
-</html>
+<style>
+    @import "https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css";
+  @import "../components/style.css";
+</style>
