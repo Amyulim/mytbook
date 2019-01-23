@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
-import HomePage from './views/Homepage.vue'
+import Homepage from './views/Homepage.vue'
 import Signin from './components/Signin.vue'
 import Signup from './components/Signup.vue'
 import Bookform from './components/Bookform.vue'
+import Booklist from './components/Booklist.vue'
+
 
 Vue.use(Router)
 
@@ -16,7 +17,7 @@ export default new Router({
       //landing//
       path: '/',
       name: 'homepage',
-      component: HomePage
+      component: Homepage
     },
     {
       path:'/signin',
@@ -32,6 +33,11 @@ export default new Router({
       path:'/bookform',
       name:'bookform',
       component: Bookform,
+    },
+    {
+      path:'/booklist',
+      name:'booklist',
+      component: Booklist,
     },
     {
       path: '/about',

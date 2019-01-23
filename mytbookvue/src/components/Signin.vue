@@ -1,33 +1,25 @@
 <template>
-    <div  id="signin">
-      
-       <div v-if="page ===1">
-         
-           <form class="form-signin">
+    <div id="signin" class="body">   
+      <div v-if="page ===1">       
+        <form class="form-signin">
+          <h1 class="h3 mb-3 font-weight-normal">Have an account? </h1>
+          <label for="inputEmail" class="sr-only">Email address</label>
+          <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+          <br/>
 
-                <img class="mb-3 logo justify-content-center" src="../assets/logo.svg" alt="">
+          <label for="inputPassword" class="sr-only">Password</label>
 
-                <h1 class="h3 mb-3 font-weight-normal">Have an account? </h1>
-                <label for="inputEmail" class="sr-only">Email address</label>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
 
-                <br/>
-
-                <label for="inputPassword" class="sr-only">Password</label>
-
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-
-                <div class="checkbox mb-3">
-                  <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                  </label>
-                </div>
-
-
-                  <div>
-                    <button @click="GoBookForm" class="btn btn-lg btn-primary btn-block">Sign In</button>
-                    <button @click="GoSignUp">Sign me up!</button>
-                  </div> <br/>
+          <div class="checkbox mb-3">
+            <label>
+            <input type="checkbox" value="remember-me"> Remember me
+            </label>
+          </div>
+          <div>
+            <button @click="GoBookForm" class="btn btn-lg btn-primary btn-block">Sign In</button>
+            <button @click="GoSignUp">Sign me up!</button>
+          </div> <br/>
          </form>
               
   
