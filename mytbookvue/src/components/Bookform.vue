@@ -1,4 +1,5 @@
 <template>
+  <div class="body">
   <div class="container">
 
         <div class="py-5 text-center">
@@ -7,7 +8,6 @@
         </div>
 
         <div class="row">
-
           <div class="col-md-8 order-md-1 box-center">
             <h4 class="mb-3"></h4>
             <form class="needs-validation" novalidate>
@@ -71,9 +71,10 @@
           </div>
         </div>
   </div>
+  </div>
 </template>
 
 <style>
-    @import "https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css";
+  @import "https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css";
   @import "../components/style.css";
 </style>

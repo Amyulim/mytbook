@@ -2,7 +2,7 @@
     <div id="signin" class="body">   
       <div v-if="page ===1">       
         <form class="form-signin">
-          <h1 class="h3 mb-3 font-weight-normal">Have an account? </h1>
+          <h1 class="h3 mb-3 font-weight-normal center">Have an account? </h1>
           <label for="inputEmail" class="sr-only">Email address</label>
           <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
           <br/>
