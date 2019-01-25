@@ -1,26 +1,28 @@
 <template>
   <div class="body">
-  <div class="container">
-
-        <div class="py-5 text-center">
-          <h2>Book form</h2>
-          <p class="lead">Fill out the form to sell the book.</p>
-        </div>
-
+    <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <main role="main" class="inner">
+        <section class="text-center">
+          <div class="container">
+            <h1 class="jumbotron-heading">Book form</h1>
+            <p class="lead text-muted">Fill out the form sell the book!</p>
+          </div>
+        </section>
+        <div class="container">
         <div class="row">
           <div class="col-md-8 order-md-1 box-center">
             <h4 class="mb-3"></h4>
             <form class="needs-validation" novalidate>
               <div class="row">
-                <div class="col-md-6 mb-3">
-                  <label for="firstName">Book title</label>
+                <div class="col-md-9 mb-3">
+                  <label for="book-title">Book title</label>
                   <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
                   <div class="invalid-feedback">
                     Valid first name is required.
                   </div>
                 </div>
-                <div class="col-md-6 mb-3">
-                  <label for="lastName">ISBN</label>
+                <div class="col-md-3 mb-3">
+                  <label for="isbn">ISBN</label>
                   <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
                   <div class="invalid-feedback">
                     Valid last name is required.
@@ -29,13 +31,13 @@
               </div>
 
               <div class="mb-3">
-                <label for="address2">Image URL <span class="text-muted">(Optional)</span></label><br/>
+                <label for="book_img">Image URL <span class="text-muted">(Optional)</span></label><br/>
                 <input type="file" name="pic" accept="image/*" class="" placeholder="image....">
               </div>
 
               <div class="row">
                 <div class="col-md-5 mb-3">
-                  <label for="country">Condition of book</label>
+                  <label for="condition">Condition of book</label>
                   <select class="custom-select d-block w-100" id="country" required>
                     <option value="1">Very Good</option>
                     <option value="2">Good</option>
@@ -48,21 +50,21 @@
                 </div>
 
                 <div class="col-md-6 mb-3">
-                  <label for="zip">Preffered meeting date</label>
-                  <input type="date" class="form-control" id="zip" placeholder="" required>
+                  <label for="date">Preffered meeting date</label>
+                  <input type="m-date" class="form-control" id="zip" placeholder="" required>
                   <div class="invalid-feedback">
-                    Zip code required.
+                    preferred date required.
                   </div>
                 </div>
 
               </div>
 
               <div class="mb-3">
-                  <label for="zip">Description</label>
+                  <label for="des">Description</label>
       <!--            <input type="date" class="form-control" id="zip" placeholder="" required>-->
                 <textarea></textarea>
                   <div class="invalid-feedback">
-                    Zip code required.
+                    Description required.
                   </div>
                 </div>
                  <hr class="mb-4">
@@ -70,7 +72,9 @@
             </form>
           </div>
         </div>
-  </div>
+        </div>
+      </main>
+    </div>
   </div>
 </template>
 

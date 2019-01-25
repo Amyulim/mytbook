@@ -11,14 +11,16 @@
 
           <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
 
+<!--
           <div class="checkbox mb-3">
             <label>
             <input type="checkbox" value="remember-me"> Remember me
             </label>
           </div>
+-->
           <div>
             <button @click="GoBookForm" class="btn btn-lg btn-primary btn-block">Sign In</button>
-            <button @click="GoSignUp">Sign me up!</button>
+            <button @click="GoSignUp" class="signup">Don't have an account. Sign  me up!</button>
           </div> <br/>
          </form>
               

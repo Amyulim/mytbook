@@ -1,3 +1,6 @@
+/*
+ * Globals
+ */
 html,{
   width: 100vw;
   min-height: calc(100vh);
@@ -6,7 +9,7 @@ html,{
   box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
 }
 .body {
-  min-height: calc(100vh);
+  min-height: calc(100vh - 170px);
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
@@ -18,11 +21,10 @@ html,{
   color: #fff;
   background-color: #333333;
 }
-/*
- * Globals
- */
+
 /*--------------------Base structure--------------------*/
-.cover-container {min-height:1oovh;
+.cover-container {
+  min-height:1oovh;
   max-width: 60em;
   overflow-x: hidden;
 }
@@ -33,7 +35,6 @@ html,{
   float:left;
   width: 140px;
 }
-
 
 /*-------------------- Links --------------------*/
 a,
@@ -51,7 +52,15 @@ a:hover {
   background-color: #fff;
   border: .05rem solid #fff;
 }
-
+.signup{
+  border: none;
+  background-color: rgba(0,0,0,0);
+  color:#44aced;
+  font-style: italic;
+  text-align: center;
+  display: inline-block;
+  margin-top: 0.7rem;
+}
 
 /*-------------------- Header --------------------*/
 header{
@@ -106,9 +115,6 @@ input{
 }
 
 /*-------------------- Form ----------------------*/
-form .logo{
-  margin: 0 30%
-}
 form{
   width: 500px;
   margin: 0 auto;
@@ -135,14 +141,14 @@ form{
   padding: 10px;
   font-size: 16px;
 }
-input{
-  
+.form-signin .btn{
+  margin-top: 1.3em;
 }
 .form-signin .form-control:focus {
   z-index: 2;
 }
 .form-signin input[type="email"] {
-  margin-bottom: 23px;
+  margin-bottom: 0px;
  
 }
 .form-signin input[type="password"] {
