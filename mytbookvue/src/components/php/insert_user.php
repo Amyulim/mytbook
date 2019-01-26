@@ -2,7 +2,8 @@
 
 
 try {
-  $conn = new PDO("mysql://a9uyw0nx8yll3o97:karbogix1o6dosfv@k9xdebw4k3zynl4u.cbetxkdyhwsb.us-east-1.rds.amazonaws.com;dbname=od7e1lmerptv21bg", "a9uyw0nx8yll3o97", "karbogix1o6dosfv");
+  $conn = new PDO("mysql:host=k9xdebw4k3zynl4u.cbetxkdyhwsb.us-east-1.rds.amazonaws.com;dbname=od7e1lmerptv21bg", "a9uyw0nx8yll3o97", "karbogix1o6dosfv");
+  echo "Conneted!"
 } catch (PDOException $e) {
   echo "Error".$e->getMessage();
 }
@@ -17,6 +18,7 @@ $query = "INSERT INTO users (user_email, student_id, user_pass) VALUES ('$user_e
 
 
 $result = $conn->query($query);
+
 if($result){
   $id = $conn->lastInsertId();
   echo json_encode(array(
