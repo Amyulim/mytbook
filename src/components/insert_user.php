@@ -2,7 +2,7 @@
 echo "HELLP"
 
 try {
-  $conn = new PDO("mysql:host=k9xdebw4k3zynl4u.cbetxkdyhwsb.us-east-1.rds.amazonaws.com;dbname=od7e1lmerptv21bg", "a9uyw0nx8yll3o97", "karbogix1o6dosfv");
+  $conn = new PDO("mysql:host=k9xdebw4k3zynl4u.cbetxkdyhwsb.us-east-1.rds.amazonaws.com;dbname=hxx7ktin4x3q7iue", "caqwo1iz5lww951z", "zqigtmtt81za05j2");
   echo "Conneted!"
 } catch (PDOException $e) {
   echo "Error".$e->getMessage();
@@ -30,3 +30,11 @@ if($result){
 }
 
 ?>
+<h2>POST Data</h2>
+ <?php 
+  if (count($_POST) == 0)
+     echo "<p><em>There are no POST variables</em></p>";
+  foreach ($_POST as $key => $value) 
+  { 
+      echo "<strong>" . $key . "=</strong>" . $value . "</br>";
+  }  
