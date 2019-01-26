@@ -36,7 +36,9 @@
     name:"Signup",
     data(){
       return {
-        user_email:""
+        user_email:"",
+        student_id:"",
+        user_pass:""
       }
     },
     methods:{
@@ -46,7 +48,9 @@
         var form = document.getElementById('signup_form');
         var fd = new FormData(form);
         fd.append("user_email", this.user_email);
-        var resp = fetch("k9xdebw4k3zynl4u.cbetxkdyhwsb.us-east-1.rds.amazonaws.com/insert_user.php", {
+        fd.append("student_id", this.student_id);
+        fd.append("user_pass", this.user_pass);
+        var resp = fetch("http://localhost:8888/mytbook/insert_user.php", {
             method:"POST",
             body:fd
         });
