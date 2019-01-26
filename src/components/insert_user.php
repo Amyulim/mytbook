@@ -1,5 +1,5 @@
 <?php
-
+echo "HELLP"
 
 try {
   $conn = new PDO("mysql:host=k9xdebw4k3zynl4u.cbetxkdyhwsb.us-east-1.rds.amazonaws.com;dbname=od7e1lmerptv21bg", "a9uyw0nx8yll3o97", "karbogix1o6dosfv");
