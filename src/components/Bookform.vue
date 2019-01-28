@@ -8,70 +8,97 @@
             <p class="lead text-muted">Fill out the form sell the book!</p>
           </div>
         </section>
+        
         <div class="container">
-        <div class="row">
-          <div class="col-md-8 order-md-1 box-center">
-            <h4 class="mb-3"></h4>
-            <form class="needs-validation" novalidate>
-              <div class="row">
-                <div class="col-md-9 mb-3">
-                  <label for="book-title">Book title</label>
-                  <input type="text" v-model="book_title" class="form-control" id="firstName" placeholder="" value="" required>
-                  <div class="invalid-feedback">
-                    Valid first name is required.
-                  </div>
-                </div>
-                <div class="col-md-3 mb-3">
-                  <label for="isbn">ISBN</label>
-                  <input type="text" v-model="book_isbn" class="form-control" id="lastName" placeholder="" value="" required>
-                  <div class="invalid-feedback">
-                    Valid last name is required.
-                  </div>
-                </div>
-              </div>
+                <div class="row">
+                      <div class="col-md-8 order-md-1 box-center">
+                        <h4 class="mb-3"></h4>
+                        <form class="needs-validation" method="POST" @submit.prevent="processForm">
+                              <div class="row">
+                                
+                                <div class="col-md-9 mb-3">
+                                  <label for="book-title">Book title</label>
+                                  <input type="text" v-model="book_title" class="form-control" id="firstName" placeholder="" value="" required>
+                                  <div class="invalid-feedback">
+                                    Valid first name is required.
+                                  </div>
+                                </div>
+                                
+                                <div class="col-md-3 mb-3">
+                                  <label for="isbn">ISBN</label>
+                                  <input type="text" v-model="book_isbn" class="form-control" id="lastName" placeholder="" value="" required>
+                                  <div class="invalid-feedback">
+                                    Valid last name is required.
+                                  </div>
+                                </div>
+                                
+                              </div>
+                              <div class=" mb-3">
+                                  <label for="book_course">Book Course</label>
+                                  <input type="text" v-model="book_course" class="form-control" id="bookcourse" placeholder="" value="" required>
+                                  <div class="invalid-feedback">
+                                  Valid book course is required.
+                                  </div>
+                              </div> 
 
-              <div class="mb-3">
-                <label for="book_img">Image URL <span class="text-muted">(Optional)</span></label><br/>
-                <input type="file" v-model="book_img" name="pic" accept="image/*" class="" placeholder="image....">
-              </div>
+                              <div class="mb-3">
+                                <label for="book_img">Image URL <span class="text-muted">(Optional)</span></label><br/>
+                                <input type="text" v-model="book_img" name="pic" accept="image/*" class="" placeholder="image....">
+                              </div>
 
-              <div class="row">
-                <div class="col-md-5 mb-3">
-                  <label for="condition">Condition of book</label>
-                  <select v-model="book_condition" class="custom-select d-block w-100" id="country" required>
-                    <option value="1">Very Good</option>
-                    <option value="2">Good</option>
-                    <option value="3">Not Bad</option>
-                    <option>Bad</option>
-                  </select>
-                  <div class="invalid-feedback">
-                    Please select a condition of the book.
-                  </div>
+                              <div class="row">
+                                <div class="col-md-5 mb-3">
+                                  <label for="condition">Condition of book</label>
+                                  <select v-model="book_condition" class="custom-select d-block w-100" id="country" required>
+                                    <option >1</option>
+                                    <option >2</option>
+                                    <option >3</option>
+                                    <option>4</option>
+                                  </select>
+                                  
+                                  <div class="invalid-feedback">
+                                    Please select a condition of the book.
+                                  </div>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                  <label for="date">Preffered meeting date</label>
+                                  <input type="m-date" v-model="book_mdate" class="form-control" placeholder="" required>
+                                  <div class="invalid-feedback">
+                                    preferred date required.
+                                  </div>
+                                </div>
+
+                              </div>
+
+                              <div class="mb-3">
+                                  <label for="desc">Description</label>
+                      <!--            <input type="date" class="form-control" id="zip" placeholder="" required>-->
+                                <textarea v-model="book_desc"></textarea>
+                                  <div class="invalid-feedback">
+                                    Description required.
+                                  </div>
+                                </div> 
+                              <div class="row">
+                                <div class="col-md-3 mb-3">
+                                  <label for="price">Price</label>
+
+                                  <input v-model="book_price" class="form-control" type="number" required name="book_price" min="0" value="0" step="any">
+
+                                  <div class="invalid-feedback">
+                                    Price required.
+                                  </div>
+                              
+                                </div>
+                                 
+                              </div>
+                          
+                                                        
+                                  <hr class="mb-4">
+                                  <button @click="Bookform" class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                        </form>
+                      </div>
                 </div>
-
-                <div class="col-md-6 mb-3">
-                  <label for="date">Preffered meeting date</label>
-                  <input type="m-date" v-model="book_mdate" class="form-control" placeholder="" required>
-                  <div class="invalid-feedback">
-                    preferred date required.
-                  </div>
-                </div>
-
-              </div>
-
-              <div class="mb-3">
-                  <label for="des">Description</label>
-      <!--            <input type="date" class="form-control" id="zip" placeholder="" required>-->
-                <textarea v-model="book_des"></textarea>
-                  <div class="invalid-feedback">
-                    Description required.
-                  </div>
-                </div>
-                 <hr class="mb-4">
-              <button @click="Bookform" class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
-            </form>
-          </div>
-        </div>
         </div>
       </main>
     </div>
@@ -88,7 +115,7 @@
     name:"Bookform",
     data(){
       return {
-        book_id:"",
+//        book_id:"",
         user_id:1,
         book_title:"",
         book_isbn:"",
@@ -101,13 +128,13 @@
       }
     },
     methods:{
-      Signup: function(){
-        alert(this.user_email);
+      Bookform: function(){
+        alert(this.user_id );
         
         
         var fd = new FormData();
-        fd.append("book_id", this.book_id);
-        fd.append("user_id", this.user_id);
+//        fd.append("book_id", this.book_id);
+//        fd.append("user_id", this.user_id);
         fd.append("book_title", this.book_title);
         fd.append("book_isbn", this.book_isbn);
         fd.append("book_course", this.book_course);
@@ -116,7 +143,7 @@
         fd.append("book_desc", this.book_desc);
         fd.append("book_img", this.book_img);
         fd.append("book_mdate", this.book_mdate);
-        var resp = fetch("http://localhost:8888/mytbook/insert_book.php", {
+        var resp = fetch("http://localhost:8888/insert_book.php", {
             method:"POST",
             body:fd
         });
