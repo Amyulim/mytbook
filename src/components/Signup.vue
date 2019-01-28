@@ -1,6 +1,6 @@
 <template>
     <div id="signup">
-    <form id="signup_form" class="form-signin" action="k9xdebw4k3zynl4u.cbetxkdyhwsb.us-east-1.rds.amazonaws.com/insert_user.php" method="POST" @submit.prevent="processForm">
+    <form id="signup_form" class="form-signin" method="POST" @submit.prevent="processForm">
             
 
         <h1 class="h3 mb-3 font-weight-normal center">Please sign up </h1>

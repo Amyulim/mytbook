@@ -1,5 +1,5 @@
 <template>
-  <div class="body">
+  <div class="body" id="Bookform">
     <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
       <main role="main" class="inner">
         <section class="text-center">
@@ -16,14 +16,14 @@
               <div class="row">
                 <div class="col-md-9 mb-3">
                   <label for="book-title">Book title</label>
-                  <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                  <input type="text" v-model="book_title" class="form-control" id="firstName" placeholder="" value="" required>
                   <div class="invalid-feedback">
                     Valid first name is required.
                   </div>
                 </div>
                 <div class="col-md-3 mb-3">
                   <label for="isbn">ISBN</label>
-                  <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                  <input type="text" v-model="book_isbn" class="form-control" id="lastName" placeholder="" value="" required>
                   <div class="invalid-feedback">
                     Valid last name is required.
                   </div>
@@ -32,26 +32,26 @@
 
               <div class="mb-3">
                 <label for="book_img">Image URL <span class="text-muted">(Optional)</span></label><br/>
-                <input type="file" name="pic" accept="image/*" class="" placeholder="image....">
+                <input type="file" v-model="book_img" name="pic" accept="image/*" class="" placeholder="image....">
               </div>
 
               <div class="row">
                 <div class="col-md-5 mb-3">
                   <label for="condition">Condition of book</label>
-                  <select class="custom-select d-block w-100" id="country" required>
+                  <select v-model="book_condition" class="custom-select d-block w-100" id="country" required>
                     <option value="1">Very Good</option>
                     <option value="2">Good</option>
                     <option value="3">Not Bad</option>
                     <option>Bad</option>
                   </select>
                   <div class="invalid-feedback">
-                    Please select a valid country.
+                    Please select a condition of the book.
                   </div>
                 </div>
 
                 <div class="col-md-6 mb-3">
                   <label for="date">Preffered meeting date</label>
-                  <input type="m-date" class="form-control" id="zip" placeholder="" required>
+                  <input type="m-date" v-model="book_mdate" class="form-control" placeholder="" required>
                   <div class="invalid-feedback">
                     preferred date required.
                   </div>
@@ -62,13 +62,13 @@
               <div class="mb-3">
                   <label for="des">Description</label>
       <!--            <input type="date" class="form-control" id="zip" placeholder="" required>-->
-                <textarea></textarea>
+                <textarea v-model="book_des"></textarea>
                   <div class="invalid-feedback">
                     Description required.
                   </div>
                 </div>
                  <hr class="mb-4">
-              <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+              <button @click="Bookform" class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
             </form>
           </div>
         </div>
@@ -82,3 +82,57 @@
   @import "https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css";
   @import "../components/style.css";
 </style>
+
+<script>
+  export default {
+    name:"Bookform",
+    data(){
+      return {
+        book_id:"",
+        user_id:1,
+        book_title:"",
+        book_isbn:"",
+        book_course:"",
+        book_price:"",
+        book_condition:"",
+        book_desc:"",
+        book_img:"",
+        book_mdate:""
+      }
+    },
+    methods:{
+      Signup: function(){
+        alert(this.user_email);
+        
+        
+        var fd = new FormData();
+        fd.append("book_id", this.book_id);
+        fd.append("user_id", this.user_id);
+        fd.append("book_title", this.book_title);
+        fd.append("book_isbn", this.book_isbn);
+        fd.append("book_course", this.book_course);
+        fd.append("book_price", this.book_price);
+        fd.append("book_condition", this.book_condition);
+        fd.append("book_desc", this.book_desc);
+        fd.append("book_img", this.book_img);
+        fd.append("book_mdate", this.book_mdate);
+        var resp = fetch("http://localhost:8888/mytbook/insert_book.php", {
+            method:"POST",
+            body:fd
+        });
+
+        var json = resp.json();
+      }
+    }
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</script>
