@@ -13,8 +13,10 @@
                 <div class="row">
                       <div class="col-md-8 order-md-1 box-center">
                         <h4 class="mb-3"></h4>
-                        <form class="needs-validation" method="POST" @submit.prevent="processForm">
+                        
                               <div class="row">
+                                
+                                <input type="text" v-model="user_id"/>
                                 
                                 <div class="col-md-9 mb-3">
                                   <label for="book-title">Book title</label>
@@ -79,6 +81,7 @@
                                     Description required.
                                   </div>
                                 </div> 
+                          
                               <div class="row">
                                 <div class="col-md-3 mb-3">
                                   <label for="price">Price</label>
@@ -96,7 +99,7 @@
                                                         
                                   <hr class="mb-4">
                                   <button @click="Bookform" class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
-                        </form>
+                    
                       </div>
                 </div>
         </div>
@@ -115,7 +118,6 @@
     name:"Bookform",
     data(){
       return {
-//        book_id:"",
         user_id:1,
         book_title:"",
         book_isbn:"",
@@ -128,13 +130,11 @@
       }
     },
     methods:{
-      Bookform: function(){
-        alert(this.user_id );
-        
+      Bookform: async function(){
+        alert(this.user_id );  
         
         var fd = new FormData();
-//        fd.append("book_id", this.book_id);
-//        fd.append("user_id", this.user_id);
+        fd.append("user_id", this.user_id);
         fd.append("book_title", this.book_title);
         fd.append("book_isbn", this.book_isbn);
         fd.append("book_course", this.book_course);
@@ -143,12 +143,13 @@
         fd.append("book_desc", this.book_desc);
         fd.append("book_img", this.book_img);
         fd.append("book_mdate", this.book_mdate);
-        var resp = fetch("http://localhost:8888/insert_book.php", {
+        var resp = await fetch("http://localhost:8888/insert_book.php", {
             method:"POST",
             body:fd
         });
 
-        var json = resp.json();
+        var json = await resp.text();
+        console.log(json);
       }
     }
   }

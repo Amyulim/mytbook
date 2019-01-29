@@ -50,7 +50,7 @@
         fd.append("user_email", this.user_email);
         fd.append("student_id", this.student_id);
         fd.append("user_pass", this.user_pass);
-        var resp = fetch("http://localhost:8888/mytbook/insert_user.php", {
+        var resp = fetch("http://localhost:8888/insert_user.php", {
             method:"POST",
             body:fd
         });
