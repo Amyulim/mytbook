@@ -5,6 +5,7 @@ import Signin from './components/Signin.vue'
 import Signup from './components/Signup.vue'
 import Bookform from './components/Bookform.vue'
 import Booklist from './components/Booklist.vue'
+import BooksViewPage from './components/BooksView.vue'
 
 
 Vue.use(Router)
@@ -38,6 +39,12 @@ export default new Router({
       path:'/booklist',
       name:'booklist',
       component: Booklist,
+    },
+    {
+      //for the book view
+      path:'/booksview',
+      name:'booksview',
+      component: BooksViewPage,
     },
     {
       path: '/about',
