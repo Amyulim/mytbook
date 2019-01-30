@@ -1,8 +1,7 @@
 <template>
     <div id="signup">
-    <form id="signup_form" class="form-signin" method="POST" @submit.prevent="processForm">
             
-
+    <div class="form_signin">
         <h1 class="h3 mb-3 font-weight-normal center">Please sign up </h1>
 
         <label for="inputEmail" class="sr-only">Email address</label>      
@@ -20,8 +19,7 @@
 
         <button @click="Signup" class="btn btn-lg btn-primary btn-block submit" type="submit">Sign Up</button>
             
-
-     </form>
+</div>
   </div>
 
 </template>
@@ -55,7 +53,7 @@
         });
 
         var json = await resp.json();
-          console.log(json);
+        console.log(json);
       }
     }
   }
