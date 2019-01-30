@@ -4,12 +4,12 @@
         <form class="form-signin">
           <h1 class="h3 mb-3 font-weight-normal center">Have an account? </h1>
           <label for="inputEmail" class="sr-only">Email address</label>
-          <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+          <input v-model="user_email" type="email" class="form-control" placeholder="Email address" required autofocus>
           <br/>
 
           <label for="inputPassword" class="sr-only">Password</label>
 
-          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+          <input v-model="user_pass" type="password" class="form-control" placeholder="Password" required>
 
 <!--
           <div class="checkbox mb-3">
@@ -19,7 +19,7 @@
           </div>
 -->
           <div>
-            <button @click="GoBookForm" class="btn btn-lg btn-primary btn-block">Sign In</button>
+            <button @click="SignIn" class="btn btn-lg btn-primary btn-block">Sign In</button>
             <button @click="GoSignUp" class="signup">Don't have an account. Sign  me up!</button>
           </div> <br/>
          </form>
@@ -34,32 +34,7 @@
       
       <div v-if="page ===3">
             <gosignup />
-      </div>
-      
-<!--
-      <div id="nav">
-      <router-link to="/">Home</router-link> &emsp;
-      <router-link to=""> Books</router-link> &emsp;
-      <router-link to="/signin"> Sign In</router-link>
-    </div>
-    
-    
-    <router-view/>
-    
--->
-
-               
-                
-                
-             
-
-              
-<!--
-              
-              <router-link to="/signup">Sign me up!</router-link>
-              <router-view/>
--->
-              
+      </div>         
    
 
                     
@@ -91,31 +66,46 @@ export default{
 	data(){
 		return {
 			page: 1,
+            user_email:"",
+            user_pass:""
 		}
 	},
 	methods:{
 		GoBookForm:function(){
       
-        window.addEventListener('load', function () {
-          // Fetch all the forms we want to apply custom Bootstrap validation styles to
-          var forms = document.getElementsByClassName('needs-validation')
-
-          // Loop over them and prevent submission
-          Array.prototype.filter.call(forms, function (form) {
-            form.addEventListener('submit', function (event) {
-              if (form.checkValidity() === false) {
-                event.preventDefault()
-                event.stopPropagation()
-              }
-              form.classList.add('was-validated')
-            }, false)
-          })
-        }, false)
 			this.page = 2;
 		},
 		GoSignUp:function(){
 			this.page = 3;
-		}
+		},
+        SignIn:function() {
+            var fd= new FormData();
+            
+            fd.append("user_email", this.user_email);
+            fd.append("user_pass", this.user_pass);
+            
+            console.log(fd);
+            console.log(this.user_pass)
+            
+                fetch("http://localhost:8888/mytbook/select_user.php",{
+                    method:"POST",
+                    body:fd
+                }).then((resp)=>{
+                    return resp.json();
+                }).then((json)=>{
+                console.log(json)
+                    
+//              if(json.status){
+//                console.log(json.status)
+//                this.props.dispatch(Id(json.id))
+//                //changepage 
+//             
+//                    } else{
+//                alert("Wrong email or password!")
+//      }
+    });
+            
+        }
 	}
 }
 
