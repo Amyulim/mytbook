@@ -42,20 +42,20 @@
       }
     },
     methods:{
-      Signup: function(){
+      Signup: async function(){
         alert(this.user_email);
         
-        var form = document.getElementById('signup_form');
-        var fd = new FormData(form);
+        var fd = new FormData( );
         fd.append("user_email", this.user_email);
         fd.append("student_id", this.student_id);
         fd.append("user_pass", this.user_pass);
-        var resp = fetch("http://localhost:8888/insert_user.php", {
+        var resp = await fetch("https://mytbook.herokuapp.com/insert_user.php", {
             method:"POST",
             body:fd
         });
 
-        var json = resp.json();
+        var json = await resp.json();
+          console.log(json);
       }
     }
   }

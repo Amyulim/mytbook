@@ -86,7 +86,7 @@
                                 <div class="col-md-3 mb-3">
                                   <label for="price">Price</label>
 
-                                  <input v-model="book_price" name="book_price" class="form-control" type="number" required name="book_price" min="0" value="0" step="any">
+                                  <input v-model="book_price" name="book_price" class="form-control" type="number" required min="0" value="0" step="any">
 
                                   <div class="invalid-feedback">
                                     Price required.
@@ -135,12 +135,6 @@
         alert(this.user_id );  
         
         var fd = new FormData();
-
-      Bookform: function(){
-        alert(this.book_condition );
-        
-        var form = document.getElementById('book_form');
-        var fd = new FormData(form);
 //        fd.append("book_id", this.book_id);
         fd.append("user_id", this.user_id);
         fd.append("book_title", this.book_title);
