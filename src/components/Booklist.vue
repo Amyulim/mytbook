@@ -37,7 +37,7 @@
                       </ul>
                
                     <div class="d-flex justify-content-between align-items-center">                
-                        <button @click="see_detail" type="button" class="btn btn-sm btn-outline-secondary">View</button>  
+                        <button @click="See_detail" type="button" class="btn btn-sm btn-outline-secondary">View</button>  
                         <button type="button" class="btn btn-sm deal-status pull-right">In processs</button>                 
                     </div>
                     
@@ -68,6 +68,7 @@
                         <p><span class="bookview-title">Meeting Time: </span>Tue, 13, Feb</p> <hr>
                       </div>
                     </div>
+                <button @click="Change_modal">Close</button>
               </div>
           </div>
     </main>
@@ -90,9 +91,12 @@
         }
       },
       methods: {
-        see_detail:function(){
+        See_detail:function(){
         this.detail=true;
         
+      },
+        Change_modal:function(){
+          this.detail = false;
       }
 
     },
@@ -107,5 +111,6 @@
           console.log("title",this.result[0].book_title);
       
       },
+    
   }
 </script>
