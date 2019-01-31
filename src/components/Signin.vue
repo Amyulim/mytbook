@@ -67,7 +67,8 @@ export default{
 		return {
 			page: 1,
             user_email:"",
-            user_pass:""
+            user_pass:"",
+            results:[]
 		}
 	},
 	methods:{
@@ -78,32 +79,21 @@ export default{
 		GoSignUp:function(){
 			this.page = 3;
 		},
-        SignIn:function() {
-            var fd= new FormData();
-            
+        SignIn:async function() {
+           
+            var fd= new FormData();  
             fd.append("user_email", this.user_email);
             fd.append("user_pass", this.user_pass);
             
             console.log(fd);
             console.log(this.user_pass)
             
-                fetch("http://localhost:8888/mytbook/select_user.php",{
+            var resp = await fetch("https://mytbook.herokuapp.com/select_user.php",{
                     method:"POST",
                     body:fd
-                }).then((resp)=>{
-                    return resp.json();
-                }).then((json)=>{
-                console.log(json)
-                    
-//              if(json.status){
-//                console.log(json.status)
-//                this.props.dispatch(Id(json.id))
-//                //changepage 
-//             
-//                    } else{
-//                alert("Wrong email or password!")
-//      }
-    });
+                })
+            var json = await resp.json();
+            
             
         }
 	}
