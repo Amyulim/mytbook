@@ -31,13 +31,13 @@
     
                   <div class="card-body">               
                       <ul>
-                        <li><span class="list-title">ISBN</span> : {{result[0].book_isbn}} </li>
+                        <li><span class="list-title">ISBN</span> : {{item.book_isbn}} </li>
                         <li><span class="list-title">Course</span> : {{item.book_course}}</li>
                         <li><span class="list-title">Meeting Time</span> : Tue, 13, Feb</li>
                       </ul>
                
                     <div class="d-flex justify-content-between align-items-center">                
-                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>  
+                        <button @click="see_detail" type="button" class="btn btn-sm btn-outline-secondary">View</button>  
                         <button type="button" class="btn btn-sm deal-status pull-right">In processs</button>                 
                     </div>
                     
@@ -49,6 +49,27 @@
             </div>
           </div>
         </div>
+        <div class="book_detail_modal" v-if="detail === true">
+              <div class="row2 bookview-body position_absolute">
+
+                    <div class="col-md-4 card-body">
+                      <div class="bookview-img">
+                        <img src="../assets/book1.jpg" class="card-img-top" text="Thumbnail"/>
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="bookview-details card-body"> 
+                        <p><span class="bookview-title">Title: </span>Business Com</p> <hr>
+                        <p><span class="bookview-title">ISBN: </span>3435939</p> <hr>
+                        <p><span class="bookview-title">Course: </span>Business Communication 1</p> <hr>
+                        <p><span class="bookview-title">price: </span>$10</p> <hr>
+                        <p><span class="bookview-title">condition: </span>Very Good</p> <hr>
+                        <p><span class="bookview-title">description: </span>Used couple of times, did not write anything on it.</p> <hr>
+                        <p><span class="bookview-title">Meeting Time: </span>Tue, 13, Feb</p> <hr>
+                      </div>
+                    </div>
+              </div>
+          </div>
     </main>
   </div>
   </div>
@@ -65,10 +86,14 @@
         return {
           result:"",
           book_title:"",
+          detail:false
         }
       },
       methods: {
+        see_detail:function(){
+        this.detail=true;
         
+      }
 
     },
     beforeCreate: async function(){

@@ -250,31 +250,99 @@ h1{
   color:#fff !important;
 }
 /*----------------- Book View Page ---------------*/
+.book_detail_modal{
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+  justify-content: center;
+  background-color: rgba(0,0,0,0.7);
+}
+.position_absolute{
+  position: absolute !important;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+
+}
 .bookview-body{
-    padding: 3%;
+/*    padding: 3%;*/
+    max-width: 950px;;
     min-width: 0;
+    max-height: 500px;
+    margin: auto;
     word-wrap: break-word;
     background-color: #fff;
-    background-clip: border-box;
     border: 1px solid rgba(0,0,0,.125);
     border-radius: .25rem;
 }
  hr {
   background-color: rgba(220,220,220,0.4);
 }
-.bookview-details{
+.row2{
+  display: flex;
+  width: 100%;
+}
+.bookview-details{ 
+  padding-top: 2rem !important;
+  margin: auto !important;
   font-size: 1rem;
-  color: rgba(0, 0, 0, 0.5);
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.7);
 }
 .bookview-title{
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-weight: bold;
   padding: 0 5px;
 }
 .bookview-img{
-  padding-top: 50px;
+  padding:auto auto;
 }
-
+/*
+.col-md-8{
+  padding: 0 !important;
+}
+*/
+@media screen and (max-width: 765px){
+  .bookview-body{
+    width: 100%;
+    display: flex;
+    max-height: 500px;
+  }
+  .position_absolute{
+    position: relative;
+  }
+  .bookview_body .col-md-4{
+    width: 100vw !impo;
+  }
+  .bookview-details{
+    width: 100vw !important;
+    position: relative;
+    font-size: 0.8rem;
+  }
+  .bookview-body .bookview-img{
+    position: relative;
+    width: 100vw !important;
+  }
+}
+@media screen and (max-width: 565px){
+  .bookview-body{
+    max-height: 550px;
+  }
+  .bookview_body .col-md-4{
+    width: 100vw !important;
+  }
+  .bookview-details{
+    position: relative;
+    font-size: 0.8rem;
+  }
+}
 /*-------------------- My Account --------------------*/
 .myaccount-body{
     padding: 0;
@@ -290,10 +358,10 @@ h1{
 	margin-bottom: 0 !important;
 }
 .myaccount-title{
-	  text-transform: uppercase;
-  font-weight: bold;
-  padding-top: 15px;
-	font-size: 1.5rem;
+    text-transform: capitalize;
+    font-weight: bold;
+    padding-top: 15px;
+    font-size: 1.5rem;
 }
 
 /*-------------------- Footer --------------------*/
