@@ -275,6 +275,27 @@ h1{
   padding-top: 50px;
 }
 
+/*-------------------- My Account --------------------*/
+.myaccount-body{
+    padding: 0;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    margin-top: 20px;
+}
+.myaccount-body p{
+	margin-bottom: 0 !important;
+}
+.myaccount-title{
+	  text-transform: uppercase;
+  font-weight: bold;
+  padding-top: 15px;
+	font-size: 1.5rem;
+}
+
 /*-------------------- Footer --------------------*/
 footer{
   margin-bottom: 0!important;

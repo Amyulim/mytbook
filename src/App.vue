@@ -10,6 +10,7 @@
           <router-link to="/booklist" class="nav-link" > Books</router-link> &emsp;
           <router-link to="/bookview" class="nav-link" > Book Page</router-link> &emsp;
           <router-link to="/signin" class="nav-link" > Sign In</router-link>&emsp;
+          <router-link to="/myaccount" class="nav-link" > My Account</router-link>&emsp;
           <router-link to="/bookform" class="nav-link" > Form</router-link> 
         </nav>
       </div>

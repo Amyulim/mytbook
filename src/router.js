@@ -6,6 +6,7 @@ import Signup from './components/Signup.vue'
 import Bookform from './components/Bookform.vue'
 import Booklist from './components/Booklist.vue'
 import BookViewPage from './components/BookView.vue'
+import Myaccount from './components/Myaccount.vue'
 
 
 Vue.use(Router)
@@ -45,6 +46,12 @@ export default new Router({
       path:'/bookview',
       name:'bookview',
       component: BookViewPage,
+    },
+    {
+      //for the my account
+      path:'/myaccount',
+      name:'myaccount',
+      component: Myaccount,
     },
     {
       path: '/about',
