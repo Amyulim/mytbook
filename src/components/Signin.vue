@@ -68,7 +68,6 @@ export default{
 			page: 1,
             user_email:"",
             user_pass:"",
-            results:[]
 		}
 	},
 	methods:{
