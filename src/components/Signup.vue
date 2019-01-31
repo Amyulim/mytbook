@@ -1,9 +1,7 @@
 <template>
-    <div id="signup">
             
-    <div class="form_signin">
+    <div id="signup" class="form-signin">
         <h1 class="h3 mb-3 font-weight-normal center">Please sign up </h1>
-
         <label for="inputEmail" class="sr-only">Email address</label>      
         <input type="email" v-model="user_email" name="user_email" class="form-control" placeholder="Email address" required autofocus>
 
@@ -19,7 +17,6 @@
 
         <button @click="Signup" class="btn btn-lg btn-primary btn-block submit" type="submit">Sign Up</button>
             
-</div>
   </div>
 
 </template>
