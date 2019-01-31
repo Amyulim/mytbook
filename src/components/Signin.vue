@@ -96,8 +96,10 @@ export default{
          
           console.log(json);
              if(json.status){
-               console.log(json.status)
-               this.page =3;
+               console.log(json.status);
+               
+               //change page 
+               this.page =2;
              }else{
                alert("Wrong email or ps")
              }
