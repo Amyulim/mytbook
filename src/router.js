@@ -5,7 +5,7 @@ import Signin from './components/Signin.vue'
 import Signup from './components/Signup.vue'
 import Bookform from './components/Bookform.vue'
 import Booklist from './components/Booklist.vue'
-import BooksViewPage from './components/BooksView.vue'
+import BooksViewPage from './components/BookView.vue'
 
 
 Vue.use(Router)
