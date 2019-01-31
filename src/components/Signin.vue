@@ -93,7 +93,11 @@ export default{
                     body:fd
                 })
             var json = await resp.json();
-            
+          console.log(json);
+             
+          if(json.user_eamill == this.user_email){
+               console.log("match")
+             }
             
         }
 	}
