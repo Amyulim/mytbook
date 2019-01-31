@@ -358,10 +358,17 @@ h1{
 	margin-bottom: 0 !important;
 }
 .myaccount-title{
+<<<<<<< HEAD
     text-transform: capitalize;
     font-weight: bold;
     padding-top: 15px;
     font-size: 1.5rem;
+=======
+	text-transform: uppercase;
+  font-weight: bold;
+  padding-top: 15px;
+	font-size: 1.5rem;
+>>>>>>> 3e62b79565bc486b338c6e9260929f83cb082ad3
 }
 
 /*-------------------- Footer --------------------*/
