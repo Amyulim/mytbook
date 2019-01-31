@@ -1,9 +1,7 @@
 <template>
-    <div id="signup">
             
-    <div class="form_signin">
+    <div id="signup" class="form-signin">
         <h1 class="h3 mb-3 font-weight-normal center">Please sign up </h1>
-
         <label for="inputEmail" class="sr-only">Email address</label>      
         <input type="email" v-model="user_email" name="user_email" class="form-control" placeholder="Email address" required autofocus>
 
@@ -16,11 +14,14 @@
         <label for="inputPassword" class="label-only">Password</label>
 
         <input type="password"  class="form-control" placeholder="Re-Type Password" required>
+        
+        <router-link to="/booklist "> <button @click="Signup" class="btn btn-lg btn-primary btn-block submit" type="submit">Sign Up</button></router-link>
 
-        <button @click="Signup" class="btn btn-lg btn-primary btn-block submit" type="submit">Sign Up</button>
+       
+       
             
-</div>
   </div>
+    
 
 </template>
 
@@ -36,7 +37,8 @@
       return {
         user_email:"",
         student_id:"",
-        user_pass:""
+        user_pass:"",
+        page:"/signin"
       }
     },
     methods:{
@@ -51,9 +53,12 @@
             method:"POST",
             body:fd
         });
+        this.page ="/booklist";
 
         var json = await resp.json();
         console.log(json);
+        
+        
       }
     }
   }

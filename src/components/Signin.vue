@@ -1,7 +1,7 @@
 <template>
     <div id="signin" class="body">   
       <div v-if="page ===1">       
-        <form class="form-signin">
+        <div class="form-signin">
           <h1 class="h3 mb-3 font-weight-normal center">Have an account? </h1>
           <label for="inputEmail" class="sr-only">Email address</label>
           <input v-model="user_email" type="email" class="form-control" placeholder="Email address" required autofocus>
@@ -22,7 +22,7 @@
             <button @click="SignIn" class="btn btn-lg btn-primary btn-block">Sign In</button>
             <button @click="GoSignUp" class="signup">Don't have an account. Sign  me up!</button>
           </div> <br/>
-         </form>
+         </div>
               
   
       </div>
@@ -68,7 +68,6 @@ export default{
 			page: 1,
             user_email:"",
             user_pass:"",
-            results:[]
 		}
 	},
 	methods:{
@@ -93,7 +92,19 @@ export default{
                     body:fd
                 })
             var json = await resp.json();
-            
+         
+          console.log(json);
+             if(json.status){
+               console.log(json.status);
+               
+               //change page 
+               this.page =2;
+             }else{
+               alert("Wrong email or ps")
+             }
+//          if(json.user_eamill == this.user_email){
+//               console.log("match")
+//             }
             
         }
 	}
