@@ -9,24 +9,23 @@
         </section>
         
         <div class="container">
-                <div class="row bViewbody">
-                      <div class="col-md-5">
-                        <div class="book-img">
+                <div class="row bookview-body">
+                  
+                      <div class="col-md-4 card-body">
+                        <div class="bookview-img">
                           <img src="../assets/book1.jpg" class="card-img-top" text="Thumbnail"/>
                         </div>
                       </div>
-                      <div class="col-md-7">
-                      
-                        <div class="card-body"> 
-                          <p>Title: <span class="bviewdesc">Business Communication</span></p>
-                          <p>ISBN: <span>3435939</span></p>
-                          <p>Course: <span>Business Com 1</span></p>
-                          <p>Price: <span>$10</span></p>
-                          <p>Condition: <span>Very Good</span></p>
-                          <p>Description: <span>Used but in good condition</span></p>
-                          <p>Meeting Time: <span>Tue, 13, Feb</span></p>
-                  </div>
-
+                      <div class="col-md-8">
+                        <div class="bookview-details card-body"> 
+                          <p><span class="bookview-title">Title: </span>Business Communication</p> <hr>
+                          <p><span class="bookview-title">ISBN: </span>3435939</p> <hr>
+                          <p><span class="bookview-title">Course: </span>Business Communication 1</p> <hr>
+                          <p><span class="bookview-title">price: </span>$10</p> <hr>
+                          <p><span class="bookview-title">condition: </span>Very Good</p> <hr>
+                          <p><span class="bookview-title">description: </span>Used couple of times, did not write anything on it.</p> <hr>
+                          <p><span class="bookview-title">Meeting Time: </span>Tue, 13, Feb</p> <hr>
+                        </div>
                       </div>
                 </div>
         </div>

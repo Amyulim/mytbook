@@ -250,9 +250,31 @@ h1{
   color:#fff !important;
 }
 /*----------------- Book View Page ---------------*/
-.bViewbody{
-  background-color: 
+.bookview-body{
+    padding: 3%;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
 }
+ hr {
+  background-color: rgba(220,220,220,0.4);
+}
+.bookview-details{
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+.bookview-title{
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 0 5px;
+}
+.bookview-img{
+  padding-top: 50px;
+}
+
 /*-------------------- Footer --------------------*/
 footer{
   margin-bottom: 0!important;
