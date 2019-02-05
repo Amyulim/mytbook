@@ -37,7 +37,7 @@
                       </ul>
                
                     <div class="d-flex justify-content-between align-items-center">                
-                        <button @click="See_detail" type="button" class="btn btn-sm btn-outline-secondary">View</button>  
+                        <button @click="See_detail.bind(this, item)" type="button" class="btn btn-sm btn-outline-secondary">View</button>  
                         <button type="button" class="btn btn-sm deal-status pull-right">In processs</button>                 
                     </div>
                     
@@ -59,7 +59,7 @@
                     </div>
                     <div class="col-md-8">
                       <div class="bookview-details card-body"> 
-                        <p><span class="bookview-title">Title: </span>Business Com</p> <hr>
+                        <p><span class="bookview-title">Title: </span>{{}}</p> <hr>
                         <p><span class="bookview-title">ISBN: </span>3435939</p> <hr>
                         <p><span class="bookview-title">Course: </span>Business Communication 1</p> <hr>
                         <p><span class="bookview-title">price: </span>$10</p> <hr>
@@ -87,12 +87,15 @@
         return {
           result:"",
           book_title:"",
-          detail:false
+          detail:false,
+          curItem:null
         }
       },
       methods: {
-        See_detail:function(){
+        See_detail:function(item){
         this.detail=true;
+//          this.item.
+          
         
       },
         Change_modal:function(){

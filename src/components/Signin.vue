@@ -98,7 +98,9 @@ export default{
                console.log(json.status);
                
                //change page 
-               this.page =2;
+               //this.page =2;
+               this.$router.push('booklist');
+               
              }else{
                alert("Wrong email or ps")
              }
