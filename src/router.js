@@ -54,8 +54,8 @@ export default new Router({
       name:'myaccount',
       component: Myaccount,
     },{
-			//for the book update
-			 path:'/bookupdate',
+      //for the book update
+       path:'/bookupdate',
        name:'bookupdate',
        component: BookUpdate,
 			
