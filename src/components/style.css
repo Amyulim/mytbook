@@ -363,6 +363,13 @@ h1{
     padding-top: 15px;
     font-size: 1.5rem;
 }
+.edit-button{
+	margin-top: 20px;
+	display: block !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+	
+}
 
 /*-------------------- Footer --------------------*/
 footer{
