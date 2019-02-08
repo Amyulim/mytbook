@@ -12,8 +12,8 @@
                 <div class="row">
                   <div class="col-md-12">
                        <div class=" myaccount-body bookview-details card-body"> 
-                            <p><span class="bookview-title">Email Address: </span>eveyensobremisana@my.bcit.ca</p> <hr>
-                            <p><span class="bookview-title">Student Number: </span>A01010000</p>
+                            <p><span class="bookview-title">Email Address: </span>{{this.user_email}}</p> <hr>
+                            <p><span class="bookview-title">Student Number: </span>{{this.student_id}}</p>
 											 </div>  
 										
 										
@@ -70,6 +70,10 @@
         return {
           result:"",
           book_title:"",
+          user_id:this.store.user_id,
+          user_email:this.store.user_email,
+          user_pass:this.store.user_pass,
+          student_id:this.store.student_id
         }
       },
       methods: {

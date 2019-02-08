@@ -96,13 +96,17 @@ export default{
              if(json.status){
                //console.log(json);
               
+               //save user info to global state
                this.store.user_id = json.id;
-               this.store.user_email = this.user_email;
-               this.store_user_pass = this.user_pass;
+               this.store.user_email = json.email;
+               this.store.user_pass = json.pass;
+               this.store.student_id = json.student_id;
                
                console.log(this.store.user_id);
                console.log(this.store.user_email);
                console.log(this.store.user_pass);
+               console.log(this.store.student_id);
+              
                
                //change page 
                //this.$router.push('booklist');

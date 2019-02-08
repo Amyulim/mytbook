@@ -8,6 +8,7 @@ Vue.prototype.store = {
   user_id:null,
   user_email:null,
   user_pass:null,
+  student_id:null
 }
 
 
