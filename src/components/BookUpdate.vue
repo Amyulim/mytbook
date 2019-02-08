@@ -166,7 +166,7 @@
           var json = await resp.json();
           console.log(json);
 			
-					this.book_title = json.book_title;
+//					this.book_title = json.book_title;
 
 					
 //          console.log("result",this.result);
