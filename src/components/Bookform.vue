@@ -115,7 +115,7 @@
     name:"Bookform",
     data(){
       return {
-        user_id:1,
+        user_id: this.store.user_id,
         book_title:"",
         book_isbn:"",
         book_course:"",
@@ -142,7 +142,7 @@
         fd.append("book_desc", this.book_desc);
         fd.append("book_img", this.book_img);
         fd.append("book_mdate", this.book_mdate);
-        var resp = await fetch("http://localhost:8888/insert_book.php", {
+        var resp = await fetch("https://mytbook.herokuapp.com/insert_book.php", {
             method:"POST",
             body:fd
         });

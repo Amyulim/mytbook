@@ -81,7 +81,14 @@
 
     },
     beforeCreate: async function(){
-          var resp = await fetch("https://mytbook.herokuapp.com/select_book.php");
+      
+          var fd= new FormData();  
+          fd.append("user_id", this.store.user_id);
+      
+          var resp = await fetch("https://mytbook.herokuapp.com/select_user_book.php",{
+            method:"POST",
+            body:fd
+          });
           var json = await resp.json();
 //          json.JSON.parse(json);
 //          JSON.parse();

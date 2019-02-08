@@ -78,7 +78,7 @@ export default{
 			this.page = 3;
 		},
         SignIn:async function() {
-            console.log(this.global);
+         
             var fd= new FormData();  
             fd.append("user_email", this.user_email);
             fd.append("user_pass", this.user_pass);
