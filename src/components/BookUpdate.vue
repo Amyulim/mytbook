@@ -115,6 +115,7 @@
     name:"Bookform",
     data(){
       return {
+				result:"",
         user_id:1,
         book_title:"",
         book_isbn:"",
@@ -157,7 +158,7 @@
           var json = await resp.json();
           console.log(json);
 					this.book_title = json.book_title;
-			
+			     this.result = json;
 
 					
 //          console.log("result",this.result);
