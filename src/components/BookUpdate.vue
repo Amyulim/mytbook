@@ -115,7 +115,8 @@
     name:"Bookform",
     data(){
       return {
-        user_id:1,
+        user_id:this.store.,
+        book_id:"",
         book_title:"",
         book_isbn:"",
         book_course:"",
