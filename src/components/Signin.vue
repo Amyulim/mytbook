@@ -53,21 +53,20 @@
 import signin from "@/components/Signin.vue";
 import bookform from "@/components/Bookform.vue";
 import signup from "@/components/Signup.vue";
-  
-
 	
 export default{
 	name:"signin", 
 	components:{
 		gosignin: signin,
 		gosignup: signup,
-    gobookform: bookform,
+        gobookform: bookform,
 	},
 	data(){
 		return {
 			page: 1,
             user_email:"",
             user_pass:"",
+            user_id:this.store.user_id,
 		}
 	},
 	methods:{
@@ -79,7 +78,7 @@ export default{
 			this.page = 3;
 		},
         SignIn:async function() {
-           
+            console.log(this.global);
             var fd= new FormData();  
             fd.append("user_email", this.user_email);
             fd.append("user_pass", this.user_pass);
@@ -95,11 +94,18 @@ export default{
          
           console.log(json);
              if(json.status){
-               console.log(json.status);
+               //console.log(json);
+              
+               this.store.user_id = json.id;
+               this.store.user_email = this.user_email;
+               this.store_user_pass = this.user_pass;
+               
+               console.log(this.store.user_id);
+               console.log(this.store.user_email);
+               console.log(this.store.user_pass);
                
                //change page 
-               //this.page =2;
-               this.$router.push('booklist');
+               //this.$router.push('booklist');
                
              }else{
                alert("Wrong email or ps")
