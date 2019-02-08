@@ -94,7 +94,7 @@
       methods: {
         See_detail:function(item){
         this.detail=true;
-//          this.item.
+          this.curItem = item
           
         
       },
