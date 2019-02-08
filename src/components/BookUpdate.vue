@@ -115,7 +115,6 @@
     name:"Bookform",
     data(){
       return {
-				result:"",
         user_id:1,
         book_title:"",
         book_isbn:"",
@@ -132,7 +131,7 @@
 //        alert(this.user_id );  
 //        
 //        var fd = new FormData();
-////        fd.append("book_id", this.book_id);
+//        fd.append("book_id", this.book_id);
 //        fd.append("user_id", this.user_id);
 //        fd.append("book_title", this.book_title);
 //        fd.append("book_isbn", this.book_isbn);
@@ -154,11 +153,20 @@
 //      }
     },
 		beforeCreate: async function(){
-          var resp = await fetch("https://mytbook.herokuapp.com/select_update_book.php");
+				var fd = new FormData();
+			
+        fd.append("book_id", this.book_id);
+        fd.append("user_id", this.user_id);
+			
+          var resp = await fetch("https://mytbook.herokuapp.com/select_update_book.php",{
+						 method:"POST",
+            body:fd
+					});
+			
           var json = await resp.json();
           console.log(json);
+			
 					this.book_title = json.book_title;
-			     this.result = json;
 
 					
 //          console.log("result",this.result);
