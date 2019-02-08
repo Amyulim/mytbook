@@ -7,6 +7,7 @@ import Bookform from './components/Bookform.vue'
 import Booklist from './components/Booklist.vue'
 import BookViewPage from './components/BookView.vue'
 import Myaccount from './components/Myaccount.vue'
+import BookUpdate from './components/BookUpdate.vue'
 
 
 Vue.use(Router)
@@ -52,7 +53,13 @@ export default new Router({
       path:'/myaccount',
       name:'myaccount',
       component: Myaccount,
-    },
+    },{
+			//for the book update
+			 path:'/bookupdate',
+       name:'bookupdate',
+       component: BookUpdate,
+			
+		},
     {
       path: '/about',
       name: 'about',
