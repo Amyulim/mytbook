@@ -2,3 +2,4 @@
 .DS_Store
 node_modules/*
 src/components/style.css
+src/components/Myaccount.vue
