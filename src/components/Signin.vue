@@ -109,7 +109,7 @@ export default{
               
                
                //change page 
-               //this.$router.push('booklist');
+               this.$router.push('booklist');
                
              }else{
                alert("Wrong email or ps")
