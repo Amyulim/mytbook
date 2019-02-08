@@ -37,7 +37,7 @@
                       </ul>
                
                     <div class="d-flex justify-content-between align-items-center">                
-                        <button @click="See_detail.bind(this, item)" type="button" class="btn btn-sm btn-outline-secondary">View</button>  
+                        <button @click="See_detail(item)" type="button" class="btn btn-sm btn-outline-secondary">View</button>  
                         <button type="button" class="btn btn-sm deal-status pull-right">In processs</button>                 
                     </div>
                     
@@ -59,13 +59,13 @@
                     </div>
                     <div class="col-md-8">
                       <div class="bookview-details card-body"> 
-                        <p><span class="bookview-title">Title: </span>{{}}</p> <hr>
-                        <p><span class="bookview-title">ISBN: </span>3435939</p> <hr>
-                        <p><span class="bookview-title">Course: </span>Business Communication 1</p> <hr>
-                        <p><span class="bookview-title">price: </span>$10</p> <hr>
-                        <p><span class="bookview-title">condition: </span>Very Good</p> <hr>
-                        <p><span class="bookview-title">description: </span>Used couple of times, did not write anything on it.</p> <hr>
-                        <p><span class="bookview-title">Meeting Time: </span>Tue, 13, Feb</p> <hr>
+                        <p><span class="bookview-title">Title: </span>{{curItem.book_title}}</p> <hr>
+                        <p><span class="bookview-title">ISBN: </span>{{curItem.book_isbn}}</p> <hr>
+                        <p><span class="bookview-title">Course: </span>{{curItem.book_course}}</p> <hr>
+                        <p><span class="bookview-title">price: </span>$ {{curItem.book_price}}</p> <hr>
+                        <p><span class="bookview-title">condition: </span>{{curItem.book_condition}}</p> <hr>
+                        <p><span class="bookview-title">description: </span>{{curItem.book_desc}}</p> <hr>
+                        <p><span class="bookview-title">Meeting Time: </span>{{curItem.book_mdate}}</p> <hr>
                       </div>
                     </div>
                 <button @click="Change_modal">Close</button>
@@ -88,19 +88,22 @@
           result:"",
           book_title:"",
           detail:false,
-          curItem:null
+          curItem:""
         }
       },
       methods: {
         See_detail:function(item){
+					
         this.detail=true;
-          this.curItem = item
-          
+					
+        this.curItem = item;
+					console.log("curItem:" ,this.curItem);
         
       },
         Change_modal:function(){
           this.detail = false;
-      }
+      },
+			
 
     },
     beforeCreate: async function(){
@@ -110,10 +113,10 @@
 //          JSON.parse();
           console.log(json);
           this.result = json;
-          console.log("result",this.result);
-          console.log("title",this.result[0].book_title);
+//          console.log("result",this.result);
+//          console.log("title",this.result[0].book_title);
       
-      },
+      }, 
     
   }
 </script>
