@@ -56,6 +56,7 @@
                       <div class="bookview-img">
                         <img src="../assets/book1.jpg" class="card-img-top" text="Thumbnail"/>
                       </div>
+											<button @click="GoBookUpdate" type="button" class="btn btn-sm btn-outline-secondary edit-button">Edit Book Details</button>
                     </div>
                     <div class="col-md-8">
                       <div class="bookview-details card-body"> 
@@ -103,6 +104,10 @@
         Change_modal:function(){
           this.detail = false;
       },
+				GoBookUpdate:function(){
+						
+					  this.$router.push('bookupdate');
+				}
 			
 
     },
