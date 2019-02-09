@@ -112,7 +112,7 @@
 
     },
     beforeCreate: async function(){
-          var resp = await fetch("https://mytbook.herokuapp.com/select_book.php");
+          var resp = await fetch("https://mytbook.herokuapp.com/select_update_book.php");
           var json = await resp.json();
 //          json.JSON.parse(json);
 //          JSON.parse();
