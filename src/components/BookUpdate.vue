@@ -1,5 +1,5 @@
 <template>
-  <div class="body" id="Bookform">
+  <div class="body" id="Book_update_form">
     <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
       <main role="main" class="inner">
         <section class="text-center">
@@ -15,7 +15,6 @@
                         <h4 class="mb-3"></h4>
                               <div class="row">
                                 <div class="col-md-9 mb-3">
-                                    <input type="text" v-model="user_id" name="user_id"/> <br/>
                                   <label for="book-title">Book title</label>
                                   <input type="text" v-model="book_title" name="book_title" class="form-control" id="firstName" placeholder="" value="" required>
                                   <div class="invalid-feedback">
@@ -73,7 +72,7 @@
                               <div class="mb-3">
                                   <label for="desc">Description</label>
                       <!--            <input type="date" class="form-control" id="zip" placeholder="" required>-->
-                                <textarea v-model="book_desc" name="book_desc"></textarea>
+                                <textarea v-model="book_desc" name="book_desc">{{this.book_dec}}</textarea>
                                   <div class="invalid-feedback">
                                     Description required.
                                   </div>
@@ -112,47 +111,26 @@
 
 <script>
   export default {
-    name:"Bookform",
+    name:"Book_update_form",
     data(){
       return {
-       	user_id:this.user_id,
-        book_id:"",
-        book_title:"",
-        book_isbn:"",
-        book_course:"",
-        book_price:"",
-        book_condition:"",
-        book_desc:"",
-        book_img:"",
-        book_mdate:""
+       	user_id:this.store.user_id,
+        book_id:this.store.cur_book_id,
+        book_title:this.store.cur_book_title,
+        book_isbn:this.store.cur_book_isbn,
+        book_course:this.store.cur_book_course,
+        book_price:this.store.cur_book_price,
+        book_condition:this.store.cur_book_condition,
+        book_desc:this.store.cur_book_desc,
+        book_img:this.store.cur_book_img,
+        book_mdate:this.store.cur_book_mdate,
       }
     },
     methods:{
     },
-		beforeCreate: async function(){
-				var fd = new FormData();
-			
-        fd.append("book_id", this.book_id);
-        fd.append("user_id", this.user_id);
-			
-          var resp = await fetch("https://mytbook.herokuapp.com/select_update_book.php",{
-						 method:"POST",
-             body:fd
-					});
-			
-          var json = await resp.json();
-          console.log(json);
-			
-//					this.book_title = json.book_title;
-//          console.log(this.store.user_id);
+		
       
-      }
   }
-  
-  
-  
-  
-  
   
   
   
