@@ -145,9 +145,6 @@
 			
 					this.book_title = json.book_title;
 
-					
-//          console.log("result",this.result);
-//          console.log("title",this.result[0].book_title);
       
       },
   }
