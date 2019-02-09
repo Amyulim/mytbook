@@ -115,7 +115,7 @@
     name:"Bookform",
     data(){
       return {
-       	user_id:this.store.user_id,
+       	user_id:this.user_id,
         book_id:"",
         book_title:"",
         book_isbn:"",
@@ -144,9 +144,9 @@
           console.log(json);
 			
 //					this.book_title = json.book_title;
-
+//          console.log(this.store.user_id);
       
-      },
+      }
   }
   
   
