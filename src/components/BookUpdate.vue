@@ -115,7 +115,7 @@
     name:"Bookform",
     data(){
       return {
-        user_id:this.store.,
+       	user_id:this.store.user_id,
         book_id:"",
         book_title:"",
         book_isbn:"",
@@ -128,30 +128,6 @@
       }
     },
     methods:{
-//				Bookform: async function(){
-//        alert(this.user_id );  
-//        
-//        var fd = new FormData();
-//        fd.append("book_id", this.book_id);
-//        fd.append("user_id", this.user_id);
-//        fd.append("book_title", this.book_title);
-//        fd.append("book_isbn", this.book_isbn);
-//        fd.append("book_course", this.book_course);
-//        fd.append("book_price", this.book_price);
-//        fd.append("book_condition", this.book_condition);
-//        fd.append("book_desc", this.book_desc);
-//        fd.append("book_img", this.book_img);
-//        fd.append("book_mdate", this.book_mdate);
-//        var resp = await fetch("http://localhost:8888/insert_book.php", {
-//            method:"POST",
-//            body:fd
-//        });
-//
-//        var json = await resp.text();
-//				
-//				this.book_title = json.book_title
-//        console.log(json);
-//      }
     },
 		beforeCreate: async function(){
 				var fd = new FormData();
@@ -167,7 +143,7 @@
           var json = await resp.json();
           console.log(json);
 			
-//					this.book_title = json.book_title;
+					this.book_title = json.book_title;
 
 					
 //          console.log("result",this.result);
