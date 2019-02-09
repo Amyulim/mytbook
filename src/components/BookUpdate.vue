@@ -135,13 +135,11 @@
         fd.append("book_id", this.book_id);
         fd.append("user_id", this.user_id);
 			
-			
-			
           var resp = await fetch("https://mytbook.herokuapp.com/select_update_book.php",{
 						 method:"POST",
-             body:fd
+            body:fd
 					});
-						 
+			
           var json = await resp.json();
           console.log(json);
 			
