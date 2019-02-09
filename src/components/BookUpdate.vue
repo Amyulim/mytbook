@@ -137,13 +137,13 @@
 			
           var resp = await fetch("https://mytbook.herokuapp.com/select_update_book.php",{
 						 method:"POST",
-            body:fd
+             body:fd
 					});
 			
           var json = await resp.json();
           console.log(json);
 			
-					this.book_title = json.book_title;
+//					this.book_title = json.book_title;
 
       
       },
