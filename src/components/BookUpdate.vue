@@ -72,7 +72,7 @@
                               <div class="mb-3">
                                   <label for="desc">Description</label>
                       <!--            <input type="date" class="form-control" id="zip" placeholder="" required>-->
-                                <textarea v-model="book_desc" name="book_desc">{{this.book_dec}}</textarea>
+                                <textarea v-model="book_desc" name="book_desc">{{this.book_desc}}</textarea>
                                   <div class="invalid-feedback">
                                     Description required.
                                   </div>
