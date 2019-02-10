@@ -145,7 +145,7 @@
 				
 						console.log(fd);
             
-            var resp = await fetch("https://mytbook.herokuapp.com/update_user.php",{
+            var resp = await fetch("https://mytbook.herokuapp.com/update_book.php",{
                     method:"POST",
                     body:fd
                 })
