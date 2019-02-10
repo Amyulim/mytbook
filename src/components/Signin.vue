@@ -77,7 +77,7 @@ export default{
 		GoSignUp:function(){
 			this.page = 3;
 		},
-        SignIn:async function() {
+    SignIn:async function() {
          
             var fd= new FormData();  
             fd.append("user_email", this.user_email);
