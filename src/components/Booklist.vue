@@ -122,7 +122,7 @@
         this.store.cur_book_mdate =  this.curItem.book_mdate;
         this.store.cur_book_desc =  this.curItem.book_desc;
         this.store.cur_book_condition =  this.curItem.book_condition;
-        console.log(this.store.cur_book_desc);
+//        console.log(this.store.cur_book_desc);
         this.$router.push('bookupdate');
       }
 
