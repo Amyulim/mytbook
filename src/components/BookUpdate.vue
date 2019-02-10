@@ -142,15 +142,18 @@
 						fd.append("book_img", this.book_img);
 						fd.append("book_mdate", this.book_mdate);
 				  
-				
 						console.log(fd);
             
+				
+				
             var resp = await fetch("https://mytbook.herokuapp.com/update_book.php",{
                     method:"POST",
                     body:fd
                 })
             var json = await resp.json();
+						console.log(json);
 			}
+			
     },
 		
       
