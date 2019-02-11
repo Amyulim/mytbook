@@ -7,16 +7,20 @@
           <section class="text-center">
             <div class="container">
               <h1 class="jumbotron-heading">My Account</h1>
+              
             </div>
           </section>
 
           <div class="container">
             <div class="row">
               <div class="col-md-12">
-                <div class=" myaccount-body bookview-details card-body">
+                
+                <div class=" myaccount-body card-body">
                   <p><span class="bookview-title">Email Address: </span>{{this.user_email}}</p>
                   <hr>
                   <p><span class="bookview-title">Student Number: </span>{{this.student_id}}</p>
+                  <hr>
+                  <router-link to="/bookform" class="signIn btn-primary btn" > Sell the book</router-link> 
                 </div>
 
 
@@ -55,18 +59,16 @@
               </div>
             </div>
           </div>
-					
-					<div class="book_detail_modal" v-if="detail === true">
+		  <div class="book_detail_modal" v-if="detail === true">
           <div class="row2 bookview-body position_absolute">
 
-            <div class="col-md-4 card-body">
-              <div class="bookview-img">
-                <img src="../assets/book1.jpg" class="card-img-top" text="Thumbnail" />
-              </div>
+            <div class="col-md-4 bookview-img ">
+              <img src="../assets/book1.jpg" class="detail_img" text="Thumbnail" />
               <button @click="GoBookUpdate" type="button" class="btn btn-sm btn-outline-secondary edit-button">Edit Book Details</button>
+              <button @click="Change_modal" type="button" class="btn btn-sm btn-outline-secondary edit-button">Close</button>
             </div>
-            <div class="col-md-8">
-              <div class="bookview-details card-body">
+            <div class="col-md-8 bookview-details">
+        
                 <p><span class="bookview-title">Title: </span>{{curItem.book_title}}</p>
                 <hr>
                 <p><span class="bookview-title">ISBN: </span>{{curItem.book_isbn}}</p>
@@ -81,11 +83,12 @@
                 <hr>
                 <p><span class="bookview-title">Meeting Time: </span>{{curItem.book_mdate}}</p>
                 <hr>
-              </div>
+       
             </div>
-            <button @click="Change_modal">Close</button>
+              
           </div>
-        </div>
+        </div>	
+	
         </main>
       </div>
 
