@@ -52,14 +52,13 @@
         <div class="book_detail_modal" v-if="detail === true">
           <div class="row2 bookview-body position_absolute">
 
-            <div class="col-md-4 card-body">
-              <div class="bookview-img">
-                <img src="../assets/book1.jpg" class="card-img-top" text="Thumbnail" />
-              </div>
+            <div class="col-md-4 bookview-img ">
+              <img src="../assets/book1.jpg" class="detail_img" text="Thumbnail" />
               <button @click="GoBookUpdate" type="button" class="btn btn-sm btn-outline-secondary edit-button">Edit Book Details</button>
+              <button @click="Change_modal" type="button" class="btn btn-sm btn-outline-secondary edit-button">Close</button>
             </div>
-            <div class="col-md-8">
-              <div class="bookview-details card-body">
+            <div class="col-md-8 bookview-details">
+        
                 <p><span class="bookview-title">Title: </span>{{curItem.book_title}}</p>
                 <hr>
                 <p><span class="bookview-title">ISBN: </span>{{curItem.book_isbn}}</p>
@@ -74,9 +73,9 @@
                 <hr>
                 <p><span class="bookview-title">Meeting Time: </span>{{curItem.book_mdate}}</p>
                 <hr>
-              </div>
+       
             </div>
-            <button @click="Change_modal">Close</button>
+              
           </div>
         </div>
       </main>

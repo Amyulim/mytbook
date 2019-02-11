@@ -291,7 +291,10 @@ h1 {
 .card-body {
   background-color: rgba(220, 220, 220, 0.4);
 }
-
+.detail_img{
+  width: 100%;
+  margin: 1rem auto 0;
+}
 .deal-status {
   background-color: #3ca8f7 !important;
   color: #fff !important;
@@ -299,7 +302,7 @@ h1 {
 
 /*----------------- Book View Page ---------------*/
 .book_detail_modal {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -317,19 +320,22 @@ h1 {
   left: 0;
   right: 0;
   bottom: 0;
+/*
+  width: 100vw;
+  height: 100vh;
   margin: auto;
+*/
 
 }
 
 .bookview-body {
   /*    padding: 3%;*/
   max-width: 950px;
-  ;
   min-width: 0;
   max-height: 500px;
   margin: auto;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: rgba(230,230,230,1);
   border: 1px solid rgba(0, 0, 0, .125);
   border-radius: .25rem;
 }
@@ -341,11 +347,11 @@ hr {
 .row2 {
   display: flex;
   width: 100%;
+  float:left;
 }
 
 .bookview-details {
   padding-top: 2rem !important;
-  margin: auto !important;
   font-size: 1rem;
   background-color: #fff;
   color: rgba(0, 0, 0, 0.7);
@@ -358,6 +364,9 @@ hr {
 }
 
 .bookview-img {
+  align-content: center;
+  justify-content: center;
+  margin: auto;
   padding: auto auto;
 }
 
@@ -374,11 +383,7 @@ hr {
   }
 
   .position_absolute {
-    position: relative;
-  }
-
-  .bookview_body .col-md-4 {
-    width: 100vw !impo;
+    position: absolute;
   }
 
   .bookview-details {
@@ -388,8 +393,9 @@ hr {
   }
 
   .bookview-body .bookview-img {
-    position: relative;
     width: 100vw !important;
+    align-content: center;
+   justify-content: center;
   }
 }
 
@@ -492,5 +498,22 @@ footer {
   }
   .nav{
   width: 100%;
-}
+  }
+  .row2{
+    display: block;
+  }
+  .bookview-body{
+    max-height: 100%;
+    
+  }
+  .detail_img{
+    width: 60%;
+    margin:2rem 20% 0;
+    align-content: center;
+  }
+  .bookview_img{
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+  }
 }
