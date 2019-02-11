@@ -128,7 +128,7 @@
     },
     methods:{
 			SaveChanges: async function(){
-				console.log("saved!")
+//				console.log("saved!")
 				
 				  var fd= new FormData();  
             fd.append("user_id", this.user_id);
@@ -152,6 +152,10 @@
                 })
             var json = await resp.json();
 						console.log(json);
+				
+						if(json.status){
+							this.store.cur_book_desc = json.book_desc;
+						}
 			}
 			
     },
