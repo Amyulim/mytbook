@@ -156,7 +156,9 @@
 				
 						if(json.status){
 							this.store.cur_book_desc=json.book_desc;
+							console.log(this.store.cur_book_desc);
 						}
+						
 			}
 			
     },
