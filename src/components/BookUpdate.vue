@@ -143,7 +143,7 @@
 						fd.append("book_mdate", this.book_mdate);
 				  
 						console.log(fd);
-//            console.log(this.book_desc)
+            console.log(this.book_desc)
             
 				
 				
@@ -153,13 +153,11 @@
                 })
             var json = await resp.json();
 						console.log(json);
-//						console.log(json.book_desc);
 				
-				
-						
+						if(json.status){
 							this.store.cur_book_desc=json.book_desc;
 							console.log(this.store.cur_book_desc);
-						
+						}
 						
 			}
 			
