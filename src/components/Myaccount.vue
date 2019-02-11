@@ -122,7 +122,6 @@
         this.detail = true;
 
         this.curItem = item;
-        console.log("curItem:", this.curItem);
 
       },
       Change_modal: function() {
@@ -138,7 +137,8 @@
         this.store.cur_book_mdate =  this.curItem.book_mdate;
         this.store.cur_book_desc =  this.curItem.book_desc;
         this.store.cur_book_condition =  this.curItem.book_condition;
-//        console.log(this.store.cur_book_desc);
+				
+				
         this.$router.push('bookupdate');
       }
 
@@ -154,8 +154,7 @@
         body: fd
       });
       var json = await resp.json();
-      //          json.JSON.parse(json);
-      //          JSON.parse();
+			
       console.log(json);
       this.result = json;
       console.log("result", this.result);
