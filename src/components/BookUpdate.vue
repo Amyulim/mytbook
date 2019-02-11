@@ -153,6 +153,8 @@
                 })
             var json = await resp.json();
 						console.log(json);
+						console.log(json.book_desc);
+				
 				
 						
 //							this.store.cur_book_desc=json.book_desc;
