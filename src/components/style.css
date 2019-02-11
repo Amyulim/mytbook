@@ -477,6 +477,7 @@ footer {
   .nav-masthead {
     float: right;
   }
+  
 }
 
 @media screen and (max-width: 765px) {
@@ -489,4 +490,7 @@ footer {
     width: 40%;
     margin: 0 30%;
   }
+  .nav{
+  width: 100%;
+}
 }
