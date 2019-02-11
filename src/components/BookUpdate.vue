@@ -152,7 +152,8 @@
         })
         var json = await resp.json();
         console.log(json);
-
+				
+				this.$router.push('booklist');
 
       }
     },
