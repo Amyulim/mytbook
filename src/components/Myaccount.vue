@@ -153,9 +153,15 @@
         this.$router.push('bookupdate');
       },
 			DeleteBook: async function(){
-			
+				
+				var fd = new FormData();
+
+        fd.append("user_id", this.user_id);
+
+							
         var resp = await fetch("https://mytbook.herokuapp.com/delete_book.php", {
-            method:"POST"
+            method:"POST",
+            body:fd
         });
 
         var json = await resp.text();
