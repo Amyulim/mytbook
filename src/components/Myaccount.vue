@@ -66,6 +66,7 @@
             <div class="col-md-4 bookview-img ">
               <img src="../assets/book1.jpg" class="detail_img" text="Thumbnail" />
               <button @click="GoBookUpdate" type="button" class="btn btn-sm btn-outline-secondary edit-button">Edit Book Details</button>
+              <button @click="" type="button" class="btn btn-sm btn-danger">Delete</button>
               <button @click="Change_modal" type="button" class="btn btn-sm btn-outline-secondary edit-button">Close</button>
             </div>
             <div class="col-md-8 bookview-details">
