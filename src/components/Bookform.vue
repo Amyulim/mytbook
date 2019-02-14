@@ -95,7 +95,7 @@
                           
                                                         
                                   <hr class="mb-4">
-                                  <button @click="Bookform" class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                                  <button @click="Bookform" class="btn btn-primary btn-lg btn-block" type="submit">Save</button>
                     
                       </div>
                 </div>
@@ -149,6 +149,9 @@
 
         var json = await resp.text();
         console.log(json);
+				
+				
+				this.$router.push('booklist');
       }
     }
   }
