@@ -130,7 +130,7 @@
     methods:{
 
       Bookform: async function(){
-        alert(this.user_id );  
+//        alert(this.user_id );  
         
         var fd = new FormData();
 //        fd.append("book_id", this.book_id);
