@@ -41,9 +41,9 @@
 
                       <div class="card-body">
                         <ul>
-                          <li><span class="list-title">ISBN</span> : {{result[0].book_isbn}} </li>
+                          <li><span class="list-title">ISBN</span> : {{item.book_isbn}} </li>
                           <li><span class="list-title">Course</span> : {{item.book_course}}</li>
-                          <li><span class="list-title">Meeting Time</span> : Tue, 13, Feb</li>
+                          <li><span class="list-title">Meeting Time</span> : {{item.book_mdate}}</li>
                         </ul>
 
                         <div class="d-flex justify-content-between align-items-center">
