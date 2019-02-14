@@ -161,8 +161,8 @@
 			
       console.log(json);
       this.result = json;
-      console.log("result", this.result);
-      console.log("title", this.result[0].book_title);
+//      console.log("result", this.result);
+//      console.log("title", this.result[0].book_title);
 
     },
   }
