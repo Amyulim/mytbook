@@ -154,6 +154,8 @@
       },
 			DeleteBook: async function(){
 				
+				console.log("deleted!")
+				
 				var fd = new FormData();
 
         fd.append("user_id", this.user_id);
