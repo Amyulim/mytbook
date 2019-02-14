@@ -463,6 +463,13 @@ hr {
 */
 
 }
+
+.edit-buttonn{
+		margin: 20px;
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
 /*-------------------- Footer --------------------*/
 footer {
   margin-bottom: 0 !important;
