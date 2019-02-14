@@ -48,8 +48,7 @@
                               <div class="row">
                                 <div class="col-md-5 mb-3">
                                   <label for="condition">Condition of book</label>
-                                  <select v-model="book_condition" name="book_condition" class="custom-select d-block w-100" id="country" required>
-                                    <option >Choose the condition of the book</option>
+                                  <select v-model="book_condition" name="book_condition" class="custom-select d-block w-100" id="country"  placeholder="Choose a condition"required>
                                     <option >1</option>
                                     <option >2</option>
                                     <option >3</option>
