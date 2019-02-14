@@ -439,14 +439,30 @@ hr {
   font-size: 1.5rem;
 }
 
-.edit-button {
-  margin-top: 20px;
+.myaccount-button{
+	margin: 15px;
   display: block !important;
   margin-left: auto !important;
   margin-right: auto !important;
 
 }
+.delete-button{
+	color: white !important;
+	border-color: #dc3545 !important;
+}
 
+.close-button {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	z-index: 9999999;
+/*
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+*/
+
+}
 /*-------------------- Footer --------------------*/
 footer {
   margin-bottom: 0 !important;

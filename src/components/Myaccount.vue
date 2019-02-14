@@ -60,14 +60,18 @@
             </div>
           </div>		
         <div class="book_detail_modal" v-if="detail === true">
+					 
 
           <div class="row2 bookview-body position_absolute">
+						
+						<button @click="Change_modal" type="button" class="btn btn-sm btn-secondary close-button">Close</button>
 
             <div class="col-md-4 bookview-img ">
               <img src="../assets/book1.jpg" class="detail_img" text="Thumbnail" />
-              <button @click="GoBookUpdate" type="button" class="btn btn-sm btn-outline-secondary edit-button">Edit Book Details</button>
-              <button @click="" type="button" class="btn btn-sm btn-danger">Delete</button>
-              <button @click="Change_modal" type="button" class="btn btn-sm btn-outline-secondary edit-button">Close</button>
+							
+              <button @click="GoBookUpdate" type="button" class="btn btn-sm btn-outline-secondary myaccount-button">Edit Book</button>
+              <button @click="DeleteBook" type="button" class="btn btn-sm btn-outline-secondary btn-danger myaccount-button delete-button">Delete Book</button>
+             
             </div>
             <div class="col-md-8 bookview-details">
         
@@ -85,6 +89,8 @@
                 <hr>
                 <p><span class="bookview-title">Meeting Time: </span>{{curItem.book_mdate}}</p>
                 <hr>
+							
+							
        
             </div>
               
@@ -145,6 +151,35 @@
 				
 				
         this.$router.push('bookupdate');
+      },
+			DeleteBook: async function(){
+				
+			
+        
+        var fd = new FormData();
+
+        fd.append("user_id", this.user_id);
+        fd.append("book_title", this.book_title);
+        fd.append("book_isbn", this.book_isbn);
+        fd.append("book_course", this.book_course);
+        fd.append("book_price", this.book_price);
+        fd.append("book_condition", this.book_condition);
+        fd.append("book_desc", this.book_desc);
+        fd.append("book_img", this.book_img);
+        fd.append("book_mdate", this.book_mdate);
+				
+					console.log("fd");
+							
+        var resp = await fetch("https://mytbook.herokuapp.com/delete_book.php", {
+            method:"POST",
+            body:fd
+        });
+
+        var json = await resp.text();
+        console.log(json);
+				
+				
+				this.$router.push('booklist');
       }
 
 
