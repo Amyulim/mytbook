@@ -159,16 +159,16 @@
         var fd = new FormData();
 
         fd.append("user_id", this.user_id);
-        fd.append("book_title", this.book_title);
-        fd.append("book_isbn", this.book_isbn);
-        fd.append("book_course", this.book_course);
-        fd.append("book_price", this.book_price);
-        fd.append("book_condition", this.book_condition);
-        fd.append("book_desc", this.book_desc);
-        fd.append("book_img", this.book_img);
-        fd.append("book_mdate", this.book_mdate);
+//        fd.append("book_title", this.book_title);
+//        fd.append("book_isbn", this.book_isbn);
+//        fd.append("book_course", this.book_course);
+//        fd.append("book_price", this.book_price);
+//        fd.append("book_condition", this.book_condition);
+//        fd.append("book_desc", this.book_desc);
+//        fd.append("book_img", this.book_img);
+//        fd.append("book_mdate", this.book_mdate);
 				
-					console.log("fd");
+//					console.log(fd);
 							
         var resp = await fetch("https://mytbook.herokuapp.com/delete_book.php", {
             method:"POST",
@@ -197,8 +197,6 @@
 			
       console.log(json);
       this.result = json;
-//      console.log("result", this.result);
-//      console.log("title", this.result[0].book_title);
 
     },
   }
