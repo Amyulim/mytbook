@@ -15,7 +15,7 @@
                         <h4 class="mb-3"></h4>
                               <div class="row">
                                 <div class="col-md-9 mb-3">
-                                    <input type="text" v-model="user_id" name="user_id"/> <br/>
+<!--                                    <input type="text" v-model="user_id" name="user_id"/> <br/>-->
                                   <label for="book-title">Book title</label>
                                   <input type="text" v-model="book_title" name="book_title" class="form-control" id="firstName" placeholder="" value="" required>
                                   <div class="invalid-feedback">
