@@ -43,6 +43,8 @@
                 <label for="book_img">Image URL <span class="text-muted">(Optional)</span></label><br />
                 <input type="text" v-model="book_img" name="book_img" accept="image/*" class="" placeholder="image....">
               </div>
+							
+							
 
               <div class="row">
                 <div class="col-md-5 mb-3">
