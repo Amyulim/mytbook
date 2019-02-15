@@ -160,7 +160,7 @@
 				var fd = new FormData();
 
         fd.append("user_id", this.user_id);
-        fd.append("book_id", this.store.cur_book_id);
+        fd.append("book_id", this.curItem.book_id);
 				fd.append("book_title", this.book_title);
         fd.append("book_isbn", this.book_isbn);
         fd.append("book_course", this.book_course);
@@ -172,7 +172,7 @@
 							
 				
 				console.log(this.user_id)
-				console.log(this.store.cur_book_id)
+				console.log(this.curItem.book_id)
         var resp = await fetch("https://mytbook.herokuapp.com/delete_book.php", {
             method:"POST",
             body:fd
