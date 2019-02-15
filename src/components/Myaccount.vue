@@ -122,6 +122,7 @@
         result: "",
         book_title: "",
         user_id: this.store.user_id,
+        book_id: this.store.user_id,
         user_email: this.store.user_email,
         user_pass: this.store.user_pass,
         student_id: this.store.student_id
@@ -159,7 +160,7 @@
 				var fd = new FormData();
 
         fd.append("user_id", this.user_id);
-        fd.append("book_id", this.book_id);
+        fd.append("book_id", this.store.cur_book_id);
 				fd.append("book_title", this.book_title);
         fd.append("book_isbn", this.book_isbn);
         fd.append("book_course", this.book_course);
@@ -171,7 +172,7 @@
 							
 				
 				console.log(this.user_id)
-				console.log(this.book_id)
+				console.log(this.store.cur_book_id)
         var resp = await fetch("https://mytbook.herokuapp.com/delete_book.php", {
             method:"POST",
             body:fd
