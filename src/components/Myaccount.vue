@@ -167,7 +167,8 @@
         });
 
         var json = await resp.text();
-				
+			
+				this.detail = false;
 				
 //				this.$router.push('booklist');
       }
