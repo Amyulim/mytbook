@@ -163,7 +163,7 @@
         fd.append("book_id", this.curItem.book_id);
 							
 				
-				console.log(this.store.user_id)
+				console.log(this.user_id)
 				console.log(this.curItem.book_id)
 				
         var resp = await fetch("https://mytbook.herokuapp.com/delete_book.php", {
