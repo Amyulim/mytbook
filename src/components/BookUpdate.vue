@@ -24,7 +24,7 @@
 
                 <div class="col-md-3 mb-3">
                   <label for="isbn">ISBN</label>
-                  <input type="text" v-model="book_isbn" name="book_isbn" class="form-control" id="lastName" placeholder="" value="" required>
+                  <input type="number" v-model="book_isbn" name="book_isbn" class="form-control" id="lastName" placeholder="" min="1" max="13" required>
                   <div class="invalid-feedback">
                     Valid last name is required.
                   </div>
@@ -48,10 +48,11 @@
                 <div class="col-md-5 mb-3">
                   <label for="condition">Condition of book</label>
                   <select v-model="book_condition" name="book_condition" class="custom-select d-block w-100" id="country" required>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
+                   <option value="" disabled selected>Select your option</option>
+                   <option >1</option>
+                   <option >2</option>
+                   <option >3</option>
+                   <option>4</option>
                   </select>
 
                   <div class="invalid-feedback">
@@ -61,7 +62,7 @@
 
                 <div class="col-md-6 mb-3">
                   <label for="date">Preffered meeting date</label>
-                  <input type="m-date" v-model="book_mdate" name="book_mdate" class="form-control" placeholder="" required>
+                  <input type="m-date" v-model="book_mdate" name="book_mdate" class="form-control" placeholder="YYYY-MM-DD" required>
                   <div class="invalid-feedback">
                     preferred date required.
                   </div>

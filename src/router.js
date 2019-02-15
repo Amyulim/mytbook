@@ -5,7 +5,7 @@ import Signin from './components/Signin.vue'
 import Signup from './components/Signup.vue'
 import Bookform from './components/Bookform.vue'
 import Booklist from './components/Booklist.vue'
-import BookViewPage from './components/BookView.vue'
+//import BookViewPage from './components/BookView.vue'
 import Myaccount from './components/Myaccount.vue'
 import BookUpdate from './components/BookUpdate.vue'
 
@@ -42,12 +42,12 @@ export default new Router({
       name:'booklist',
       component: Booklist,
     },
-    {
-      //for the book view
-      path:'/bookview',
-      name:'bookview',
-      component: BookViewPage,
-    },
+//    {
+//      //for the book view
+//      path:'/bookview',
+//      name:'bookview',
+//      component: BookViewPage,
+//    },
     {
       //for the my account
       path:'/myaccount',
