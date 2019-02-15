@@ -169,6 +169,9 @@
         fd.append("book_img", this.book_img);
         fd.append("book_mdate", this.book_mdate);
 							
+				
+				console.log(this.user_id)
+				console.log(this.book_id)
         var resp = await fetch("https://mytbook.herokuapp.com/delete_book.php", {
             method:"POST",
             body:fd
