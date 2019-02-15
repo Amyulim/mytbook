@@ -25,7 +25,7 @@
                                 
                                 <div class="col-md-3 mb-3">
                                   <label for="isbn">ISBN</label>
-                                  <input type="text" v-model="book_isbn" name="book_isbn" class="form-control" id="lastName" placeholder="" value="" required>
+                                  <input type="number" v-model="book_isbn" name="book_isbn" class="form-control" id="lastName" placeholder=""  min="1" max="13" required>
                                   <div class="invalid-feedback">
                                     Valid last name is required.
                                   </div>
