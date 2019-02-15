@@ -7,20 +7,20 @@
           <section class="text-center">
             <div class="container">
               <h1 class="jumbotron-heading">My Account</h1>
-              
+
             </div>
           </section>
 
           <div class="container">
             <div class="row">
               <div class="col-md-12">
-                
+
                 <div class=" myaccount-body card-body">
                   <p><span class="bookview-title">Email Address: </span>{{this.user_email}}</p>
                   <hr>
                   <p><span class="bookview-title">Student Number: </span>{{this.student_id}}</p>
                   <hr>
-                  <router-link to="/bookform" class="signIn btn-primary btn" > Sell the book</router-link> 
+                  <router-link to="/bookform" class="signIn btn-primary btn"> Sell the book</router-link>
                 </div>
 
 
@@ -48,7 +48,9 @@
 
                         <div class="d-flex justify-content-between align-items-center">
                           <button @click="See_detail(item)" type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                          <button type="button" class="btn btn-sm deal-status pull-right">In processs</button>
+                          <div v-if="item.book_status !== null">
+                            <button type="button" class="btn btn-sm deal-status pull-right">{{item.book_status}}</button>
+                          </div>
                         </div>
 
                       </div>
@@ -58,23 +60,28 @@
 
               </div>
             </div>
-          </div>		
-        <div class="book_detail_modal" v-if="detail === true">
-					 
+          </div>
+          <div class="book_detail_modal" v-if="detail === true">
+            <div class="row2 bookview-body position_absolute">
 
-          <div class="row2 bookview-body position_absolute">
-						
-						<button @click="Change_modal" type="button" class="btn btn-sm btn-secondary close-button">Close</button>
+              <button @click="Change_modal" type="button" class="btn btn-sm btn-secondary close-button">&nbsp;X&nbsp;</button>
 
-            <div class="col-md-4 bookview-img ">
-              <img src="../assets/book1.jpg" class="detail_img" text="Thumbnail" />
-							
-              <button @click="GoBookUpdate" type="button" class="btn btn-sm btn-outline-secondary myaccount-button">Edit Book</button>
-              <button @click="DeleteBook" type="button" class="btn btn-sm btn-outline-secondary btn-danger myaccount-button delete-button">Delete Book</button>
-             
-            </div>
-            <div class="col-md-8 bookview-details">
-        
+              <div class="col-md-4 bookview-img ">
+                <div v-if="curItem.book_status !== null" class="justify-content-between align-items-center">
+                  <button type="button" class="btn btn-sm deal-status detail_status ">{{curItem.book_status}}</button>
+                </div>
+                <img src="../assets/book1.jpg" class="detail_img" text="Thumbnail" />
+                <div class="row"> 
+                  <button @click="GoBookUpdate" type="button" class="btn btn-sm btn-outline-secondary myaccount-button pull-left">Edit Book
+                  </button>
+                  <button @click="DeleteBook" type="button" class="btn btn-sm btn-danger pull-right myaccount-button delete-button">Delete Book
+                  </button>
+                </div>
+
+
+              </div>
+              <div class="col-md-8 bookview-details">
+
                 <p><span class="bookview-title">Title: </span>{{curItem.book_title}}</p>
                 <hr>
                 <p><span class="bookview-title">ISBN: </span>{{curItem.book_isbn}}</p>
@@ -89,14 +96,15 @@
                 <hr>
                 <p><span class="bookview-title">Meeting Time: </span>{{curItem.book_mdate}}</p>
                 <hr>
-							
-							
-       
+
+
+
+
+              </div>
+
             </div>
-              
           </div>
-        </div>	
-	
+
         </main>
       </div>
 
@@ -118,7 +126,7 @@
     name: "booklist",
     data() {
       return {
-				detail: false,
+        detail: false,
         result: "",
         book_title: "",
         user_id: this.store.user_id,
@@ -129,7 +137,7 @@
       }
     },
     methods: {
-			See_detail: function(item) {
+      See_detail: function(item) {
 
         this.detail = true;
 
@@ -141,39 +149,53 @@
       },
       GoBookUpdate: function() {
         this.store.cur_book_id = this.curItem.book_id;
-        this.store.cur_book_title =  this.curItem.book_title;
-        this.store.cur_book_isbn =  this.curItem.book_isbn;
-        this.store.cur_book_course =  this.curItem.book_course;
-        this.store.cur_book_price =  this.curItem.book_price;
-        this.store.cur_book_img =  this.curItem.book_img;
-        this.store.cur_book_mdate =  this.curItem.book_mdate;
-        this.store.cur_book_desc =  this.curItem.book_desc;
-        this.store.cur_book_condition =  this.curItem.book_condition;
-				
-				
+        this.store.cur_book_title = this.curItem.book_title;
+        this.store.cur_book_isbn = this.curItem.book_isbn;
+        this.store.cur_book_course = this.curItem.book_course;
+        this.store.cur_book_price = this.curItem.book_price;
+        this.store.cur_book_img = this.curItem.book_img;
+        this.store.cur_book_mdate = this.curItem.book_mdate;
+        this.store.cur_book_desc = this.curItem.book_desc;
+        this.store.cur_book_condition = this.curItem.book_condition;
+        this.store.cur_book_status = this.curItem.book_status;
+
+
         this.$router.push('bookupdate');
       },
-			DeleteBook: async function(){
-				
-				console.log("deleted!")
-				
-				var fd = new FormData();
+      DeleteBook: async function() {
+
+       alert("deleted!")
+
+        var fd = new FormData();
 
         fd.append("user_id", this.user_id);
         fd.append("book_id", this.curItem.book_id);
-							
-				
-				console.log(this.user_id)
-				console.log(this.curItem.book_id)
-				
+
+
+        console.log(this.user_id)
+        console.log(this.curItem.book_id)
+
         var resp = await fetch("https://mytbook.herokuapp.com/delete_book.php", {
-            method:"POST",
-            body:fd
+          method: "POST",
+          body: fd
         });
 
         var json = await resp.text();
-			
-				this.detail = false;
+
+        this.detail = false;
+        
+        //referesh
+        var fd = new FormData();
+        fd.append("user_id", this.store.user_id);
+
+        var resp = await fetch("https://mytbook.herokuapp.com/select_user_book.php", {
+          method: "POST",
+          body: fd
+        });
+        var json = await resp.json();
+
+        console.log(json);
+        this.result = json;
       }
 
 
@@ -188,7 +210,7 @@
         body: fd
       });
       var json = await resp.json();
-			
+
       console.log(json);
       this.result = json;
 

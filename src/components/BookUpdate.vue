@@ -90,10 +90,28 @@
                   </div>
 
                 </div>
-
               </div>
 
 
+              <hr class="mb-4">
+              <div class="row">
+                <div class="col-md-5 mb-3">
+                  <label for="condition">Transaction status</label>
+                  <select v-model="book_status" class="custom-select d-block w-100" required>
+                   <option value="" disabled selected>Select your option</option>
+                   <option >None</option>
+                   <option >In Progress</option>
+                   <option >Sold</option>
+                  </select>
+
+                  <div class="invalid-feedback">
+                    Please select a condition of the book.
+                  </div>
+                </div>
+              </div>
+              
+                
+              
               <hr class="mb-4">
               <button @click="SaveChanges" class="btn btn-primary btn-lg btn-block" type="submit">Save Changes</button>
 
@@ -126,6 +144,7 @@
         book_desc: this.store.cur_book_desc,
         book_img: this.store.cur_book_img,
         book_mdate: this.store.cur_book_mdate,
+        book_status: this.store.cur_book_status,
       }
     },
     methods: {
@@ -143,6 +162,7 @@
         fd.append("book_desc", this.book_desc);
         fd.append("book_img", this.book_img);
         fd.append("book_mdate", this.book_mdate);
+        fd.append("book_status", this.book_status);
 
         //console.log(fd);
         console.log(this.user_id);
