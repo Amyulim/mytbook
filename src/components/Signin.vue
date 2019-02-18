@@ -5,7 +5,6 @@
           <h1 class="h3 mb-3 font-weight-normal center">Have an account? </h1>
           <label for="inputEmail" class="sr-only">Email address</label>
           <input v-model="user_email" type="email" class="form-control" placeholder="Email address" required autofocus>
-          <br/>
 
           <label for="inputPassword" class="sr-only">Password</label>
 

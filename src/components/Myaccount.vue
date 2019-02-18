@@ -1,6 +1,6 @@
 <template>
   <div class="body" id="Bookform">
-    <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <div class="container d-flex w-100 h-100 p-3 flex-column">
       <div v-if="user_id === null"> Sign In First!</div>
       <div v-else>
         <main role="main" class="inner">

@@ -1,8 +1,8 @@
 <template>
 <div class="html">
-<div class="body" >
-  <div id="app" class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-    <header class="masthead mb-auto">  
+
+  <div id="app" class=" d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto container">  
       <div id="inner">
         <router-link to="/" ><img class="logo justify-content-center" src="../src/assets/logo.svg"></router-link>
         <nav class="nav nav-masthead justify-content-center">
@@ -17,7 +17,7 @@
     <router-view/>
     
   </div>
-</div>
+
  </div>
   
 </template>

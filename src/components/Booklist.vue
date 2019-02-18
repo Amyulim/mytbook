@@ -3,7 +3,7 @@
     <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
       <main role="main" class="inner">
         <section class="text-center">
-          <div class="container">
+          <div class="">
             <h1 class="jumbotron-heading">Book lists</h1>
             <p class="lead text-muted">Find the book you want to buy!</p>
             <div class="col-md-9 display-in">
@@ -182,15 +182,15 @@
       this.result = json;
       //          console.log("result",this.result);
       //          console.log("title",this.result[0].book_title);
-       this.componentLoaded = true;
+      this.componentLoaded = true;
 
     },
     computed: {
       filteredList() {
-        if(! this.componentLoaded)
-            return null;
-      
-        return this.result.filter(item => {
+        if (!this.componentLoaded)
+          return null;
+
+          return this.result.filter(item => {
           return item.book_title.toLowerCase().includes(this.search.toLowerCase())
         })
       }
