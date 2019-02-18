@@ -114,7 +114,8 @@
         book_title: "",
         detail: false,
         curItem: "",
-        search:'',
+        search: '',
+        componentLoaded: false,
       }
     },
     methods: {
@@ -181,15 +182,19 @@
       this.result = json;
       //          console.log("result",this.result);
       //          console.log("title",this.result[0].book_title);
+       this.componentLoaded = true;
 
     },
     computed: {
-    filteredList() {
-      return this.result.filter(item => {
-        return item.book_title.toLowerCase().includes(this.search.toLowerCase())
-      })
+      filteredList() {
+        if(! this.componentLoaded)
+            return null;
+      
+        return this.result.filter(item => {
+          return item.book_title.toLowerCase().includes(this.search.toLowerCase())
+        })
+      }
     }
-  }
 
   }
 
