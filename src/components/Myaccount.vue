@@ -164,7 +164,7 @@
       },
       DeleteBook: async function() {
 
-       alert("deleted!")
+//       alert("deleted!")
 
         var fd = new FormData();
 

@@ -43,6 +43,8 @@
                 <label for="book_img">Image URL <span class="text-muted">(Optional)</span></label><br />
                 <input type="text" v-model="book_img" name="book_img" accept="image/*" class="" placeholder="image....">
               </div>
+							
+							
 
               <div class="row">
                 <div class="col-md-5 mb-3">
@@ -62,7 +64,7 @@
 
                 <div class="col-md-6 mb-3">
                   <label for="date">Preffered meeting date</label>
-                  <input type="m-date" v-model="book_mdate" name="book_mdate" class="form-control" placeholder="YYYY-MM-DD" required>
+                  <input type="date" v-model="book_mdate" name="book_mdate" class="form-control" placeholder="YYYY-MM-DD" required>
                   <div class="invalid-feedback">
                     preferred date required.
                   </div>
