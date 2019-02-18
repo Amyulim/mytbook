@@ -6,9 +6,8 @@
           <div class="container">
             <h1 class="jumbotron-heading">Book lists</h1>
             <p class="lead text-muted">Find the book you want to buy!</p>
-            <!--            <button @click="BookInfo">get</button>-->
             <div class="col-md-9 display-in">
-              <input type="text" class="form-control width-90">
+              <input type="text" v-model="search" placeholder="Search title.." class="form-control width-90">
             </div>
             <div class="col-md-2 display-in">
               <input type="submit" class="submitButton btn-primary " value="Search">
@@ -19,7 +18,7 @@
           <div class="container">
 
             <div class="row lists">
-              <div class="col-md-4" v-for="item in result">
+              <div class="col-md-4" v-for="item in filteredList">
                 <div class="card mb-4 shadow-sm book-des">
                   <div class="book-img text-center">
                     <img src="../assets/book1.jpg" class="card-img-top" text="Thumbnail" />
@@ -114,7 +113,8 @@
         result: "",
         book_title: "",
         detail: false,
-        curItem: ""
+        curItem: "",
+        search:'',
       }
     },
     methods: {
@@ -183,6 +183,13 @@
       //          console.log("title",this.result[0].book_title);
 
     },
+    computed: {
+    filteredList() {
+      return this.result.filter(item => {
+        return item.book_title.toLowerCase().includes(this.search.toLowerCase())
+      })
+    }
+  }
 
   }
 
