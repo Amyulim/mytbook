@@ -34,19 +34,18 @@
                       <li><span class="list-title">Course</span> : {{item.book_course}}</li>
                       <li><span class="list-title">Meeting Time</span> : {{item.book_mdate}}</li>
                     </ul>
-
-
                     <div class="d-flex justify-content-between align-items-center">
                       <button @click="See_detail(item)" type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <div v-if="item.book_status !== null">
+                      <div v-if="item.book_status === 'null'"></div>
+                      <div v-else-if="item.book_status === null"></div>
+                      <div v-else>
                         <button type="button" class="btn btn-sm deal-status pull-right">{{item.book_status}}</button>
                       </div>
                     </div>
-
                   </div>
+                  
                 </div>
               </div>
-
 
             </div>
           </div>
@@ -57,8 +56,9 @@
             <button @click="Change_modal" type="button" class="btn btn-sm btn-secondary close-button"> &nbsp;X&nbsp;</button>
 
             <div class="col-md-4 bookview-img ">
-
-              <div v-if="curItem.book_status !== null" class="justify-content-between align-items-center">
+              <div v-if="curItem.book_status === 'null'"></div>
+              <div v-else-if="curItem.book_status === null"></div>
+              <div v-else class="justify-content-between align-items-center">
                 <button type="button" class="btn btn-sm deal-status detail_status ">{{curItem.book_status}}</button>
               </div>
 
@@ -70,10 +70,9 @@
                 <button @click="DeleteBook" type="button" class="btn btn-sm btn-danger pull-right myaccount-button delete-button">Delete Book
                 </button>
               </div>
-
             </div>
+            
             <div class="col-md-8 bookview-details">
-
               <p><span class="bookview-title">Title: </span>{{curItem.book_title}}</p>
               <hr>
               <p><span class="bookview-title">ISBN: </span>{{curItem.book_isbn}}</p>
@@ -88,9 +87,6 @@
               <hr>
               <p><span class="bookview-title">Meeting Time: </span>{{curItem.book_mdate}}</p>
               <hr>
-              <p><span class="bookview-title"></span>{{curItem.book_status}}</p>
-              <hr>
-
             </div>
 
           </div>

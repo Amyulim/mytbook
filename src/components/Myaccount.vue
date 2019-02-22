@@ -48,9 +48,12 @@
 
                         <div class="d-flex justify-content-between align-items-center">
                           <button @click="See_detail(item)" type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                          <div v-if="item.book_status !== null">
+                          <div v-if="item.book_status === 'null'"></div>
+                          <div v-else-if="item.book_status == null"></div>
+                          <div v-else>
                             <button type="button" class="btn btn-sm deal-status pull-right">{{item.book_status}}</button>
                           </div>
+                          
                         </div>
 
                       </div>
