@@ -41,8 +41,10 @@
               </div>
 
               <div class="mb-3">
+
                 <label for="book_img">Image URL <span class="text-muted">(Optional)</span></label><br />
-                <input type="text" v-model="book_img" name="book_img" accept="image/*" class="" placeholder="image....">
+                <input type="file" @change="onFileChange"accept="image/*" class="" placeholder="image....">
+                <img :src= "book_img">
               </div>
 
               <div class="row">
@@ -113,6 +115,17 @@
 </style>
 
 <script>
+  import S3 from 'aws-s3';
+
+  const config = {
+
+    dirName: "",
+    region: "ca-central-1",
+    bucketName: "mytbook",
+    accessKeyId: "AKIAJEXMSFSZFOLEF7UQ",
+    secretAccessKey: "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",
+  };
+  const S3Client = new S3(config);
   export default {
     name: "Bookform",
     data() {
@@ -126,13 +139,23 @@
         book_desc: "",
         book_img: "",
         book_mdate: "",
-        book_status:""
+        book_status: ""
       }
     },
     methods: {
 
       Bookform: async function() {
         //        alert(this.user_id );  
+  
+        S3Client
+          .uploadFile({
+          Key:this.book_img.name,
+          Body:this.book_img,
+          ACL:"public-read"
+        })
+          .then(data => console.log(data))
+          .catch(err => console.error(err));
+
 
         var fd = new FormData();
         //        fd.append("book_id", this.book_id);
@@ -155,8 +178,29 @@
         console.log(json);
 
 
-        this.$router.push('booklist');
-      }
+        //        this.$router.push('booklist');
+      },
+      onFileChange(e) {
+        var files =
+          e.target.files ||
+          e.dataTransfer.files;
+        if (!files.length)
+          return;
+        this.book_img = files[0];
+        this.createImage(files[0]);
+        console.log(files)
+      },
+      createImage(file) {
+        var book_img = new Image();
+        var reader = new FileReader();
+        var vm = this;
+
+        reader.onload = (e) => {
+          vm.book_img = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      },
+ 
     }
   }
 

@@ -21,7 +21,6 @@ Vue.prototype.store = {
   cur_book_status:null
 }
 
-
 new Vue({
   router,
   render: h => h(App)

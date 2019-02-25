@@ -9,7 +9,6 @@ import Booklist from './components/Booklist.vue'
 import Myaccount from './components/Myaccount.vue'
 import BookUpdate from './components/BookUpdate.vue'
 
-
 Vue.use(Router)
 
 export default new Router({

@@ -21,7 +21,7 @@
               <div class="col-md-4" v-for="item in filteredList">
                 <div class="card mb-4 shadow-sm book-des">
                   <div class="book-img text-center">
-                    <img src="../assets/book1.jpg" class="card-img-top" text="Thumbnail" />
+                    <img :src= "item.book_img" class="card-img-top" text="Thumbnail" />
                   </div>
                   <div class="book-title text-center">
                     {{item.book_title}}<br />
