@@ -109,9 +109,14 @@
   @import "https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css";
   @import "../components/style.css";
 
+	
+
 </style>
 
 <script>
+	import io from 'socket-io-client'
+	
+	
   export default {
     name: "booklist",
     data() {
@@ -122,6 +127,8 @@
         curItem: "",
         search: '',
         componentLoaded: false,
+				socket:io("https://mytbook.herokuapp.com/"),
+				msg:"",
       }
     },
     methods: {
@@ -177,7 +184,7 @@
         this.result = json;
       },
 			GoMessage: function (){
-				
+				this.socket.emit("message",this.msg);
 				
 			}
 
@@ -204,7 +211,12 @@
           return item.book_title.toLowerCase().includes(this.search.toLowerCase())
         })
       }
-    }
+    },
+		mounted(){
+			this.socket.io("user_connected", (data)=>{
+				alert("sent a msg");
+			})
+		}
 
   }
 
