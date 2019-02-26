@@ -1,24 +1,15 @@
 <template>
-    <div id="signin" class="body">   
+    <div id="signin">   
       <div v-if="page ===1">       
-        <div class="form-signin">
-          <h1 class="h3 mb-3 font-weight-normal center">Have an account? </h1>
+        <div class="form-signin shadow rounded form">
+          <h2 class="mb-3 font-weight-normal">Login to Continue </h2>
           <label for="inputEmail" class="sr-only">Email address</label>
           <input v-model="user_email" type="email" class="form-control" placeholder="Email address" required autofocus>
 
           <label for="inputPassword" class="sr-only">Password</label>
-
           <input v-model="user_pass" type="password" class="form-control" placeholder="Password" required>
-
-<!--
-          <div class="checkbox mb-3">
-            <label>
-            <input type="checkbox" value="remember-me"> Remember me
-            </label>
-          </div>
--->
-          <div>
-            <button @click="SignIn" class="btn btn-lg btn-primary btn-block">Sign In</button>
+      <div>
+            <button @click="SignIn" class="btn btn-lg btn-primary btn-block">GO</button>
             <button @click="GoSignUp" class="signup">Don't have an account. Sign  me up!</button>
           </div> <br/>
          </div>
@@ -62,7 +53,7 @@ export default{
 	},
 	data(){
 		return {
-			page: 1,
+			page:this.store.page,
             user_email:"",
             user_pass:"",
             user_id:this.store.user_id,
@@ -71,9 +62,10 @@ export default{
 	methods:{
 		GoBookForm:function(){
       
-			this.page = 2;
+			this.store.page = 2;
 		},
 		GoSignUp:function(){
+
 			this.page = 3;
 		},
     SignIn:async function() {

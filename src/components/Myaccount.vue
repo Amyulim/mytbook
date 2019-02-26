@@ -31,7 +31,7 @@
                     <div class="card mb-4 shadow-sm book-des">
 
                       <div class="book-img text-center">
-                        <img src="../assets/book1.jpg" class="card-img-top" text="Thumbnail" />
+                        <img :src="item.book_img" class="card-img-top" text="Thumbnail" />
                       </div>
 
                       <div class="book-title text-center">
@@ -53,7 +53,7 @@
                           <div v-else>
                             <button type="button" class="btn btn-sm deal-status pull-right">{{item.book_status}}</button>
                           </div>
-                          
+
                         </div>
 
                       </div>
@@ -70,11 +70,13 @@
               <button @click="Change_modal" type="button" class="btn btn-sm btn-secondary close-button">&nbsp;X&nbsp;</button>
 
               <div class="col-md-4 bookview-img ">
-                <div v-if="curItem.book_status !== null" class="justify-content-between align-items-center">
+                <div v-if="curItem.book_status === 'null'"></div>
+                <div v-else-if="curItem.book_status === null"></div>
+                <div v-else class="justify-content-between align-items-center">
                   <button type="button" class="btn btn-sm deal-status detail_status ">{{curItem.book_status}}</button>
                 </div>
                 <img src="../assets/book1.jpg" class="detail_img" text="Thumbnail" />
-                <div class="row"> 
+                <div class="row">
                   <button @click="GoBookUpdate" type="button" class="btn btn-sm btn-outline-secondary myaccount-button pull-left">Edit Book
                   </button>
                   <button @click="DeleteBook" type="button" class="btn btn-sm btn-danger pull-right myaccount-button delete-button">Delete Book
@@ -165,9 +167,12 @@
 
         this.$router.push('bookupdate');
       },
+      DeleteConfirm: function() {
+        alert("Do you really want to delete?")
+      },
       DeleteBook: async function() {
 
-//       alert("deleted!")
+        //       alert("deleted!")
 
         var fd = new FormData();
 
@@ -186,7 +191,7 @@
         var json = await resp.text();
 
         this.detail = false;
-        
+
         //referesh
         var fd = new FormData();
         fd.append("user_id", this.store.user_id);

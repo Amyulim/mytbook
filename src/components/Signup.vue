@@ -1,12 +1,15 @@
 <template>
             
-    <div id="signup" class="form-signin">
-        <h1 class="h3 mb-3 font-weight-normal center">Please sign up </h1>
-        <label for="inputEmail" class="sr-only">Email address</label>      
-        <input type="email" v-model="user_email" name="user_email" class="form-control" placeholder="Email address" required autofocus>
+    <div id="signup" class="form-signup form shadow rounded">
+        <router-link to="/" @click="back" class="link m-0 p-0" ><i class="left"></i> back</router-link>
+        <button  class="link m-0 p-0" ><i class="left"></i> back</button>
+      
+        <h1 class="h3 mb-3 pt-3 font-weight-normal">Create Account </h1>
+        <label for="inputEmail" class="sr-only">Email address</label>
+          <input v-model="user_email" type="email" class="form-control" placeholder="Email address" required autofocus>
 
-        <label for="inputSnum" class="sr-only">Student Number</label>
-        <input type="text" v-model="student_id" name="student_id" class="form-control" placeholder="A0000000" required autofocus>
+        <label for="inputPassword" class="label-only">Student Number</label>
+        <input type="text" v-model="student_id" name="student_id" class="form-control" placeholder="StudentID: A0000000" required autofocus>
 
         <label for="inputPassword" class="label-only">Password</label>
         <input type="password" v-model="user_pass" name="user_pass" class="form-control" placeholder="Password" required>
@@ -59,6 +62,10 @@
         console.log(json);
         
         
+      },
+      back: function(){
+        this.store.page = 1;
+        console.log(this.store.page);
       }
     }
   }

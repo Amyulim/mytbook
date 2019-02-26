@@ -118,12 +118,10 @@
   import S3 from 'aws-s3';
 
   const config = {
-
-    dirName: "",
     region: "ca-central-1",
     bucketName: "mytbook",
-    accessKeyId: "AKIAJEXMSFSZFOLEF7UQ",
-    secretAccessKey: "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",
+    accessKeyId: "AKIAIJHDSK6RJ7EH5VYQ",
+    secretAccessKey: "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",
   };
   const S3Client = new S3(config);
   export default {
@@ -144,9 +142,35 @@
     },
     methods: {
 
+      
+      onFileChange(e) {
+        var files = 
+            e.target.files || 
+            e.dataTransfer.files;
+//        reader.readAsDataURL(input.files[0]);
+        if (!files.length)
+          return;
+         
+        this.createImage(files[0]);
+        this.book_img = files[0];
+        
+        console.log(this.book_img.name)
+      },
+      createImage(file) {
+        var book_img = new Image();
+        var reader = new FileReader();
+        var vm = this;
+
+        reader.onload = (e) => {
+          vm.book_img = e.target.result;
+        };
+        reader.readAsDataURL(file);
+        
+      },
       Bookform: async function() {
         //        alert(this.user_id );  
   
+        
         S3Client
           .uploadFile({
           Key:this.book_img.name,
@@ -175,30 +199,10 @@
         });
 
         var json = await resp.text();
-        console.log(json);
+        //console.log(json);
 
 
         //        this.$router.push('booklist');
-      },
-      onFileChange(e) {
-        var files =
-          e.target.files ||
-          e.dataTransfer.files;
-        if (!files.length)
-          return;
-        this.book_img = files[0];
-        this.createImage(files[0]);
-        console.log(files)
-      },
-      createImage(file) {
-        var book_img = new Image();
-        var reader = new FileReader();
-        var vm = this;
-
-        reader.onload = (e) => {
-          vm.book_img = e.target.result;
-        };
-        reader.readAsDataURL(file);
       },
  
     }

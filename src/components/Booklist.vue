@@ -4,8 +4,8 @@
       <main role="main" class="inner">
         <section class="text-center">
           <div class="">
-            <h1 class="jumbotron-heading">Book lists</h1>
-            <p class="lead text-muted">Find the book you want to buy!</p>
+            <h1 class="jumbotron-heading">Book Lists</h1>
+            <p class="lead">Find the book you want to buy!</p>
             <div class="col-md-9 display-in">
               <input type="text" v-model="search" placeholder="Search title.." class="form-control width-90">
             </div>
