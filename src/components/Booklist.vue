@@ -64,10 +64,10 @@
 
               <img src="../assets/book1.jpg" class="detail_img" text="Thumbnail" />
 							<!--							to message the book owner TEMPORARY-->
-							
-              <div v-if="curItem.user_id===this.store.user_id" class="row">
-                <button @click="GoMessage" type="button" class="btn btn-sm btn-primary sendmsg-button pull-left">Message
+							  <button @click="GoMessage" type="button" class="btn btn-sm btn-primary sendmsg-button pull-left">Message
                 </button>
+              <div v-if="curItem.user_id===this.store.user_id" class="row">
+              
                 <button @click="GoBookUpdate" type="button" class="btn btn-sm btn-outline-secondary myaccount-button pull-left">Edit Book
                 </button>
                 <button @click="DeleteBook" type="button" class="btn btn-sm btn-danger pull-right myaccount-button delete-button">Delete Book
