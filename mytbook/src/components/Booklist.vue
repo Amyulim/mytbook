@@ -66,7 +66,7 @@
 							<!--							to message the book owner TEMPORARY-->
 							
               <div v-if="curItem.user_id===this.store.user_id" class="row">
-                <button @click="GoMessage" type="button" class="btn btn-sm btn-primary sendmsg-button pull-left">Message
+                <button @click="GoMessage" type="button" class="btn btn-sm btn-primary sendmsg-button">Message
                 </button>
                 <button @click="GoBookUpdate" type="button" class="btn btn-sm btn-outline-secondary myaccount-button pull-left">Edit Book
                 </button>
