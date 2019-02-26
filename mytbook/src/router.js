@@ -8,6 +8,7 @@ import Booklist from './components/Booklist.vue'
 //import BookViewPage from './components/BookView.vue'
 import Myaccount from './components/Myaccount.vue'
 import BookUpdate from './components/BookUpdate.vue'
+import Messenger from './components/Messenger.vue'
 
 Vue.use(Router)
 
@@ -57,6 +58,12 @@ export default new Router({
        path:'/bookupdate',
        name:'bookupdate',
        component: BookUpdate,
+			
+		},{
+      //for the messenger
+       path:'/messenger',
+       name:'messenger',
+       component: Messenger,
 			
 		},
     {

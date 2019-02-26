@@ -117,14 +117,7 @@
 <script>
   import S3 from 'aws-s3';
 
-  const config = {
 
-    dirName: "",
-    region: "ca-central-1",
-    bucketName: "mytbook",
-    accessKeyId: "AKIAJEXMSFSZFOLEF7UQ",
-    secretAccessKey: "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",
-  };
   const S3Client = new S3(config);
   export default {
     name: "Bookform",

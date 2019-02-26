@@ -57,29 +57,29 @@
 
             <div class="col-md-4 bookview-img ">
               <div v-if="curItem.book_status === 'null'"></div>
-							
               <div v-else-if="curItem.book_status === null"></div>
-							
               <div v-else class="justify-content-between align-items-center">
                 <button type="button" class="btn btn-sm deal-status detail_status ">{{curItem.book_status}}</button>
               </div>
 
               <img src="../assets/book1.jpg" class="detail_img" text="Thumbnail" />
+							<!--							to message the book owner TEMPORARY-->
 							
-<!--							to message the book owner TEMPORARY-->
-							<div class="row">
-                <button @click="GoMessage" type="button" class="btn btn-sm btn-primary sendmsg-button pull-left">Send a message
-                </button>
-              </div>
-							
-							
-
               <div v-if="curItem.user_id===this.store.user_id" class="row">
+                <button @click="GoMessage" type="button" class="btn btn-sm btn-primary sendmsg-button pull-left">Message
+                </button>
                 <button @click="GoBookUpdate" type="button" class="btn btn-sm btn-outline-secondary myaccount-button pull-left">Edit Book
                 </button>
                 <button @click="DeleteBook" type="button" class="btn btn-sm btn-danger pull-right myaccount-button delete-button">Delete Book
                 </button>
               </div>
+							
+<!--
+							<div v-else class="row">
+								<button @click="GoMessage" type="button" class="btn btn-sm btn-primary sendmsg-button pull-left">Message
+                </button>
+							</div>
+-->
             </div>
             
             <div class="col-md-8 bookview-details">
@@ -109,14 +109,9 @@
   @import "https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css";
   @import "../components/style.css";
 
-	
-
 </style>
 
 <script>
-	import io from 'socket-io-client'
-	
-	
   export default {
     name: "booklist",
     data() {
@@ -127,8 +122,6 @@
         curItem: "",
         search: '',
         componentLoaded: false,
-				socket:io("https://mytbook.herokuapp.com/"),
-				msg:"",
       }
     },
     methods: {
@@ -182,9 +175,16 @@
         var resp = await fetch("https://mytbook.herokuapp.com/select_book.php");
         var json = await resp.json();
         this.result = json;
-      },
-			GoMessage: function (){
-				this.socket.emit("message",this.msg);
+      },GoMessage: function (){
+				 this.store.user_email =  this.store.user_email;
+				 this.store.cur_book_title = this.curItem.book_title;
+				
+				this.$router.push('messenger');
+				console.log("sent")
+				console.log(this.store.cur_user_email)
+				
+				
+//				this.socket.emit("message",this.msg);
 				
 			}
 
@@ -211,12 +211,7 @@
           return item.book_title.toLowerCase().includes(this.search.toLowerCase())
         })
       }
-    },
-		mounted(){
-			this.socket.io("user_connected", (data)=>{
-				alert("sent a msg");
-			})
-		}
+    }
 
   }
 

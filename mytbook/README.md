@@ -1,4 +1,4 @@
-# mytbookvue
+# mytbook2
 
 ## Project setup
 ```
