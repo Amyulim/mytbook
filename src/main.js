@@ -19,7 +19,9 @@ Vue.prototype.store = {
   cur_book_desc:null,
   cur_book_condition:null,
   cur_book_status:null,
-  page:1
+  page:1,
+  btcolor:null,
+  search:'',
 }
 
 new Vue({

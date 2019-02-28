@@ -22,7 +22,7 @@
               <h1><span>Buy and Sell</span><br> Your Textbooks</h1>
               <p>Buy and Sell your textbooks for the best price. See every offer, and pick the best price.
               </p>
-              <router-link to="/booklist" class="link" > Browse books <i class="right"></i></router-link> &emsp;
+              <router-link to="/booklist" class="link" > Browse books <i class="right arrow"></i></router-link> &emsp;
             </div>
           </div>
         </div>

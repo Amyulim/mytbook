@@ -21,7 +21,7 @@
               <div class="col-md-4" v-for="item in filteredList">
                 <div class="card mb-4 shadow-sm book-des">
                   <div class="book-img text-center">
-                    <img :src= "item.book_img" class="card-img-top" text="Thumbnail" />
+                    <img :src="item.book_img" class="card-img-top" text="Thumbnail" />
                   </div>
                   <div class="book-title text-center">
                     {{item.book_title}}<br />
@@ -36,6 +36,7 @@
                     </ul>
                     <div class="d-flex justify-content-between align-items-center">
                       <button @click="See_detail(item)" type="button" class="btn btn-sm btn-outline-secondary">View</button>
+
                       <div v-if="item.book_status === 'null'"></div>
                       <div v-else-if="item.book_status === null"></div>
                       <div v-else>
@@ -43,14 +44,16 @@
                       </div>
                     </div>
                   </div>
-                  
+
                 </div>
               </div>
 
             </div>
           </div>
         </div>
-        <div class="book_detail_modal" v-if="detail === true">
+        <bookdetail />
+        <div v-if="detail === true">
+          <!--
           <div class="row2 bookview-body position_absolute">
 
             <button @click="Change_modal" type="button" class="btn btn-sm btn-secondary close-button"> &nbsp;X&nbsp;</button>
@@ -63,7 +66,7 @@
               </div>
 
               <img src="../assets/book1.jpg" class="detail_img" text="Thumbnail" />
-							<!--							to message the book owner TEMPORARY-->
+														to message the book owner TEMPORARY
 							  <button @click="GoMessage" type="button" class="btn btn-sm btn-primary sendmsg-button pull-left">Message
                 </button>
               <div v-if="curItem.user_id===this.store.user_id" class="row">
@@ -73,15 +76,17 @@
                 <button @click="DeleteBook" type="button" class="btn btn-sm btn-danger pull-right myaccount-button delete-button">Delete Book
                 </button>
               </div>
-							
-<!--
+-->
+
+          <!--
 							<div v-else class="row">
 								<button @click="GoMessage" type="button" class="btn btn-sm btn-primary sendmsg-button pull-left">Message
                 </button>
 							</div>
 -->
-            </div>
-            
+          <!--            </div>-->
+
+          <!--
             <div class="col-md-8 bookview-details">
               <p><span class="bookview-title">Title: </span>{{curItem.book_title}}</p>
               <hr>
@@ -98,8 +103,9 @@
               <p><span class="bookview-title">Meeting Time: </span>{{curItem.book_mdate}}</p>
               <hr>
             </div>
+-->
 
-          </div>
+          <!--          </div>-->
         </div>
       </main>
     </div>
@@ -112,6 +118,7 @@
 </style>
 
 <script>
+  import bookdetail from "@/components/Bookdetail.vue"
   export default {
     name: "booklist",
     data() {
@@ -120,17 +127,21 @@
         book_title: "",
         detail: false,
         curItem: "",
-        search: '',
+        search: this.store.search,
         componentLoaded: false,
+        bookdetail: bookdetail
       }
+
     },
     methods: {
       See_detail: function(item) {
 
         this.detail = true;
 
-        this.curItem = item;
+        this.store.curItem = item;
         console.log("curItem:", this.curItem);
+
+        this.$router.push('bookdetail');
 
       },
       Change_modal: function() {
@@ -175,18 +186,21 @@
         var resp = await fetch("https://mytbook.herokuapp.com/select_book.php");
         var json = await resp.json();
         this.result = json;
-      },GoMessage: function (){
-				 this.store.user_email =  this.store.user_email;
-				 this.store.cur_book_title = this.curItem.book_title;
-				
-				this.$router.push('messenger');
-				console.log("sent")
-				console.log(this.store.cur_user_email)
-				
-				
-//				this.socket.emit("message",this.msg);
-				
-			}
+
+      },
+      GoMessage: function() {
+        
+        this.store.user_email = this.store.user_email;
+        this.store.cur_book_title = this.curItem.book_title;
+
+        this.$router.push('messenger');
+        console.log("sent")
+        console.log(this.store.cur_user_email)
+
+
+        //				this.socket.emit("message",this.msg);
+
+      }
 
 
     },
@@ -207,7 +221,7 @@
         if (!this.componentLoaded)
           return null;
 
-          return this.result.filter(item => {
+        return this.result.filter(item => {
           return item.book_title.toLowerCase().includes(this.search.toLowerCase())
         })
       }

@@ -1,9 +1,8 @@
 <template>
             
     <div id="signup" class="form-signup form shadow rounded">
-        <router-link to="/" @click="back" class="link m-0 p-0" ><i class="left"></i> back</router-link>
-        <button  class="link m-0 p-0" ><i class="left"></i> back</button>
-      
+        <router-link to="/" @click="back" class="link m-0 p-0" ><i class="left arrow"></i> back</router-link>
+  
         <h1 class="h3 mb-3 pt-3 font-weight-normal">Create Account </h1>
         <label for="inputEmail" class="sr-only">Email address</label>
           <input v-model="user_email" type="email" class="form-control" placeholder="Email address" required autofocus>

@@ -4,7 +4,7 @@
       <main role="main" class="inner">
         <section class="text-center">
           <div class="container">
-            <h1 class="jumbotron-heading">Book form</h1>
+            <h1 class="jumbotron-heading">Book Form</h1>
             <p class="lead text-muted">Fill out the form sell the book!</p>
           </div>
         </section>
@@ -120,8 +120,7 @@
   const config = {
     region: "ca-central-1",
     bucketName: "mytbook",
-    accessKeyId: "AKIAIJHDSK6RJ7EH5VYQ",
-    secretAccessKey: "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",
+
   };
 
   const S3Client = new S3(config);
@@ -138,13 +137,15 @@
         book_desc: "",
         book_img: "",
         book_mdate: "",
-        book_status: ""
+        book_status: "",
+        book_file:"",
+        result:""
       }
     },
     methods: {
 
       
-      onFileChange(e) {
+      onFileChange: function(e) {
         var files = 
             e.target.files || 
             e.dataTransfer.files;
@@ -153,11 +154,12 @@
           return;
          
         this.createImage(files[0]);
-        this.book_img = files[0];
-        
-        console.log(this.book_img.name)
+        this.book_file = files[0];
+
+        console.log(this.book_file)
+        console.log(this.book_file.name);
       },
-      createImage(file) {
+      createImage: function(file) {
         var book_img = new Image();
         var reader = new FileReader();
         var vm = this;
@@ -170,14 +172,16 @@
       },
       Bookform: async function() {
         //        alert(this.user_id );  
-  
+   console.log(this.book_file.name);
+        //return false
+        //"book"+id+".jpg"
+        //name the key with user ID and Book ID 
+        var newfile = new File([this.book_file],this.store.user_id +"/"+ this.book_file.name,{type:this.book_file.type});
         
-        S3Client
-          .uploadFile({
-          Key:this.book_img.name,
-          Body:this.book_img,
-          ACL:"public-read"
-        })
+         console.log(this.book_file.name);
+        
+         await S3Client
+          .uploadFile(newfile)
           .then(data => console.log(data))
           .catch(err => console.error(err));
 
@@ -199,9 +203,10 @@
           body: fd
         });
 
-        var json = await resp.text();
-        //console.log(json);
-
+        var json = await resp. json();
+        console.log(json);
+        this.result = json;
+        console.log(this.result);
 
         //        this.$router.push('booklist');
       },

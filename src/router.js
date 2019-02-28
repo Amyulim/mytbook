@@ -9,6 +9,7 @@ import Booklist from './components/Booklist.vue'
 import Myaccount from './components/Myaccount.vue'
 import BookUpdate from './components/BookUpdate.vue'
 import Messenger from './components/Messenger.vue'
+import Bookdetail from './components/Bookdetail.vue'
 
 Vue.use(Router)
 
@@ -42,12 +43,12 @@ export default new Router({
       name:'booklist',
       component: Booklist,
     },
-//    {
-//      //for the book view
-//      path:'/bookview',
-//      name:'bookview',
-//      component: BookViewPage,
-//    },
+    {
+      //for the book view
+      path:'/bookdetail',
+      name:'bookdetail',
+      component: Bookdetail,
+    },
     {
       //for the my account
       path:'/myaccount',

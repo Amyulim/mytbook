@@ -10,17 +10,13 @@
           <input v-model="user_pass" type="password" class="form-control" placeholder="Password" required>
       <div>
             <button @click="SignIn" class="btn btn-lg btn-primary btn-block">GO</button>
-            <button @click="GoSignUp" class="signup">Don't have an account. Sign  me up!</button>
+            <router-link to="/signup" class="signup">Don't have an account. Sign  me up!</router-link>
+  
           </div> <br/>
          </div>
               
   
       </div>
-      
-      <div v-if="page ===2">
-            <gobookform />
-      </div> 
-      
       
       <div v-if="page ===3">
             <gosignup />
@@ -53,7 +49,7 @@ export default{
 	},
 	data(){
 		return {
-			page:this.store.page,
+			page:1,
             user_email:"",
             user_pass:"",
             user_id:this.store.user_id,
