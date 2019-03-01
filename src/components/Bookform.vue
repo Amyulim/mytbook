@@ -116,12 +116,7 @@
 <script>
   import S3 from 'aws-s3';
 
-  const config = {
-    region: "ca-central-1",
-    bucketName: "mytbook",
-    accessKeyId: "AKIAJJWQRNQ5WZKZ25UQ",
-    secretAccessKey: "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",
-  };
+  
 
   const S3Client = new S3(config);
   export default {
