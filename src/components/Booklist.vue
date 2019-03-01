@@ -21,7 +21,7 @@
               <div class="col-md-4" v-for="item in filteredList">
                 <div class="card mb-4 shadow-sm book-des">
                   <div class="book-img text-center">
-                    <img :src="item.book_img" class="card-img-top" text="Thumbnail" />
+                    <img :src="img+item.book_id+'.jpg'" class="card-img-top" text="Thumbnail" />
                   </div>
                   <div class="book-title text-center">
                     {{item.book_title}}<br />
@@ -39,6 +39,7 @@
 
                       <div v-if="item.book_status === 'null'"></div>
                       <div v-else-if="item.book_status === null"></div>
+                      <div v-else-if="item.book_status === 'None'"></div>
                       <div v-else>
                         <button type="button" class="btn btn-sm deal-status pull-right">{{item.book_status}}</button>
                       </div>
@@ -51,76 +52,40 @@
             </div>
           </div>
         </div>
-        <bookdetail />
-        <div v-if="detail === true">
-          <!--
-          <div class="row2 bookview-body position_absolute">
 
-            <button @click="Change_modal" type="button" class="btn btn-sm btn-secondary close-button"> &nbsp;X&nbsp;</button>
-
-            <div class="col-md-4 bookview-img ">
-              <div v-if="curItem.book_status === 'null'"></div>
-              <div v-else-if="curItem.book_status === null"></div>
-              <div v-else class="justify-content-between align-items-center">
-                <button type="button" class="btn btn-sm deal-status detail_status ">{{curItem.book_status}}</button>
-              </div>
-
-              <img src="../assets/book1.jpg" class="detail_img" text="Thumbnail" />
-														to message the book owner TEMPORARY
-							  <button @click="GoMessage" type="button" class="btn btn-sm btn-primary sendmsg-button pull-left">Message
-                </button>
-              <div v-if="curItem.user_id===this.store.user_id" class="row">
-              
-                <button @click="GoBookUpdate" type="button" class="btn btn-sm btn-outline-secondary myaccount-button pull-left">Edit Book
-                </button>
-                <button @click="DeleteBook" type="button" class="btn btn-sm btn-danger pull-right myaccount-button delete-button">Delete Book
-                </button>
-              </div>
--->
-
-          <!--
-							<div v-else class="row">
-								<button @click="GoMessage" type="button" class="btn btn-sm btn-primary sendmsg-button pull-left">Message
-                </button>
-							</div>
--->
-          <!--            </div>-->
-
-          <!--
-            <div class="col-md-8 bookview-details">
-              <p><span class="bookview-title">Title: </span>{{curItem.book_title}}</p>
-              <hr>
-              <p><span class="bookview-title">ISBN: </span>{{curItem.book_isbn}}</p>
-              <hr>
-              <p><span class="bookview-title">Course: </span>{{curItem.book_course}}</p>
-              <hr>
-              <p><span class="bookview-title">price: </span>$ {{curItem.book_price}}</p>
-              <hr>
-              <p><span class="bookview-title">condition: </span>{{curItem.book_condition}}</p>
-              <hr>
-              <p><span class="bookview-title">description: </span>{{curItem.book_desc}}</p>
-              <hr>
-              <p><span class="bookview-title">Meeting Time: </span>{{curItem.book_mdate}}</p>
-              <hr>
-            </div>
--->
-
-          <!--          </div>-->
+        <div v-if="detail == true" class="modal-bg-solid">
+          <div class="bookview-body row2">
+            <bookdetail />
+             <button @click="Change_modal" type="button" class="back-button"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+          </div>
         </div>
+        
       </main>
     </div>
   </div>
 </template>
 <style>
-  @import "https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css";
-  @import "../components/style.css";
+
 
 </style>
 
 <script>
   import bookdetail from "@/components/Bookdetail.vue"
+  import S3 from 'aws-s3';
+
+  // const config = {
+  //bucketName: "mytbook",
+  // Key: 206,
+  // ResponseContentType: 'image/jpeg',
+  // };
+  //
+  // const S3Client = new S3(config);
+  //
   export default {
     name: "booklist",
+    components: {
+      bookdetail: bookdetail
+    },
     data() {
       return {
         result: "",
@@ -129,7 +94,8 @@
         curItem: "",
         search: this.store.search,
         componentLoaded: false,
-        bookdetail: bookdetail
+        bookdetail: bookdetail,
+        img: "https://s3.ca-central-1.amazonaws.com/mytbook/"
       }
 
     },
@@ -139,9 +105,7 @@
         this.detail = true;
 
         this.store.curItem = item;
-        console.log("curItem:", this.curItem);
-
-        this.$router.push('bookdetail');
+        //console.log("curItem:", this.store.curItem);
 
       },
       Change_modal: function() {
@@ -187,21 +151,7 @@
         var json = await resp.json();
         this.result = json;
 
-      },
-      GoMessage: function() {
-        
-        this.store.user_email = this.store.user_email;
-        this.store.cur_book_title = this.curItem.book_title;
-
-        this.$router.push('messenger');
-        console.log("sent")
-        console.log(this.store.cur_user_email)
-
-
-        //				this.socket.emit("message",this.msg);
-
       }
-
 
     },
     beforeCreate: async function() {
@@ -214,6 +164,29 @@
       //          console.log("result",this.result);
       //          console.log("title",this.result[0].book_title);
       this.componentLoaded = true;
+//      var resp = await fetch("https://s3.console.aws.amazon.com/s3/object/mytbook");
+//      var json = await resp.json();
+//      //          json.JSON.parse(json);
+//      //          JSON.parse();
+//      console.log(json);
+
+      //      var config = {
+      //        bucketName: "mytbook",
+      //        Key: 206,
+      //        ResponseContentType: 'image/jpeg',
+      //      };
+      //
+      //      var S3Client = new S3(config);
+      //
+      //      s3Client.getObject(function(err, data) {
+      //        if (err) {
+      //          print_status('Could not load ' + key + ' from S3');
+      //        } else {
+      //          console.lof(data);
+      //        }
+      //      })
+      this.store.page = 2;
+      console.log(this.store.page);
 
     },
     computed: {

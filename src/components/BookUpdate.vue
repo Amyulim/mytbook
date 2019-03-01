@@ -41,20 +41,22 @@
 
               <div class="mb-3">
                 <label for="book_img">Image URL <span class="text-muted">(Optional)</span></label><br />
-                <input type="text" v-model="book_img" name="book_img" accept="image/*" class="" placeholder="image....">
+                <input type="file" @change="onFileChange" accept="image/*" class="" placeholder="image....">
+                <img :src="this.book_img">
               </div>
-							
-							
+
+
+
 
               <div class="row">
                 <div class="col-md-5 mb-3">
                   <label for="condition">Condition of book</label>
                   <select v-model="book_condition" name="book_condition" class="custom-select d-block w-100" id="country" required>
-                   <option value="" disabled selected>Select your option</option>
-                   <option >1</option>
-                   <option >2</option>
-                   <option >3</option>
-                   <option>4</option>
+                    <option value="" disabled selected>Select your option</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
                   </select>
 
                   <div class="invalid-feedback">
@@ -100,10 +102,10 @@
                 <div class="col-md-5 mb-3">
                   <label for="condition">Transaction status</label>
                   <select v-model="book_status" class="custom-select d-block w-100" required>
-                   <option value="" disabled selected>Select your option</option>
-                   <option >None</option>
-                   <option >In Progress</option>
-                   <option >Sold</option>
+                    <option value="" disabled selected>Select your option</option>
+                    <option>None</option>
+                    <option>In Progress</option>
+                    <option>Sold</option>
                   </select>
 
                   <div class="invalid-feedback">
@@ -111,9 +113,9 @@
                   </div>
                 </div>
               </div>
-              
-                
-              
+
+
+
               <hr class="mb-4">
               <button @click="SaveChanges" class="btn btn-primary btn-lg btn-block" type="submit">Save Changes</button>
 
@@ -132,6 +134,10 @@
 </style>
 
 <script>
+  import S3 from 'aws-s3';
+
+
+  const S3Client = new S3(config);
   export default {
     name: "Book_update_form",
     data() {
@@ -144,14 +150,42 @@
         book_price: this.store.cur_book_price,
         book_condition: this.store.cur_book_condition,
         book_desc: this.store.cur_book_desc,
-        book_img: this.store.cur_book_img,
+        book_img: "https://s3.ca-central-1.amazonaws.com/mytbook/" + this.store.cur_book_id + ".jpg",
         book_mdate: this.store.cur_book_mdate,
         book_status: this.store.cur_book_status,
+        book_file: "",
+        result: ""
       }
     },
     methods: {
+      onFileChange: function(e) {
+        var files =
+          e.target.files ||
+          e.dataTransfer.files;
+        //        reader.readAsDataURL(input.files[0]);
+        if (!files.length)
+          return;
+
+        this.createImage(files[0]);
+        this.book_file = files[0];
+
+        console.log(this.book_file)
+        console.log(this.book_file.name);
+      },
+      createImage: function(file) {
+        var book_img = new Image();
+        var reader = new FileReader();
+        var vm = this;
+
+        reader.onload = (e) => {
+          vm.book_img = e.target.result;
+        };
+        reader.readAsDataURL(file);
+
+      },
+
       SaveChanges: async function() {
-        				console.log("saved!")
+        console.log("saved!")
 
         var fd = new FormData();
         fd.append("user_id", this.user_id);
@@ -166,17 +200,26 @@
         fd.append("book_mdate", this.book_mdate);
         fd.append("book_status", this.book_status);
 
-        //console.log(fd);
-        console.log(this.user_id);
 
         var resp = await fetch("https://mytbook.herokuapp.com/update_book.php", {
           method: "POST",
           body: fd
         })
         var json = await resp.json();
-        console.log(json);
-				
-				this.$router.push('myaccount');
+
+        //change image name to book_id
+        var newfile = new File([this.book_file], this.book_id + ".jpg", {
+          type: this.book_file.type
+        });
+
+        //update to bucket
+        await S3Client
+          .uploadFile(newfile)
+          .then(data => console.log(data))
+          .catch(err => console.error(err));
+
+
+        this.$router.push('myaccount');
 
       }
     },

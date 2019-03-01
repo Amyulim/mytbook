@@ -13,7 +13,7 @@
 
           <input type="text" v-model="store.search" placeholder="Search title.." class="form-control search-short">
 
-          <button @click="searchbar_hide" to="/booklist" class="search-icon"><i class="fa fa-search "></i>
+          <button v-if="page !=2 " @click="searchbar_hide" to="/booklist" class="search-icon"><i class="fa fa-search "></i>
           </button>
           
           <router-link v-if="store.user_id ==null" to="/" @click="signIn" v-bind:style="store.btcolor" class="signIn btn-2 ml-3 mr-2"> Sign in</router-link>&emsp;
@@ -21,7 +21,8 @@
         </nav>
 
       </div>
-    </div>
+    </div> 
+
     <router-view />
 
 
@@ -42,6 +43,7 @@
     data() {
       return {
         bgcolor: this.store.btcolor,
+        page:this.store.page,
       }
     },
     methods: {
@@ -52,8 +54,19 @@
         this.store.page = 2;
         console.log(this.store.page);
         this.$router.push('booklist');
+      },
+      searchbar_show: function(){
+        this.store.page
       }
-    }
+    },
+    beforeCreate:
+      function(){
+
+        this.page = this.store.page;
+        console.log(this.store.page);
+      }
+      
+    
   }
 
 </script>

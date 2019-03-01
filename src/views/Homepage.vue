@@ -1,6 +1,6 @@
 <template>
   <div class="body" id="home">
-    <div class="container h-100 mx-auto">
+    <div class="container mx-auto">
       <!--
       <main role="main" class="inner cover">
         <h1 class="cover-heading">What text book you are looking for?</h1>

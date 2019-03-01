@@ -41,7 +41,6 @@
               </div>
 
               <div class="mb-3">
-
                 <label for="book_img">Image URL <span class="text-muted">(Optional)</span></label><br />
                 <input type="file" @change="onFileChange"accept="image/*" class="" placeholder="image....">
                 <img :src= "book_img">
@@ -120,7 +119,8 @@
   const config = {
     region: "ca-central-1",
     bucketName: "mytbook",
-
+    accessKeyId: "AKIAJJWQRNQ5WZKZ25UQ",
+    secretAccessKey: "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",
   };
 
   const S3Client = new S3(config);
@@ -172,18 +172,7 @@
       },
       Bookform: async function() {
         //        alert(this.user_id );  
-   console.log(this.book_file.name);
-        //return false
-        //"book"+id+".jpg"
-        //name the key with user ID and Book ID 
-        var newfile = new File([this.book_file],this.store.user_id +"/"+ this.book_file.name,{type:this.book_file.type});
-        
-         console.log(this.book_file.name);
-        
-         await S3Client
-          .uploadFile(newfile)
-          .then(data => console.log(data))
-          .catch(err => console.error(err));
+
 
 
         var fd = new FormData();
@@ -208,7 +197,22 @@
         this.result = json;
         console.log(this.result);
 
+        
+        console.log(this.book_file.name);
+        //return false
+        //"book"+id+".jpg"
+        //name the key with user ID and Book ID 
+        var newfile = new File([this.book_file],this.result.id+".jpg",{type:this.book_file.type});
+        
+         console.log(this.book_file.name);
+        
+         await S3Client
+          .uploadFile(newfile)
+          .then(data => console.log(data))
+          .catch(err => console.error(err));
+        
         //        this.$router.push('booklist');
+        
       },
  
     }
