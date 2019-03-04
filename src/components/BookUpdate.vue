@@ -289,11 +289,8 @@
           ) {
             this.$swal.fire(
               'Cancelled',
-<<<<<<< HEAD
               'Your imaginary file is safe 🙂',
-=======
               'You cancelled deleting your file',
->>>>>>> 3598d9e756c63393b4c517b3c97588d66302f961
               'error'
             )
           }
@@ -302,7 +299,6 @@
       },
       DeleteBook: async function() {
         var fd = new FormData();
-<<<<<<< HEAD
 
         fd.append("user_id", this.store.user_id);
         fd.append("book_id", this.store.cur_book_id);
@@ -310,15 +306,6 @@
         console.log(this.user_id)
         console.log(this.store.cur_book_id)
 
-=======
-
-        fd.append("user_id", this.store.user_id);
-        fd.append("book_id", this.store.cur_book_id);
-
-        console.log(this.user_id)
-        console.log(this.store.cur_book_id)
-
->>>>>>> 3598d9e756c63393b4c517b3c97588d66302f961
         var resp = await fetch("https://mytbook.herokuapp.com/delete_book.php", {
           method: "POST",
           body: fd

@@ -13,7 +13,7 @@
           <div class="row">
             <div class="col-md-8 order-md-1 box-center">
               <h4 class="mb-3"></h4>
-                      <div class="row">
+              <div class="row">
                 <div class="col-md-12 mb-3 input-file-wrapper">
                   <img :src="this.book_img" class="thumb-img"><br />
                   <button class="img-edit-btn"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
@@ -116,23 +116,15 @@
 
 <script>
   import S3 from 'aws-s3';
-<<<<<<< HEAD
-  const config = {
-=======
-    const config = {
 
+  const config = {
     dirName: "",
->>>>>>> 3598d9e756c63393b4c517b3c97588d66302f961
     region: "ca-central-1",
     bucketName: "mytbook",
     accessKeyId: "AKIAIZQOFWJNBGWHB4FA",
     secretAccessKey: "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",
   };
-<<<<<<< HEAD
-=======
- 
 
->>>>>>> 3598d9e756c63393b4c517b3c97588d66302f961
 
   const S3Client = new S3(config);
   export default {
@@ -149,21 +141,21 @@
         book_img: "",
         book_mdate: "",
         book_status: "",
-        book_file:"",
-        result:""
+        book_file: "",
+        result: ""
       }
     },
     methods: {
 
-      
+
       onFileChange: function(e) {
-        var files = 
-            e.target.files || 
-            e.dataTransfer.files;
-//        reader.readAsDataURL(input.files[0]);
+        var files =
+          e.target.files ||
+          e.dataTransfer.files;
+        //        reader.readAsDataURL(input.files[0]);
         if (!files.length)
           return;
-         
+
         this.createImage(files[0]);
         this.book_file = files[0];
 
@@ -179,7 +171,7 @@
           vm.book_img = e.target.result;
         };
         reader.readAsDataURL(file);
-        
+
       },
       Bookform: async function() {
         //        alert(this.user_id );  
@@ -203,29 +195,31 @@
           body: fd
         });
 
-        var json = await resp. json();
+        var json = await resp.json();
         console.log(json);
         this.result = json;
         console.log(this.result);
 
-        
+
         console.log(this.book_file.name);
         //return false
         //"book"+id+".jpg"
         //name the key with user ID and Book ID 
-        var newfile = new File([this.book_file],this.result.id+".jpg",{type:this.book_file.type});
-        
-         console.log(this.book_file.name);
-        
-         await S3Client
+        var newfile = new File([this.book_file], this.result.id + ".jpg", {
+          type: this.book_file.type
+        });
+
+        console.log(this.book_file.name);
+
+        await S3Client
           .uploadFile(newfile)
           .then(data => console.log(data))
           .catch(err => console.error(err));
-        
+
         //        this.$router.push('booklist');
-        
+
       },
- 
+
     }
   }
 
