@@ -56,9 +56,11 @@
   </div>
 </template>
 <style>
-
+@import "https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css";
+  @import "../components/style.css";
 
 </style>
+
 
 <script>
   import messenger from "@/components/Messenger.vue";

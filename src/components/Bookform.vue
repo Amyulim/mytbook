@@ -115,7 +115,6 @@
 
 <script>
   import S3 from 'aws-s3';
-
   
 
   const S3Client = new S3(config);

@@ -2,7 +2,7 @@
   <div id="messenger" class="position-relative">
 
     <div @keyup.enter="sendMsg" class="msg-body">
-      <div class="msg-title">
+      <div class="msg-title" id="msg">
         <h5>{{this.book_title}} </h5>
         <h6 class="price">$ {{this.book_price}}</h6>
       </div>
@@ -14,14 +14,14 @@
           </div>
         </div>
       </div>
-
-      <div class="input-area row">
-        <div class="col-md-12 p-0">
+      <div class="input-area row">     
+        <div class="col-md-12 p-0">        
           <input type="text" name="input" placeholder="Type your message.." class="message-input-box" v-model="msg" />
           <button @click="sendMsg" class="btn send-msg-button "><i class="fa fa-paper-plane send-icon" aria-hidden="true"></i></button>
         </div>
       </div>
     </div>
+    
 
 
   </div>
@@ -63,7 +63,7 @@
         
         //if user doesn't type --> cannot sent
         if(this.msg == null){
-          alert("you did not type..!");
+          //alert("you did not type..!");
           return false;
         }
         
