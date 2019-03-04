@@ -16,7 +16,7 @@
               <div class="row">
                 <div class="col-md-12 mb-3 input-file-wrapper">
                   <img :src="this.book_img" class="thumb-img"><br />
-                 
+
                   <button class="img-edit-btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                   <input type="file" @change="onFileChange" accept="image/*">
                 </div>
@@ -140,6 +140,8 @@
 
 <script>
   import S3 from 'aws-s3';
+  import VueSweetalert2 from 'vue-sweetalert2';
+
 
   const S3Client = new S3(config);
   export default {
@@ -222,8 +224,21 @@
           .then(data => console.log(data))
           .catch(err => console.error(err));
 
-
+        await this.$swal({
+          title: "Uploading",
+          type: "success",
+          timer: 2000,
+          showCancelButton: false,
+          showConfirmButton: false,
+          confirmButtonColor: "#85be39",
+          confirmButtonText: "Yes!"
+        })
         this.$router.push('myaccount');
+        
+
+        
+
+        //this.$router.push('myaccount');
 
       }
     },

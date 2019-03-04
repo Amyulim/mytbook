@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import VueSweetalert2 from 'vue-sweetalert2';
 
+Vue.use(VueSweetalert2);
 Vue.config.productionTip = false
 Vue.prototype.store = {
   viewPage:null,
@@ -28,3 +30,8 @@ new Vue({
   router,
   render: h => h(App)
 }).$mount('#app')
+
+const options = {
+  confirmButtonColor: '#41b882',
+  cancelButtonColor: '#ff7674'
+}
