@@ -21,6 +21,9 @@
                   <input type="file" @change="onFileChange" accept="image/*">
                 </div>
               </div>
+               <div class="col-md-12">
+                <button @click="DeleteModal" type="button" class="btn btn-sm btn-secondary trash-button pull-right"> <i class="fa fa-trash fa-lg"></i></button>
+              </div>
               <hr class="mb-4">
               <div class="row">
                 <div class="col-md-9 mb-3">
@@ -121,8 +124,20 @@
 
 
 
-              <hr class="mb-4">
-              <button @click="SaveChanges" class="btn btn-primary btn-lg btn-block mb-5 " type="submit">Save Changes</button>
+               <hr class="mb-4">
+
+
+              <div class="row">
+                <div class="col-md-6">
+                  <button @click="CancelChanges" class="btn  btn-danger btn-block delete-button">Cancel Changes</button>
+                  <!--                  <button @click="CancelChanges" class="btn  btn-primary btn-block">Cancel Changes</button>-->
+                </div>
+
+                <div class="col-md-6">
+                  <button @click="SaveChanges" class="btn btn-primary btn-block mb-5 " type="submit">Save Changes</button>
+                </div>
+
+              </div>
 
             </div>
           </div>
@@ -142,6 +157,12 @@
   import S3 from 'aws-s3';
   import VueSweetalert2 from 'vue-sweetalert2';
 
+  const config = {
+    region: "ca-central-1",
+    bucketName: "mytbook",
+    accessKeyId: "AKIAIZQOFWJNBGWHB4FA",
+    secretAccessKey: "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",
+  };
 
   const S3Client = new S3(config);
   export default {
@@ -234,13 +255,78 @@
           confirmButtonText: "Yes!"
         })
         this.$router.push('myaccount');
+
+      },
+      CancelChanges: async function() {
+        await this.$swal({
+          title: "Changes Cancelled",
+          type: "success",
+          timer: 2000,
+          showCancelButton: false,
+          showConfirmButton: false,
+          confirmButtonColor: "#85be39",
+          confirmButtonText: "Yes!"
+        })
+
+        this.$router.push('myaccount');
+      },
+      DeleteModal: function() {
+        this.$swal({
+          title: 'Are you sure you want to delete ' + this.book_title + ' ?',
+          text: "By deleting this book in Mytbook, other people will not be able to see this posting again and datas that were saved in our database will be permanently and can not be retrieved any more.",
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Yes, delete it!',
+          cancelButtonText: 'No, cancel!',
+          reverseButtons: true
+        }).then((result) => {
+          if (result.value == true) {
+            this.$swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            ).then(function() {
+             this.DeleteBook();
+            }.bind(this)).catch(errors => {});
+
+          } else if (
+            result.dismiss === this.$swal.DismissReason.cancel
+          ) {
+            this.$swal.fire(
+              'Cancelled',
+              'You cancelled deleting your file',
+              'error'
+            )
+          }
+        })
         
+      },
+      DeleteBook: async function() {
+        var fd = new FormData();
 
-        
+        fd.append("user_id", this.store.user_id);
+        fd.append("book_id", this.store.cur_book_id);
 
-        //this.$router.push('myaccount');
+        console.log(this.user_id)
+        console.log(this.store.cur_book_id)
 
+        var resp = await fetch("https://mytbook.herokuapp.com/delete_book.php", {
+          method: "POST",
+          body: fd
+        });
+
+        var json = await resp.text();
+
+        //referesh
+        var resp = await fetch("https://mytbook.herokuapp.com/select_book.php");
+        var json = await resp.json();
+        this.result = json;
+
+
+
+        this.$router.push('myaccount');
       }
+
     },
 
   }

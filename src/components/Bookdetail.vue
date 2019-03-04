@@ -1,13 +1,9 @@
 <template>
   <div class="bookview-body row2">
 
-    <div class="col-md-12 status-row">
-      <div v-if="curItem.book_status === 'null'"></div>
-      <div v-else-if="curItem.book_status === null"></div>
-      <div v-else-if="curItem.book_status === 'None'"></div>
-      <div v-else class="justify-content-between align-items-center">
-        {{curItem.book_status}}
-      </div>
+    <div class="col-md-12">
+      <!--      <button @click="GoBookUpdate" type="button" class="btn btn-sm btn-secondary edit-button pull-right"><span class="fa fa-edit fa-lg"></span></button>-->
+      <i @click="GoBookUpdate" class="edit-button pull-right fa fa-edit fa-2x"></i>
     </div>
     <div class="col-md-4 bookview-img">
 
@@ -16,6 +12,7 @@
       </div>
 
 
+      <!--
       <div v-if="curItem.user_id===this.store.user_id" class="row">
 
         <button @click="GoBookUpdate" type="button" class="btn btn-sm btn-outline-secondary myaccount-button pull-left">Edit Book
@@ -23,6 +20,7 @@
         <button @click="DeleteBook" type="button" class="btn btn-sm btn-danger pull-right myaccount-button delete-button">Delete Book
         </button>
       </div>
+-->
 
     </div>
 
@@ -42,8 +40,8 @@
       <p><span class="bookview-title">Meeting Time: </span>{{curItem.book_mdate}}</p>
       <hr>
       <!--to message the book owner TEMPORARY-->
-      <button @click="GoMessage" type="button" class="btn btn-sm btn-block btn-primary send-msg-button mb-3">Message
-      </button>
+
+      <button @click="GoMessage" type="button" class="btn btn-sm btn-block btn-primary send-msg-button mb-3"><i class="fa fa-envelope fa-lg"></i></button>
 
     </div>
     <div v-if="messenger == true" class="modal-bg z-index-1000">
@@ -56,7 +54,7 @@
   </div>
 </template>
 <style>
-@import "https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css";
+  @import "https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css";
   @import "../components/style.css";
 
 </style>

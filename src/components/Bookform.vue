@@ -115,6 +115,15 @@
 
 <script>
   import S3 from 'aws-s3';
+    const config = {
+
+    dirName: "",
+    region: "ca-central-1",
+    bucketName: "mytbook",
+    accessKeyId: "AKIAIZQOFWJNBGWHB4FA",
+    secretAccessKey: "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",
+  };
+ 
 
 
   const S3Client = new S3(config);

@@ -35,3 +35,9 @@ const options = {
   confirmButtonColor: '#41b882',
   cancelButtonColor: '#ff7674'
 }
+
+//const swalWithBootstrapButtons = Swal.mixin({
+//  confirmButtonClass: 'btn btn-success',
+//  cancelButtonClass: 'btn btn-danger',
+//  buttonsStyling: false,
+//})
