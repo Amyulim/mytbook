@@ -13,6 +13,13 @@
           <div class="row">
             <div class="col-md-8 order-md-1 box-center">
               <h4 class="mb-3"></h4>
+                      <div class="row">
+                <div class="col-md-12 mb-3 input-file-wrapper">
+                  <img :src="this.book_img" class="thumb-img"><br />
+                  <button class="img-edit-btn"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
+                  <input type="file" @change="onFileChange" accept="image/*">
+                </div>
+              </div>
               <div class="row">
                 <div class="col-md-9 mb-3">
                   <!--                                    <input type="text" v-model="user_id" name="user_id"/> <br/>-->
@@ -38,12 +45,6 @@
                 <div class="invalid-feedback">
                   Valid book course is required.
                 </div>
-              </div>
-
-              <div class="mb-3">
-                <label for="book_img">Image URL <span class="text-muted">(Optional)</span></label><br />
-                <input type="file" @change="onFileChange"accept="image/*" class="" placeholder="image....">
-                <img :src= "book_img">
               </div>
 
               <div class="row">
@@ -115,7 +116,12 @@
 
 <script>
   import S3 from 'aws-s3';
-
+  const config = {
+    region: "ca-central-1",
+    bucketName: "mytbook",
+    accessKeyId: "AKIAIZQOFWJNBGWHB4FA",
+    secretAccessKey: "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",
+  };
 
   const S3Client = new S3(config);
   export default {
