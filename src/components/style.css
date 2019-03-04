@@ -627,8 +627,8 @@ hr {
 
 .status-row {
   text-align: center;
-  padding-top: 5px;
-  background-color: #3ca8f7 !important;
+/*  padding-top: 1px;*/
+/*  background-color: #3ca8f7 !important;*/
 }
 
 .w-details {
@@ -694,17 +694,13 @@ hr {
   width: 40%;
 }
 
-.delete-button {
-  color: white !important;
-  border-color: #dc3545 !important;
+.trash-button {
+  color: white !important; 
+  width: 15%;
+  margin-top: -20px;
+/*  background-color: #dc3545 !important;*/
+/*  border-color: #dc3545 !important;*/
 }
-
-.sendmsg-button {
-  margin: 20px auto;
-  display: inline-block !important;
-  width: 60%;
-}
-
 .back-button {
   width: 80px;
   height: 80px;
@@ -729,8 +725,9 @@ hr {
 }
 
 .edit-button {
-  margin: 10px auto !important;
+  margin: 2px -10px -10px 0px;
   display: block !important;
+  color: #5f5d5d;
 }
 
 
@@ -868,6 +865,49 @@ button:active {
   position: absolute;
   left: 10px;
   bottom: 80px;
+}
+
+/*-------------------- Notification Pop Up--------------------*/
+
+
+.pop-up-notifs {
+  height: calc(100vh - 100px);
+  position: fixed;
+  top: 90px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 999;
+  
+}
+
+.notifs-box{
+  color: black;
+  padding: 20px;
+  margin:auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  
+}
+.notifs-text{
+  font-size: 1.7em;
+  font-weight: 700;
+}
+.notifs-sub-text{
+  text-align: left !important;
+  font-size: .7em;
+}
+.option-button {
+  display: block;
+  width: 30%;
+  margin: 10px;
+}
+
+
+#swal2-content{
+  font-size: .7em;
 }
 /*-------------------- Footer --------------------*/
 footer {
