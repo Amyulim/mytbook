@@ -4,8 +4,8 @@
       <main role="main" class="inner">
         <section class="text-center">
           <div class="container">
-            <h1 class="jumbotron-heading">Book Update</h1>
-            <p class="lead text-muted">Update the books you want to sell!</p>
+            <h1 class="jumbotron-heading">Edit Book</h1>
+            <p class="lead text-muted">Edit the book information</p>
           </div>
         </section>
 
@@ -13,6 +13,15 @@
           <div class="row">
             <div class="col-md-8 order-md-1 box-center">
               <h4 class="mb-3"></h4>
+              <div class="row">
+                <div class="col-md-12 mb-3 input-file-wrapper">
+                  <img :src="this.book_img" class="thumb-img"><br />
+                 
+                  <button class="img-edit-btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                  <input type="file" @change="onFileChange" accept="image/*">
+                </div>
+              </div>
+              <hr class="mb-4">
               <div class="row">
                 <div class="col-md-9 mb-3">
                   <label for="book-title">Book title</label>
@@ -39,11 +48,7 @@
                 </div>
               </div>
 
-              <div class="mb-3">
-                <label for="book_img">Image URL <span class="text-muted">(Optional)</span></label><br />
-                <input type="file" @change="onFileChange" accept="image/*" class="" placeholder="image....">
-                <img :src="this.book_img">
-              </div>
+
 
 
 
@@ -117,7 +122,7 @@
 
 
               <hr class="mb-4">
-              <button @click="SaveChanges" class="btn btn-primary btn-lg btn-block" type="submit">Save Changes</button>
+              <button @click="SaveChanges" class="btn btn-primary btn-lg btn-block mb-5 " type="submit">Save Changes</button>
 
             </div>
           </div>

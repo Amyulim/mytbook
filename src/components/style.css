@@ -474,7 +474,49 @@ textarea {
   width: 100%;
   border-radius: 0.3rem;
 }
-
+.thumb-img{
+  width: 200px;
+  text-align: center;
+  justify-content: center;
+  border-radius: 0.25em;
+}
+.img-edit-btn{
+  width: 200px;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+  background-color: rgba(103,103,103,0.6);
+  text-align: center;
+  padding: 10px 0;
+  border: none;
+  color: #fff;
+  border-radius: 0.25em;
+}
+.input-file-wrapper{
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.input-file-wrapper .fa-pencil-square-o{
+  color: white;
+  font-size: 55px;
+}
+input[type="file"] {
+  width: 200px;
+  font-size: 50px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+  opacity: 0;
+  cursor: pointer;
+}
 /*-------------------- Book List --------------------*/
 h1 {
   margin: 0;
