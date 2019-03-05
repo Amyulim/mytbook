@@ -156,12 +156,6 @@
 <script>
   import S3 from 'aws-s3';
   import VueSweetalert2 from 'vue-sweetalert2';
-  const config = {
-    region: "ca-central-1",
-    bucketName: "mytbook",
-    accessKeyId: "AKIAJFXYQTLUZPHNBWBA",
-    secretAccessKey: "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",
-  };
 
   const S3Client = new S3(config);
   export default {
