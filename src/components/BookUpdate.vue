@@ -51,6 +51,11 @@
                 </div>
               </div>
 
+
+
+
+
+
               <div class="row">
                 <div class="col-md-5 mb-3">
                   <label for="condition">Condition of book</label>
@@ -283,8 +288,7 @@
           ) {
             this.$swal.fire(
               'Cancelled',
-              'Your imaginary file is safe 🙂',
-              'You cancelled deleting your file',
+              'You cancelled deleting the book',
               'error'
             )
           }

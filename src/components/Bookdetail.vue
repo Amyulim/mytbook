@@ -1,7 +1,14 @@
 <template>
   <div class="bookview-body row2">
 
+<<<<<<< HEAD
       <i @click="GoBookUpdate" class="edit-button pull-right fa fa-edit fa-2x"></i>
+=======
+    <div v-if="curItem.user_id===this.store.user_id" class="row">
+      <i @click="GoBookUpdate" class="edit-button pull-right fa fa-edit fa-2x"></i>
+      
+    </div>
+>>>>>>> 2d783bc273110fe64dd5abda423a9dc89b2376d6
     <div class="col-md-4 bookview-img">
       <div class="detail-img-box">
         <div v-if="curItem.book_status === 'null'"></div>
