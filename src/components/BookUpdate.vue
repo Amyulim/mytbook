@@ -51,6 +51,11 @@
                 </div>
               </div>
 
+
+
+
+
+
               <div class="row">
                 <div class="col-md-5 mb-3">
                   <label for="condition">Condition of book</label>
@@ -152,12 +157,6 @@
   import S3 from 'aws-s3';
   import VueSweetalert2 from 'vue-sweetalert2';
 
-  const config = {
-    region: "ca-central-1",
-    bucketName: "mytbook",
-    accessKeyId: "AKIAIZQOFWJNBGWHB4FA",
-    secretAccessKey: "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",
-  };
 
   const S3Client = new S3(config);
   export default {
@@ -289,8 +288,7 @@
           ) {
             this.$swal.fire(
               'Cancelled',
-              'Your imaginary file is safe 🙂',
-              'You cancelled deleting your file',
+              'You cancelled deleting the book',
               'error'
             )
           }

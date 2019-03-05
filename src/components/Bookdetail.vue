@@ -1,9 +1,9 @@
 <template>
   <div class="bookview-body row2">
 
-    <div class="col-md-12">
-      <!--      <button @click="GoBookUpdate" type="button" class="btn btn-sm btn-secondary edit-button pull-right"><span class="fa fa-edit fa-lg"></span></button>-->
+    <div v-if="curItem.user_id===this.store.user_id" class="row">
       <i @click="GoBookUpdate" class="edit-button pull-right fa fa-edit fa-2x"></i>
+      
     </div>
     <div class="col-md-4 bookview-img">
 
