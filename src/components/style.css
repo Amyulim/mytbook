@@ -96,7 +96,7 @@ h1 {
 .landing {
   height: calc(100vh - 170px);
   position: relative;
-/*  margin-top: 150px;*/
+  /*  margin-top: 150px;*/
   /*  background-color: rgb(42, 41, 60);*/
   /*  background-color: rgb(255, 255, 255);*/
   /*  background-color: #333333;*/
@@ -182,9 +182,10 @@ h1 {
   margin: auto;
   z-index: 999 !important;
 }
+
 .modal-bg-solid {
   background-color: rgba(30, 38, 49, 1) !important;
-  height:calc(100vh - 80px);
+  height: calc(100vh - 80px);
   width: 100%;
   position: fixed;
   top: 80px;
@@ -192,7 +193,7 @@ h1 {
   right: 0;
   bottom: 0;
   margin: auto;
-   z-index: 999;
+  z-index: 999;
 }
 
 .position-ab-center {
@@ -266,8 +267,14 @@ i {
   color: white;
 }
 
+.progress-btn{
+   width: 100%;
+  background-color: 
+}
+
 .signup {
   border: none;
+  background-color: rgba(0, 0, 0, 0);
   background-color: rgba(0, 0, 0, 0);
   color: #44aced;
   font-style: italic;
@@ -288,8 +295,8 @@ i {
 /*-------------------- Header --------------------*/
 .header {
   position: fixed;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   padding: 19px;
   width: 100%;
   height: 90px;
@@ -465,13 +472,15 @@ textarea {
   width: 100%;
   border-radius: 0.3rem;
 }
-.thumb-img{
+
+.thumb-img {
   width: 200px;
   text-align: center;
   justify-content: center;
   border-radius: 0.25em;
 }
-.img-edit-btn{
+
+.img-edit-btn {
   width: 200px;
   height: 100%;
   position: absolute;
@@ -480,24 +489,27 @@ textarea {
   right: 0;
   top: 0;
   margin: auto;
-  background-color: rgba(103,103,103,0.6);
+  background-color: rgba(103, 103, 103, 0.6);
   text-align: center;
   padding: 10px 0;
   border: none;
   color: #fff;
   border-radius: 0.25em;
 }
-.input-file-wrapper{
+
+.input-file-wrapper {
   width: 200px;
   min-height: 150px;
   justify-content: center;
   text-align: center;
   overflow: hidden;
 }
-.input-file-wrapper i{
+
+.input-file-wrapper i {
   color: white;
   font-size: 55px;
 }
+
 input[type="file"] {
   width: 200px;
   font-size: 50px;
@@ -510,6 +522,7 @@ input[type="file"] {
   opacity: 0;
   cursor: pointer;
 }
+
 /*-------------------- Book List --------------------*/
 h1 {
   margin: 0;
@@ -565,6 +578,8 @@ h1 {
 
 .detail-img-box {
   height: 350px;
+  width: 90%;
+  margin: 0 5% ;
   justify-content: center;
   align-content: center;
   text-align: center;
@@ -572,11 +587,11 @@ h1 {
 }
 
 .detail-img {
-  width: auto;
-  max-width:90%;
-  height: 100%;
+  width: 100%;
+  height: auto;
   resize: both;
-  margin: 0.5rem auto;
+  margin: 0 auto 1rem;
+  border-radius: 0.25em;
 }
 
 .deal-status {
@@ -602,7 +617,7 @@ h1 {
   padding: 0 !important;
   max-width: 950px;
   min-width: 0;
-  max-height: 550px;
+  max-height: 500px;
   margin: auto;
   word-wrap: break-word;
   background-color: rgba(230, 230, 230, 1);
@@ -628,8 +643,8 @@ hr {
 
 .status-row {
   text-align: center;
-/*  padding-top: 1px;*/
-/*  background-color: #3ca8f7 !important;*/
+  /*  padding-top: 1px;*/
+  /*  background-color: #3ca8f7 !important;*/
 }
 
 .w-details {
@@ -655,7 +670,7 @@ hr {
 .bookview-img {
   align-content: center;
   justify-content: center;
-  margin: 1rem auto;
+  margin: 2rem auto;
   padding: auto auto;
 }
 
@@ -696,12 +711,13 @@ hr {
 }
 
 .trash-button {
-  color: white !important; 
+  color: white !important;
   width: 15%;
   margin-top: -20px;
-/*  background-color: #dc3545 !important;*/
-/*  border-color: #dc3545 !important;*/
+  /*  background-color: #dc3545 !important;*/
+  /*  border-color: #dc3545 !important;*/
 }
+
 .back-button {
   width: 80px;
   height: 80px;
@@ -712,9 +728,11 @@ hr {
   background-color: transparent;
   border: none;
 }
-.back-button i{
+
+.back-button i {
   font-size: 60px;
 }
+
 .z-index-1000 {
   z-index: 1000000;
 }
@@ -727,12 +745,22 @@ hr {
 
 .edit-button {
   position: absolute;
-  right: 10px;
+  right: 15px;
   top: 5px;
   z-index: 10;
   margin: 2px -10px -10px 0px;
   display: block !important;
   color: #5f5d5d;
+}
+.msg-btn{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 20;
+  padding: 20px;
+  background-color: #5f5d5d;
+}
+.msg-icon{
 }
 
 
@@ -793,7 +821,7 @@ hr {
   position: absolute;
   bottom: 0px;
   right: 0;
-  width: calc(100% - 20px );
+  width: calc(100% - 20px);
   display: block;
   background-color: rgba(240, 240, 240, 1);
   border-radius: 0.35rem;
@@ -818,11 +846,6 @@ hr {
   outline: none !important;
 }
 
-.send-msg-button:focus {
-  border: none !important;
-  outline: 0 !important;
-}
-
 button:focus {
   border: none !important;
   outline: 0 !important;
@@ -838,6 +861,11 @@ button:active {
   outline: none !important;
 }
 
+.send-msg-button:focus {
+  border: none !important;
+  outline: 0 !important;
+}
+
 .send-msg-button {
   display: inline-block;
   margin: 0;
@@ -845,31 +873,11 @@ button:active {
   width: 50px;
 }
 
-
 .close-button-msg {
   z-index: 200;
   position: absolute;
   top: 10px;
   right: 10px;
-}
-/*-------------------- Alert Modal --------------------*/
-.alert-modal{
-  width: 270px;
-  height: 150px;
-  border-radius: 0.25em;
-  background-color: aqua;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-}
-.alert-empty-msg{
-  background-color: transparent!important;
-  position: absolute;
-  left: 10px;
-  bottom: 80px;
 }
 
 /*-------------------- Notification Pop Up--------------------*/
@@ -884,26 +892,29 @@ button:active {
   bottom: 0;
   margin: auto;
   z-index: 999;
-  
+
 }
 
-.notifs-box{
+.notifs-box {
   color: black;
   padding: 20px;
-  margin:auto;
+  margin: auto;
   text-align: center;
   justify-content: center;
   align-items: center;
-  
+
 }
-.notifs-text{
+
+.notifs-text {
   font-size: 1.7em;
   font-weight: 700;
 }
-.notifs-sub-text{
+
+.notifs-sub-text {
   text-align: left !important;
   font-size: .7em;
 }
+
 .option-button {
   display: block;
   width: 30%;
@@ -911,9 +922,10 @@ button:active {
 }
 
 
-#swal2-content{
+#swal2-content {
   font-size: .7em;
 }
+
 /*-------------------- Footer --------------------*/
 footer {
   margin-bottom: 0 !important;
@@ -997,18 +1009,24 @@ footer {
     display: block;
   }
 
-  .detail_img {
-    width: 60%;
+  .detail-img {
+/*
+    width: 100%;
     margin: 2rem 20% 0;
     align-content: center;
+    text-align: center;
+*/
   }
 
   .detail-img-box {
+    width: 200px;
     height: 300px;
+    margin: auto;
+    text-align: center;
   }
 
-  .bookview_img {
-    text-align: center;
+  .bookview-img-box {
+    margin: 0;
   }
 
   .bookview-body {
@@ -1062,10 +1080,11 @@ footer {
   .header {
     height: 80px;
   }
-  
-  .body{
+
+  .body {
     margin-top: 80px;
   }
+
   .logo {
     margin-top: 0px;
   }
@@ -1077,7 +1096,8 @@ footer {
   .search-icon {
     display: none;
   }
-  .modal-bg-solid{
+
+  .modal-bg-solid {
     position: fixed;
     top: 0px;
     bottom: auto;
@@ -1092,15 +1112,23 @@ footer {
     padding: 0;
     margin: 0;
   }
-  .bookview-details p{
+
+  .bookview-details p {
     margin-bottom: 0.25rem !important;
   }
-  hr{
+
+  hr {
     margin: 0.45rem 0 !important;
   }
-  .back-button{
-    left: -10px;
-    top: 0;
+
+  .back-button {
+    left: -20px;
+    top: -10px;
+  }
+
+  .back-button .fa-angle-left {
+    font-size: 40px !important;
+    color: #5f5d5d;
   }
 
   .msg-box {
@@ -1125,11 +1153,13 @@ footer {
   }
 
   .bookview-img {
+    min-height: 230px;
     height: auto;
+    padding-bottom: 10px;
   }
 
   .detail-img-box {
-    height: 200px;
+    height: 300px;
   }
 
 
