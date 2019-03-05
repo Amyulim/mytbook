@@ -21,7 +21,7 @@
                   <input type="file" @change="onFileChange" accept="image/*">
                 </div>
               </div>
-               <div class="col-md-12">
+              <div class="col-md-12">
                 <button @click="DeleteModal" type="button" class="btn btn-sm btn-secondary trash-button pull-right"> <i class="fa fa-trash fa-lg"></i></button>
               </div>
               <hr class="mb-4">
@@ -124,7 +124,7 @@
 
 
 
-               <hr class="mb-4">
+              <hr class="mb-4">
 
 
               <div class="row">
@@ -156,6 +156,13 @@
 <script>
   import S3 from 'aws-s3';
   import VueSweetalert2 from 'vue-sweetalert2';
+
+  const config = {
+    region: "ca-central-1",
+    bucketName: process.env.AWS_BUCKET_NAME,
+    accessKeyId: process.env.AWS_KEY,
+    secretAccessKey: process.env.AWS_SECRET_KEY,
+  };
 
   const S3Client = new S3(config);
   export default {
@@ -279,7 +286,7 @@
               'Your file has been deleted.',
               'success'
             ).then(function() {
-             this.DeleteBook();
+              this.DeleteBook();
             }.bind(this)).catch(errors => {});
 
           } else if (
@@ -292,7 +299,7 @@
             )
           }
         })
-        
+
       },
       DeleteBook: async function() {
         var fd = new FormData();

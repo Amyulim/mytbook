@@ -115,7 +115,13 @@
 
 <script>
   import S3 from 'aws-s3';
-
+  
+    const config = {
+    region: "ca-central-1",
+    bucketName: process.env.AWS_BUCKET_NAME,
+    accessKeyId: process.env.AWS_KEY,
+    secretAccessKey: process.env.AWS_SECRET_KEY,
+    };
 
   const S3Client = new S3(config);
   export default {
