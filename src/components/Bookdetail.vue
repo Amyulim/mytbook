@@ -1,30 +1,21 @@
 <template>
   <div class="bookview-body row2">
 
-    <div class="col-md-12">
-      <!--      <button @click="GoBookUpdate" type="button" class="btn btn-sm btn-secondary edit-button pull-right"><span class="fa fa-edit fa-lg"></span></button>-->
       <i @click="GoBookUpdate" class="edit-button pull-right fa fa-edit fa-2x"></i>
-    </div>
     <div class="col-md-4 bookview-img">
-
       <div class="detail-img-box">
+        <div v-if="curItem.book_status === 'null'"></div>
+      <div v-else-if="curItem.book_status === null"></div>
+      <div v-else-if="curItem.book_status === 'None'"></div>
+      <div v-else class="justify-content-between align-items-center">
+        {{curItem.book_status}}
+      </div>
         <img :src="img+curItem.book_id+'.jpg'" class="detail-img" text="Thumbnail" />
       </div>
 
-
-      <!--
-      <div v-if="curItem.user_id===this.store.user_id" class="row">
-
-        <button @click="GoBookUpdate" type="button" class="btn btn-sm btn-outline-secondary myaccount-button pull-left">Edit Book
-        </button>
-        <button @click="DeleteBook" type="button" class="btn btn-sm btn-danger pull-right myaccount-button delete-button">Delete Book
-        </button>
-      </div>
--->
-
     </div>
 
-    <div class="col-md-8 bookview-details">
+    <div class="col-md-8 bookview-details pt-5">
       <p><span class="bookview-title">Title: </span>{{curItem.book_title}}</p>
       <hr>
       <p><span class="bookview-title">ISBN: </span>{{curItem.book_isbn}}</p>

@@ -56,7 +56,7 @@
         <div v-if="detail == true" class="modal-bg-solid">
           <div class="bookview-body row2">
             <bookdetail />
-             <button @click="Change_modal" type="button" class="back-button"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+            <button @click="Change_modal" type="button" class="back-button"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
           </div>
         </div>
         
