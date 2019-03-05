@@ -926,6 +926,53 @@ button:active {
   font-size: .7em;
 }
 
+
+.homeContent {
+  width: 100vw;
+  height: 800px;
+  margin-top: 60px;
+
+}
+
+.content-box {
+  position: absolute;
+  max-width: 320px !important;
+  color: black;
+  padding: 25px !important;
+  font-size: 0.9em;
+  background-color: rgba(255, 255, 255, 0.9);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+}
+
+/*-------------------- Homepage content --------------------*/
+.content-title {
+  padding: 25px;
+  width: 100vw;
+}
+
+.content-title h3 {
+  color: white !important;
+  font-weight: 500 ;
+
+}
+
+.content-sub {
+  font-weight: 700;
+  line-height: 40px;
+  font-size: 1.2em;
+  color: rgb(61, 153, 252);
+}
+
+.content-logo{
+  width: 40%;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
 /*-------------------- Footer --------------------*/
 footer {
   margin-bottom: 0 !important;
