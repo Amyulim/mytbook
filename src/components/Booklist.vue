@@ -73,14 +73,6 @@
   import bookdetail from "@/components/Bookdetail.vue"
   import S3 from 'aws-s3';
 
-  // const config = {
-  //bucketName: "mytbook",
-  // Key: 206,
-  // ResponseContentType: 'image/jpeg',
-  // };
-  //
-  // const S3Client = new S3(config);
-  //
   export default {
     name: "booklist",
     components: {
@@ -164,27 +156,7 @@
       //          console.log("result",this.result);
       //          console.log("title",this.result[0].book_title);
       this.componentLoaded = true;
-//      var resp = await fetch("https://s3.console.aws.amazon.com/s3/object/mytbook");
-//      var json = await resp.json();
-//      //          json.JSON.parse(json);
-//      //          JSON.parse();
-//      console.log(json);
 
-      //      var config = {
-      //        bucketName: "mytbook",
-      //        Key: 206,
-      //        ResponseContentType: 'image/jpeg',
-      //      };
-      //
-      //      var S3Client = new S3(config);
-      //
-      //      s3Client.getObject(function(err, data) {
-      //        if (err) {
-      //          print_status('Could not load ' + key + ' from S3');
-      //        } else {
-      //          console.lof(data);
-      //        }
-      //      })
       this.store.page = 2;
       console.log(this.store.page);
 
