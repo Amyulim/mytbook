@@ -425,7 +425,9 @@ h3 {
 .form-signin input[type="password"] {
   margin-bottom: 0px;
 }
-
+input[type="text"]{
+  width:100%;
+}
 .submit {
   margin-top: 20px;
 }

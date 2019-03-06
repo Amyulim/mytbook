@@ -186,7 +186,6 @@
         });
 
         var json = await resp.json();
-        
         console.log(json);
         this.result = json;
         console.log(this.result);

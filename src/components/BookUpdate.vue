@@ -227,14 +227,12 @@
           body: fd
         })
         var json = await resp.json();
-
-        //change image name to book_id
-        var newfile = new File([this.book_file], this.book_id + ".jpg", {
-          type: this.book_file.type
-        });
-
+        console.log(json);
+        this.result = json;
+        console.log(this.result);
+        
         //update to bucket
-         var fd = new FormData();
+        var fd = new FormData();
         fd.append('fname', this.result.id + ".jpg");
         fd.append('filekey', this.book_file);
 
@@ -243,6 +241,8 @@
           credentials: "include",
           body: fd // This is your file object
         });
+        
+        var json = await resp.json(); // if the response is a JSON object
         
         await this.$swal({
           title: "Uploading",
