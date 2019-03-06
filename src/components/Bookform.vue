@@ -115,16 +115,6 @@
 </style>
 
 <script>
-  //  import S3 from 'aws-s3';
-  //
-  //  const config = {
-  //    region: "ca-central-1",
-  //    bucketName: process.env.AWS_BUCKET,
-  //    accessKeyId: process.env.AWS_KEY,
-  //    secretAccessKey: process.env.AWS_SECRET_KEY,
-  //  };
-
-  //  const S3Client = new S3(config);
 
 
   export default {
@@ -196,26 +186,13 @@
         });
 
         var json = await resp.json();
+        
         console.log(json);
         this.result = json;
         console.log(this.result);
 
-
-//        console.log(this.book_file.name);
-//        //return false
-//        //"book"+id+".jpg"
-//        //name the key with user ID and Book ID 
-//        var newfile = new File([this.book_file], this.result.id + ".jpg", {
-//          type: this.book_file.type
-//        });
-
         console.log(this.book_file.name);
   
-        //        await S3Client
-        //          .uploadFile(newfile)
-        //          .then(data => console.log(data))
-        //          .catch(err => console.error(err));
-        
         var fd = new FormData();
         fd.append('fname', this.result.id + ".jpg");
         fd.append('filekey', this.book_file);

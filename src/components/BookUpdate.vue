@@ -21,7 +21,7 @@
                   <input type="file" @change="onFileChange" accept="image/*">
                 </div>
               </div>
-               <div class="col-md-12">
+              <div class="col-md-12">
                 <button @click="DeleteModal" type="button" class="btn btn-sm btn-secondary trash-button pull-right"> <i class="fa fa-trash fa-lg"></i></button>
               </div>
               <hr class="mb-4">
@@ -124,7 +124,7 @@
 
 
 
-               <hr class="mb-4">
+              <hr class="mb-4">
 
 
               <div class="row">
@@ -156,13 +156,7 @@
 <script>
   import S3 from 'aws-s3';
   import VueSweetalert2 from 'vue-sweetalert2';
-  
-    const config = {
-    region: "ca-central-1",
-    bucketName: "mytbook",
-    accessKeyId: "AKIAISBLHUZBRG7BDETA",
-    secretAccessKey: "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",
-  };
+
 
   const S3Client = new S3(config);
   export default {
@@ -240,11 +234,16 @@
         });
 
         //update to bucket
-        await S3Client
-          .uploadFile(newfile)
-          .then(data => console.log(data))
-          .catch(err => console.error(err));
+         var fd = new FormData();
+        fd.append('fname', this.result.id + ".jpg");
+        fd.append('filekey', this.book_file);
 
+        var resp = await fetch('upload', { // Your POST endpoint
+          method: 'POST',
+          credentials: "include",
+          body: fd // This is your file object
+        });
+        
         await this.$swal({
           title: "Uploading",
           type: "success",
@@ -286,7 +285,7 @@
               'Your file has been deleted.',
               'success'
             ).then(function() {
-             this.DeleteBook();
+              this.DeleteBook();
             }.bind(this)).catch(errors => {});
 
           } else if (
@@ -299,7 +298,7 @@
             )
           }
         })
-        
+
       },
       DeleteBook: async function() {
         var fd = new FormData();
