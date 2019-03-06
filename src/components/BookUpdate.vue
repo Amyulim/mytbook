@@ -157,8 +157,6 @@
   import S3 from 'aws-s3';
   import VueSweetalert2 from 'vue-sweetalert2';
 
-
-  const S3Client = new S3(config);
   export default {
     name: "Book_update_form",
     data() {
