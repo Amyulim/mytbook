@@ -14,6 +14,13 @@
             <div class="col-md-8 order-md-1 box-center">
               <h4 class="mb-3"></h4>
               <div class="row">
+                <div class="col-md-12 mb-3 input-file-wrapper">
+                  <img :src="this.book_img" class="thumb-img"><br />
+                  <button class="img-edit-btn"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
+                  <input type="file" @change="onFileChange" accept="image/*">
+                </div>
+              </div>
+              <div class="row">
                 <div class="col-md-9 mb-3">
                   <!--                                    <input type="text" v-model="user_id" name="user_id"/> <br/>-->
                   <label for="book-title">Book title</label>
@@ -38,12 +45,6 @@
                 <div class="invalid-feedback">
                   Valid book course is required.
                 </div>
-              </div>
-
-              <div class="mb-3">
-                <label for="book_img">Image URL <span class="text-muted">(Optional)</span></label><br />
-                <input type="file" @change="onFileChange"accept="image/*" class="" placeholder="image....">
-                <img :src= "book_img">
               </div>
 
               <div class="row">
@@ -114,16 +115,18 @@
 </style>
 
 <script>
-  import S3 from 'aws-s3';
-  
-    const config = {
-    region: "ca-central-1",
-    bucketName: process.env.AWS_BUCKET_NAME,
-    accessKeyId: process.env.AWS_KEY,
-    secretAccessKey: process.env.AWS_SECRET_KEY,
-    };
+  //  import S3 from 'aws-s3';
+  //
+  //  const config = {
+  //    region: "ca-central-1",
+  //    bucketName: process.env.AWS_BUCKET,
+  //    accessKeyId: process.env.AWS_KEY,
+  //    secretAccessKey: process.env.AWS_SECRET_KEY,
+  //  };
 
-  const S3Client = new S3(config);
+  //  const S3Client = new S3(config);
+
+
   export default {
     name: "Bookform",
     data() {
@@ -138,21 +141,21 @@
         book_img: "",
         book_mdate: "",
         book_status: "",
-        book_file:"",
-        result:""
+        book_file: "",
+        result: ""
       }
     },
     methods: {
 
-      
+
       onFileChange: function(e) {
-        var files = 
-            e.target.files || 
-            e.dataTransfer.files;
-//        reader.readAsDataURL(input.files[0]);
+        var files =
+          e.target.files ||
+          e.dataTransfer.files;
+        //        reader.readAsDataURL(input.files[0]);
         if (!files.length)
           return;
-         
+
         this.createImage(files[0]);
         this.book_file = files[0];
 
@@ -168,7 +171,7 @@
           vm.book_img = e.target.result;
         };
         reader.readAsDataURL(file);
-        
+
       },
       Bookform: async function() {
         //        alert(this.user_id );  
@@ -192,29 +195,43 @@
           body: fd
         });
 
-        var json = await resp. json();
+        var json = await resp.json();
         console.log(json);
         this.result = json;
         console.log(this.result);
 
-        
+
+//        console.log(this.book_file.name);
+//        //return false
+//        //"book"+id+".jpg"
+//        //name the key with user ID and Book ID 
+//        var newfile = new File([this.book_file], this.result.id + ".jpg", {
+//          type: this.book_file.type
+//        });
+
         console.log(this.book_file.name);
-        //return false
-        //"book"+id+".jpg"
-        //name the key with user ID and Book ID 
-        var newfile = new File([this.book_file],this.result.id+".jpg",{type:this.book_file.type});
+  
+        //        await S3Client
+        //          .uploadFile(newfile)
+        //          .then(data => console.log(data))
+        //          .catch(err => console.error(err));
         
-         console.log(this.book_file.name);
-        
-         await S3Client
-          .uploadFile(newfile)
-          .then(data => console.log(data))
-          .catch(err => console.error(err));
-        
+        var fd = new FormData();
+        fd.append('fname', this.result.id + ".jpg");
+        fd.append('filekey', this.book_file);
+
+        var resp = await fetch('upload', { // Your POST endpoint
+          method: 'POST',
+          credentials: "include",
+          body: fd // This is your file object
+        });
+
+        var json = await resp.json(); // if the response is a JSON object
+
         //        this.$router.push('booklist');
-        
+
       },
- 
+
     }
   }
 
