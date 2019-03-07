@@ -33,8 +33,8 @@
       </div>
 
 
-      <div class="container homeContent">
-        <div class="col-md-12 content-title">
+      <div class="homeContent">
+        <div class="content-title">
           <h3> Why should you sell and buy books using Mytbook?</h3>
         </div>
 

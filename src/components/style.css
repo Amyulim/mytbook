@@ -156,10 +156,6 @@ h1 {
   border-color: #cccccc;
 }
 
-.form-control {
-  width: 20%
-}
-
 .navbar-nav > li > a {
   border-right: 1px solid #ddd;
   padding-bottom: 15px;
@@ -684,7 +680,6 @@ hr {
 
 /*-------------------- My Account --------------------*/
 .myaccount-body {
-  padding: 0;
   min-width: 0;
   word-wrap: break-word;
   background-color: #fff;
@@ -759,8 +754,7 @@ hr {
   bottom: 20px;
   right: 20px;
   z-index: 20;
-  padding: 20px;
-  background-color: #5f5d5d;
+  padding: 7px 10px;
 }
 .msg-icon{
 }
@@ -937,7 +931,6 @@ button:active {
 }
 
 .content-box {
-  position: absolute;
   max-width: 320px !important;
   color: black;
   padding: 25px !important;
