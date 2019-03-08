@@ -231,7 +231,7 @@
         
         //update to bucket
         var fd = new FormData();
-        fd.append('fname', this.result.id + ".jpg");
+        fd.append('fname', this.result.id);
         fd.append('filekey', this.book_file);
 
         var resp = await fetch('upload', { // Your POST endpoint
