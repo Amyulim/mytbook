@@ -943,7 +943,7 @@ button:active {
 
 /*-------------------- Homepage content --------------------*/
 .content-title {
-  padding: 25px;
+  padding-bottom: 25px;
   width: 100vw;
 }
 

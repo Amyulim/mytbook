@@ -33,7 +33,7 @@
       </div>
 
 
-      <div class="homeContent">
+      <div class="container homeContent">
         <div class="content-title">
           <h3> Why should you sell and buy books using Mytbook?</h3>
         </div>
