@@ -204,7 +204,6 @@
       },
 
       SaveChanges: async function() {
-        console.log("saved!")
 
         var fd = new FormData();
         fd.append("user_id", this.user_id);
@@ -226,22 +225,24 @@
         })
         var json = await resp.json();
         console.log(json);
-        this.result = json;
-        console.log(this.result);
-        
-        //update to bucket
-        var fd = new FormData();
-        fd.append('fname', this.result.id+ ".jpg");
-        fd.append('filekey', this.book_file);
+        console.log(this.book_file);
 
-        var resp = await fetch('upload', { // Your POST endpoint
-          method: 'POST',
-          credentials: "include",
-          body: fd // This is your file object
-        });
-        
-        var json = await resp.json(); // if the response is a JSON object
-        
+        //update to bucket
+        if (this.book_file != "") {
+          var fd = new FormData();
+          fd.append('fname', this.book_id);
+          fd.append('filekey', this.book_file);
+
+          var resp = await fetch('upload', { // Your POST endpoint
+            method: 'POST',
+            credentials: "include",
+            body: fd // This is your file object
+          });
+
+          var json = await resp.json(); // if the response is a JSON object
+        }
+
+        console.log(this.book_file);
         await this.$swal({
           title: "Uploading",
           type: "success",

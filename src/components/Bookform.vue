@@ -193,7 +193,7 @@
         console.log(this.book_file.name);
   
         var fd = new FormData();
-        fd.append('fname', this.result.id+ ".jpg");
+        fd.append('fname', this.result.id);
         fd.append('filekey', this.book_file);
 
         var resp = await fetch('upload', { // Your POST endpoint
@@ -204,7 +204,16 @@
 
         var json = await resp.json(); // if the response is a JSON object
 
-        //        this.$router.push('booklist');
+        await this.$swal({
+          title: "Uploading",
+          type: "success",
+          timer: 2000,
+          showCancelButton: false,
+          showConfirmButton: false,
+          confirmButtonColor: "#85be39",
+          confirmButtonText: "Yes!"
+        })
+        this.$router.push('myaccount');
 
       },
 
