@@ -81,7 +81,6 @@
       Change_modal: function() {
         this.messenger = false;
       },
-
       GoBookUpdate: function() {
         this.store.cur_book_id = this.curItem.book_id;
         this.store.cur_book_title = this.curItem.book_title;
@@ -91,7 +90,9 @@
         this.store.cur_book_img = this.curItem.book_img;
         this.store.cur_book_mdate = this.curItem.book_mdate;
         this.store.cur_book_desc = this.curItem.book_desc;
+        
         this.store.cur_book_condition = this.curItem.book_condition;
+        
         this.store.cur_book_status = this.curItem.book_status;
         //        console.log(this.store.cur_book_desc);
         this.$router.push('bookupdate');
@@ -121,20 +122,12 @@
         var resp = await fetch("https://mytbook.herokuapp.com/select_book.php");
         var json = await resp.json();
         this.result = json;
-      },
-      //      GoMessage: function() {
-      //        this.store.user_id = this.store.user_id;
-      //        this.store.user_email = this.store.user_email;
-      //        this.store.cur_book_title = this.curItem.book_title;
-      //        this.store.cur_book_id = this.curItem.book_id;
-      //
-      //        this.$router.push('messenger');
-      //        console.log("sent")
-      //
-      //      }
-
-
+      },    
     },
+     beforeCreate: async function() {
+      console.log(this.curItem.book_condition)
+
+    }
 
 
   }
