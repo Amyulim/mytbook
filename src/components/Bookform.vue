@@ -165,9 +165,9 @@
       },
       Bookform: async function() {
        
-        console.log( )
-        var fd = new FormData(this.book_condition);
+        console.log(this.book_condition)
         
+        var fd = new FormData();
         //        fd.append("book_id", this.book_id);
         fd.append("user_id", this.user_id);
         fd.append("book_title", this.book_title);
