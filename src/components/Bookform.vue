@@ -166,6 +166,15 @@
       Bookform: async function() {
        
         console.log(this.book_condition)
+        if ( this.book_condition == "Vey Good"){
+           this.book_condition = 1
+        } else if( this.book_condition == "Good"){
+           this.book_condition = 2
+        } else if ( this.book_condition == "Fair"){
+           this.book_condition = 3
+        } else {
+           this.book_condition = 4
+        }
         
         var fd = new FormData();
         //        fd.append("book_id", this.book_id);
