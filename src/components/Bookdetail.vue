@@ -125,7 +125,7 @@
       },    
     },
      beforeCreate: async function() {
-      console.log(this.curItem.book_condition)
+      console.log(this.store.curItem.book_condition)
 
     }
 
