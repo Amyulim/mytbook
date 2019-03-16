@@ -164,8 +164,10 @@
 
       },
       Bookform: async function() {
-        //        alert(this.user_id );  
-        var fd = new FormData();
+       
+        console.log( )
+        var fd = new FormData(this.book_condition);
+        
         //        fd.append("book_id", this.book_id);
         fd.append("user_id", this.user_id);
         fd.append("book_title", this.book_title);
