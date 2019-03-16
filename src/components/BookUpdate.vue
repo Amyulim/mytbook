@@ -61,10 +61,10 @@
                   <label for="condition">Condition of book</label>
                   <select v-model="book_condition" name="book_condition" class="custom-select d-block w-100" id="country" required>
                     <option value="" disabled selected>Select your option</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
+                     <option>Very Good</option>
+                    <option>Good</option>
+                    <option>Fair</option>
+                    <option>Poor</option>
                   </select>
 
                   <div class="invalid-feedback">
@@ -204,7 +204,17 @@
       },
 
       SaveChanges: async function() {
-
+        
+         if (this.book_condition == "Very Good"){
+           this.book_condition = "1"
+        } else if(this.book_condition == "Good"){
+           this.book_condition = "2"
+        } else if (this.book_condition == "Fair"){
+           this.book_condition = "3"
+        } else {
+           this.book_condition = "4"
+        }
+        
         var fd = new FormData();
         fd.append("user_id", this.user_id);
         fd.append("book_id", this.book_id);

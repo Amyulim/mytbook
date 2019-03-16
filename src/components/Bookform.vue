@@ -167,15 +167,7 @@
        
         console.log(this.book_condition)
         
-        if (this.book_condition == "Very Good"){
-           this.book_condition = "1"
-        } else if(this.book_condition == "Good"){
-           this.book_condition = "2"
-        } else if (this.book_condition == "Fair"){
-           this.book_condition = "3"
-        } else {
-           this.book_condition = "4"
-        }
+       
         
         
         var fd = new FormData();
