@@ -52,10 +52,10 @@
                   <label for="condition">Condition of book</label>
                   <select v-model="book_condition" name="book_condition" class="custom-select d-block w-100" id="country" placeholder="Choose a condition" required>
                     <option value="" disabled selected>Select your option</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
+                    <option>Very Good</option>
+                    <option>Good</option>
+                    <option>Fair</option>
+                    <option>Poor</option>
                   </select>
 
                   <div class="invalid-feedback">
