@@ -125,8 +125,7 @@
       },    
     },
      beforeCreate: async function() {
-      console.log(this.store.curItem.book_condition)
-       
+
        if(this.store.curItem.book_condition == 1){
          this.store.curItem.book_condition = " Very Good";
        }else if (this.store.curItem.book_condition == 2){
@@ -136,7 +135,7 @@
        } else {
          this.store.curItem.book_condition = "Poor";
        }
-
+       console.log(this.store.curItem.book_condition)
     }
 
 
