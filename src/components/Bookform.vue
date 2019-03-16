@@ -201,7 +201,6 @@
         this.result = json;
         console.log(this.result);
 
-        console.log(this.book_condition);
   
         var fd = new FormData();
         fd.append('fname', this.result.id);
