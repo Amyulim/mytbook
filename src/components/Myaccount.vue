@@ -7,7 +7,6 @@
           <section class="text-center">
             <div class="container">
               <h1 class="jumbotron-heading">My Account</h1>
-
             </div>
           </section>
 
@@ -22,7 +21,6 @@
                   <hr>
                   <router-link to="/bookform" class="signIn btn-primary btn"> Sell the book</router-link>
                 </div>
-
 
                 <p class="myaccount-title">Books Listed:</p>
 
@@ -72,11 +70,9 @@
               <button @click="Change_modal" type="button" class="back-button"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
             </div>
           </div>
-
+          
         </main>
       </div>
-
-
 
     </div>
   </div>
@@ -87,8 +83,6 @@
   @import "../components/style.css";
 
 </style>
-
-
 <script>
   import bookdetail from "@/components/Bookdetail.vue"
 
@@ -118,9 +112,12 @@
 
       },
       Change_modal: function() {
+        
         this.detail = false;
+        
       },
       GoBookUpdate: function() {
+        
         this.store.cur_book_id = this.curItem.book_id;
         this.store.cur_book_title = this.curItem.book_title;
         this.store.cur_book_isbn = this.curItem.book_isbn;
@@ -132,52 +129,12 @@
         this.store.cur_book_condition = this.curItem.book_condition;
         this.store.cur_book_status = this.curItem.book_status;
 
-
         this.$router.push('bookupdate');
-      },
-      DeleteConfirm: function() {
-        alert("Do you really want to delete?")
-      },
-      DeleteBook: async function() {
-
-        //       alert("deleted!")
-
-        var fd = new FormData();
-
-        fd.append("user_id", this.user_id);
-        fd.append("book_id", this.curItem.book_id);
-
-
-        console.log(this.user_id)
-        console.log(this.curItem.book_id)
-
-        var resp = await fetch("https://mytbook.herokuapp.com/delete_book.php", {
-          method: "POST",
-          body: fd
-        });
-
-        var json = await resp.text();
-
-        this.detail = false;
-
-        //referesh
-        var fd = new FormData();
-        fd.append("user_id", this.store.user_id);
-
-        var resp = await fetch("https://mytbook.herokuapp.com/select_user_book.php", {
-          method: "POST",
-          body: fd
-        });
-        var json = await resp.json();
-
-        console.log(json);
-        this.result = json;
       }
-
-
     },
     beforeCreate: async function() {
-
+      
+      //fetching from db    
       var fd = new FormData();
       fd.append("user_id", this.store.user_id);
 

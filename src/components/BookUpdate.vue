@@ -16,96 +16,67 @@
               <div class="row">
                 <div class="col-md-12 mb-3 input-file-wrapper">
                   <img :src="this.book_img" class="thumb-img"><br />
-
                   <button class="img-edit-btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                   <input type="file" @change="onFileChange" accept="image/*">
                 </div>
               </div>
+
               <div class="col-md-12">
                 <button @click="DeleteModal" type="button" class="btn btn-sm btn-secondary trash-button pull-right"> <i class="fa fa-trash fa-lg"></i></button>
               </div>
+
               <hr class="mb-4">
+
               <div class="row">
                 <div class="col-md-9 mb-3">
                   <label for="book-title">Book title</label>
                   <input type="text" v-model="book_title" name="book_title" class="form-control" id="firstName" placeholder="" value="" required>
-                  <div class="invalid-feedback">
-                    Valid first name is required.
-                  </div>
                 </div>
-
+                
                 <div class="col-md-3 mb-3">
                   <label for="isbn">ISBN</label>
                   <input type="number" v-model="book_isbn" name="book_isbn" class="form-control" id="lastName" placeholder="" min="1" max="13" required>
-                  <div class="invalid-feedback">
-                    Valid last name is required.
-                  </div>
                 </div>
-
               </div>
+
               <div class=" mb-3">
                 <label for="book_course">Book Course</label>
                 <input type="text" v-model="book_course" name="book_course" class="form-control" id="bookcourse" placeholder="" value="" required>
-                <div class="invalid-feedback">
-                  Valid book course is required.
-                </div>
               </div>
-
-
-
-
-
 
               <div class="row">
                 <div class="col-md-5 mb-3">
                   <label for="condition">Condition of book</label>
                   <select v-model="book_condition" name="book_condition" class="custom-select d-block w-100" id="country" required>
                     <option value="" disabled selected>Select your option</option>
-                     <option>Very Good</option>
+                    <option>Very Good</option>
                     <option>Good</option>
                     <option>Fair</option>
                     <option>Poor</option>
                   </select>
-
-                  <div class="invalid-feedback">
-                    Please select a condition of the book.
-                  </div>
                 </div>
 
                 <div class="col-md-6 mb-3">
-                  <label for="date">Preffered meeting date</label>
+                  <label for="date">Preferred meeting date</label>
                   <input type="date" v-model="book_mdate" name="book_mdate" class="form-control" placeholder="YYYY-MM-DD" required>
-                  <div class="invalid-feedback">
-                    preferred date required.
-                  </div>
                 </div>
 
               </div>
 
               <div class="mb-3">
                 <label for="desc">Description</label>
-                <!--            <input type="date" class="form-control" id="zip" placeholder="" required>-->
                 <textarea v-model="book_desc" name="book_desc">{{this.book_desc}}</textarea>
-                <div class="invalid-feedback">
-                  Description required.
-                </div>
               </div>
 
               <div class="row">
                 <div class="col-md-3 mb-3">
                   <label for="price">Price</label>
-
                   <input v-model="book_price" name="book_price" class="form-control" type="number" required min="0" value="0" step="any">
-
-                  <div class="invalid-feedback">
-                    Price required.
-                  </div>
-
                 </div>
               </div>
 
-
               <hr class="mb-4">
+
               <div class="row">
                 <div class="col-md-5 mb-3">
                   <label for="condition">Transaction status</label>
@@ -115,28 +86,19 @@
                     <option>In Progress</option>
                     <option>Sold</option>
                   </select>
-
-                  <div class="invalid-feedback">
-                    Please select a condition of the book.
-                  </div>
                 </div>
               </div>
 
-
-
               <hr class="mb-4">
-
 
               <div class="row">
                 <div class="col-md-6">
                   <button @click="CancelChanges" class="btn  btn-danger btn-block delete-button">Cancel Changes</button>
-                  <!--                  <button @click="CancelChanges" class="btn  btn-primary btn-block">Cancel Changes</button>-->
                 </div>
 
                 <div class="col-md-6">
                   <button @click="SaveChanges" class="btn btn-primary btn-block mb-5 " type="submit">Save Changes</button>
                 </div>
-
               </div>
 
             </div>
@@ -178,20 +140,21 @@
     },
     methods: {
       onFileChange: function(e) {
+        //read image–input->file 
         var files =
           e.target.files ||
           e.dataTransfer.files;
-        //        reader.readAsDataURL(input.files[0]);
         if (!files.length)
           return;
 
         this.createImage(files[0]);
         this.book_file = files[0];
 
-        console.log(this.book_file)
-        console.log(this.book_file.name);
+        //console.log(this.book_file)
+        //console.log(this.book_file.name);
       },
       createImage: function(file) {
+        
         var book_img = new Image();
         var reader = new FileReader();
         var vm = this;
@@ -204,17 +167,17 @@
       },
 
       SaveChanges: async function() {
-        
-         if (this.book_condition == "Very Good"){
-           this.book_condition = "1"
-        } else if(this.book_condition == "Good"){
-           this.book_condition = "2"
-        } else if (this.book_condition == "Fair"){
-           this.book_condition = "3"
+
+        if (this.book_condition == "Very Good") {
+          this.book_condition = "1"
+        } else if (this.book_condition == "Good") {
+          this.book_condition = "2"
+        } else if (this.book_condition == "Fair") {
+          this.book_condition = "3"
         } else {
-           this.book_condition = "4"
+          this.book_condition = "4"
         }
-        
+
         var fd = new FormData();
         fd.append("user_id", this.user_id);
         fd.append("book_id", this.book_id);
@@ -253,6 +216,8 @@
         }
 
         console.log(this.book_file);
+        
+        //uploading ui feedback
         await this.$swal({
           title: "Uploading",
           type: "success",
@@ -277,8 +242,10 @@
         })
 
         this.$router.push('myaccount');
+        
       },
       DeleteModal: function() {
+        
         this.$swal({
           title: 'Are you sure you want to delete ' + this.book_title + ' ?',
           text: "By deleting this book in Mytbook, other people will not be able to see this posting again and datas that were saved in our database will be permanently and can not be retrieved any more.",
@@ -329,8 +296,6 @@
         var resp = await fetch("https://mytbook.herokuapp.com/select_book.php");
         var json = await resp.json();
         this.result = json;
-
-
 
         this.$router.push('myaccount');
       }

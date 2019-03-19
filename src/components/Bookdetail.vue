@@ -8,12 +8,8 @@
         <div v-if="curItem.book_status === 'null'"></div>
         <div v-else-if="curItem.book_status === null"></div>
         <div v-else-if="curItem.book_status === 'None'"></div>
-
         <button v-else class="btn btn-sm progress-btn pull-left deal-status"> {{curItem.book_status}}</button>
       </div>
-
-
-
     </div>
 
     <div class="col-md-8 bookview-details pt-5">
@@ -38,15 +34,14 @@
         <button @click="Change_modal" type="button" class="btn btn-sm btn-secondary close-button-msg"> &nbsp;X&nbsp;</button>
       </div>
     </div>
-
   </div>
+
 </template>
 <style>
   @import "https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css";
   @import "../components/style.css";
 
 </style>
-
 
 <script>
   import messenger from "@/components/Messenger.vue";
@@ -77,11 +72,12 @@
         this.store.cur_book_id = this.curItem.book_id;
         this.store.cur_book_price = this.curItem.book_price;
       },
-
       Change_modal: function() {
+        
         this.messenger = false;
       },
       GoBookUpdate: function() {
+        
         this.store.cur_book_id = this.curItem.book_id;
         this.store.cur_book_title = this.curItem.book_title;
         this.store.cur_book_isbn = this.curItem.book_isbn;
@@ -89,45 +85,18 @@
         this.store.cur_book_price = this.curItem.book_price;
         this.store.cur_book_img = this.curItem.book_img;
         this.store.cur_book_mdate = this.curItem.book_mdate;
-        this.store.cur_book_desc = this.curItem.book_desc;
-        
-        this.store.cur_book_condition = this.curItem.book_condition;
-        
+        this.store.cur_book_desc = this.curItem.book_desc;  
+        this.store.cur_book_condition = this.curItem.book_condition;   
         this.store.cur_book_status = this.curItem.book_status;
-        //        console.log(this.store.cur_book_desc);
+        
         this.$router.push('bookupdate');
-      },
-      DeleteBook: async function() {
-
-        alert("deleted!")
-
-        var fd = new FormData();
-
-        fd.append("user_id", this.store.user_id);
-        fd.append("book_id", this.curItem.book_id);
-
-        console.log(this.user_id)
-        console.log(this.curItem.book_id)
-
-        var resp = await fetch("https://mytbook.herokuapp.com/delete_book.php", {
-          method: "POST",
-          body: fd
-        });
-
-        var json = await resp.text();
-
-        this.detail = false;
-
-        //referesh
-        var resp = await fetch("https://mytbook.herokuapp.com/select_book.php");
-        var json = await resp.json();
-        this.result = json;
-      },    
+        
+      }
     },
      beforeCreate: async function() {
 
        if(this.store.curItem.book_condition == 1){
-         this.store.curItem.book_condition = " Very Good";
+         this.store.curItem.book_condition = "Very Good";
        }else if (this.store.curItem.book_condition == 2){
          this.store.curItem.book_condition = "Good";
        }else if (this.store.curItem.book_condition == 3){
@@ -137,7 +106,6 @@
        }
        console.log(this.store.curItem.book_condition)
     }
-
 
   }
 

@@ -2,6 +2,7 @@
   <div class="body" id="booklist">
     <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
       <main role="main" class="inner">
+        
         <section class="text-center">
           <div class="">
             <h1 class="jumbotron-heading">Book Lists</h1>
@@ -14,20 +15,23 @@
             </div>
           </div>
         </section>
+        
         <div class="album py-5 ">
           <div class="container">
-
+           
             <div class="row lists">
               <div class="col-md-4" v-for="item in filteredList">
                 <div class="card mb-4 shadow-sm book-des">
+                  
                   <div class="book-img text-center">
                     <img :src="img+item.book_id+'.jpg'" class="card-img-top" text="Thumbnail" />
                   </div>
+                  
                   <div class="book-title text-center">
                     {{item.book_title}}<br />
                     <span class="price">${{item.book_price}}</span>
                   </div>
-
+                  
                   <div class="card-body">
                     <ul>
                       <li><span class="list-title">ISBN</span> : {{item.book_isbn}} </li>
@@ -36,7 +40,6 @@
                     </ul>
                     <div class="d-flex justify-content-between align-items-center">
                       <button @click="See_detail(item)" type="button" class="btn btn-sm btn-outline-secondary">View</button>
-
                       <div v-if="item.book_status === 'null'"></div>
                       <div v-else-if="item.book_status === null"></div>
                       <div v-else-if="item.book_status === 'None'"></div>
@@ -45,11 +48,11 @@
                       </div>
                     </div>
                   </div>
-
+                  
                 </div>
               </div>
-
             </div>
+            
           </div>
         </div>
 
@@ -95,15 +98,17 @@
       See_detail: function(item) {
 
         this.detail = true;
-
         this.store.curItem = item;
         //console.log("curItem:", this.store.curItem);
 
       },
       Change_modal: function() {
+        
         this.detail = false;
+        
       },
       GoBookUpdate: function() {
+        
         this.store.cur_book_id = this.curItem.book_id;
         this.store.cur_book_title = this.curItem.book_title;
         this.store.cur_book_isbn = this.curItem.book_isbn;
@@ -114,47 +119,19 @@
         this.store.cur_book_desc = this.curItem.book_desc;
         this.store.cur_book_condition = this.curItem.book_condition;
         this.store.cur_book_status = this.curItem.book_status;
-        //        console.log(this.store.cur_book_desc);
+   
         this.$router.push('bookupdate');
-      },
-      DeleteBook: async function() {
-
-        alert("deleted!")
-
-        var fd = new FormData();
-
-        fd.append("user_id", this.store.user_id);
-        fd.append("book_id", this.curItem.book_id);
-
-        console.log(this.user_id)
-        console.log(this.curItem.book_id)
-
-        var resp = await fetch("https://mytbook.herokuapp.com/delete_book.php", {
-          method: "POST",
-          body: fd
-        });
-
-        var json = await resp.text();
-
-        this.detail = false;
-
-        //referesh
-        var resp = await fetch("https://mytbook.herokuapp.com/select_book.php");
-        var json = await resp.json();
-        this.result = json;
-
       }
-
+      
     },
     beforeCreate: async function() {
+      
       var resp = await fetch("https://mytbook.herokuapp.com/select_book.php");
       var json = await resp.json();
-      //          json.JSON.parse(json);
-      //          JSON.parse();
+
       console.log(json);
+      
       this.result = json;
-      //          console.log("result",this.result);
-      //          console.log("title",this.result[0].book_title);
       this.componentLoaded = true;
 
       this.store.page = 2;
@@ -163,6 +140,7 @@
     },
     computed: {
       filteredList() {
+        //search function
         if (!this.componentLoaded)
           return null;
 

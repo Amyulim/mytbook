@@ -17,20 +17,13 @@
 
         <input type="password"  class="form-control" placeholder="Re-Type Password" required>
         
-        <router-link to="/booklist"> <button @click="Signup" class="btn btn-lg btn-primary btn-block submit" type="submit">Sign Up</button></router-link>
-
-       
-       
+        <router-link to="/booklist"> <button @click="Signup" class="btn btn-lg btn-primary btn-block submit" type="submit">Sign Up</button></router-link>      
             
   </div>
     
 
 </template>
 
-<style>
-  @import "https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css";
-  @import "../components/style.css";
-</style>
 
 <script>
   export default {

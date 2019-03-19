@@ -20,31 +20,22 @@
                   <input type="file" @change="onFileChange" accept="image/*">
                 </div>
               </div>
+              
               <div class="row">
                 <div class="col-md-9 mb-3">
-                  <!--                                    <input type="text" v-model="user_id" name="user_id"/> <br/>-->
                   <label for="book-title">Book title</label>
                   <input type="text" v-model="book_title" name="book_title" class="form-control" id="firstName" placeholder="" value="" required>
-                  <div class="invalid-feedback">
-                    Valid first name is required.
-                  </div>
                 </div>
 
                 <div class="col-md-3 mb-3">
                   <label for="isbn">ISBN</label>
                   <input type="number" v-model="book_isbn" name="book_isbn" class="form-control" id="lastName" placeholder="" min="1" max="13" required>
-                  <div class="invalid-feedback">
-                    Valid last name is required.
-                  </div>
                 </div>
-
               </div>
+              
               <div class=" mb-3">
                 <label for="book_course">Book Course</label>
                 <input type="text" v-model="book_course" name="book_course" class="form-control" id="bookcourse" placeholder="" value="" required>
-                <div class="invalid-feedback">
-                  Valid book course is required.
-                </div>
               </div>
 
               <div class="row">
@@ -57,47 +48,28 @@
                     <option>Fair</option>
                     <option>Poor</option>
                   </select>
-
-                  <div class="invalid-feedback">
-                    Please select a condition of the book.
-                  </div>
                 </div>
-
+                
                 <div class="col-md-6 mb-3">
-                  <label for="date">Preffered meeting date</label>
+                  <label for="date">Preferred meeting date</label>
                   <input type="date" v-model="book_mdate" name="book_mdate" class="form-control" placeholder="YYYY-MM-DD" required>
-                  <div class="invalid-feedback">
-                    preferred date required.
-                  </div>
                 </div>
-
               </div>
 
               <div class="mb-3">
                 <label for="desc">Description</label>
-                <!--            <input type="date" class="form-control" id="zip" placeholder="" required>-->
                 <textarea v-model="book_desc" name="book_desc"></textarea>
-                <div class="invalid-feedback">
-                  Description required.
-                </div>
               </div>
 
               <div class="row">
                 <div class="col-md-3 mb-3">
                   <label for="price">Price</label>
-
                   <input v-model="book_price" name="book_price" class="form-control" type="number" required min="0" value="0" step="any">
-
-                  <div class="invalid-feedback">
-                    Price required.
-                  </div>
-
                 </div>
-
-              </div>
-
+             </div>
 
               <hr class="mb-4">
+              
               <button @click="Bookform" class="btn btn-primary btn-lg btn-block" type="submit">Save</button>
 
             </div>
@@ -115,8 +87,6 @@
 </style>
 
 <script>
-
-
   export default {
     name: "Bookform",
     data() {
@@ -136,23 +106,21 @@
       }
     },
     methods: {
-
-
       onFileChange: function(e) {
+        
+        //read image–input->file 
         var files =
           e.target.files ||
           e.dataTransfer.files;
-        //        reader.readAsDataURL(input.files[0]);
         if (!files.length)
           return;
 
         this.createImage(files[0]);
         this.book_file = files[0];
-
-        console.log(this.book_file)
-        console.log(this.book_file.name);
+        
       },
       createImage: function(file) {
+        
         var book_img = new Image();
         var reader = new FileReader();
         var vm = this;
@@ -164,14 +132,9 @@
 
       },
       Bookform: async function() {
-       
-        console.log(this.book_condition)
         
-       
-        
-        
+        //save book information to db
         var fd = new FormData();
-        //        fd.append("book_id", this.book_id);
         fd.append("user_id", this.user_id);
         fd.append("book_title", this.book_title);
         fd.append("book_isbn", this.book_isbn);
@@ -182,16 +145,17 @@
         fd.append("book_img", this.book_img);
         fd.append("book_mdate", this.book_mdate);
         fd.append("book_status", this.book_status);
+        
         var resp = await fetch("https://mytbook.herokuapp.com/insert_book.php", {
           method: "POST",
           body: fd
         });
 
-        
+    
         var json = await resp.json();
-        console.log(json);
+        //console.log(json);
         this.result = json;
-        console.log(this.result);
+        //console.log(this.result);
 
   
         var fd = new FormData();
@@ -205,7 +169,8 @@
         });
 
         var json = await resp.json(); // if the response is a JSON object
-
+        
+        //uploading ui feedback
         await this.$swal({
           title: "Uploading",
           type: "success",

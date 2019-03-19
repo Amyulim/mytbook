@@ -6,7 +6,7 @@
 .html {
   width: 100%;
   height: auto;
-  min-height: calc(100vh - 90px);
+  min-height: calc(100vh);
   /*  box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);*/
   background-color: rgba(30, 38, 49, 0.8);
   /*  background-image: linear-gradient(to left top, #379e9a, #2d7d88, #2e5e6e, #2c404e, #22262d);*/
@@ -29,7 +29,6 @@
   background-repeat: no-repeat;
   /*  background-color: linear-gradient(#004092, #020202, transparent);*/
 }
-
 
 P {
   font-weight: 300;
@@ -830,7 +829,7 @@ hr {
 }
 
 .message-input-box {
-  width: calc(100% - 50px);
+  width: calc(100% - 50px)!important;
   display: inline-block;
   padding: 10px 5px;
   border: none;
@@ -922,13 +921,13 @@ button:active {
   font-size: .7em;
 }
 
-
 .homeContent {
-  width: 100vw;
-  height: 800px;
-  margin-top: 60px;
-
+  width: 100%;
+  min-height: 800px;
+  margin-top: 80px;
 }
+
+/*-------------------- Homepage content --------------------*/
 
 .content-box {
   max-width: 320px !important;
@@ -941,23 +940,23 @@ button:active {
   margin-bottom: 5px;
 }
 
-/*-------------------- Homepage content --------------------*/
 .content-title {
   padding-bottom: 25px;
-  width: 100vw;
+  width: 100%;
 }
 
 .content-title h3 {
   color: white !important;
   font-weight: 500 ;
-
+  font-size: 2.3rem;
+  font-weight: 600;
 }
 
 .content-sub {
-  text-align: center;
+  text-align: center !important;
   font-weight: 700;
   line-height: 40px;
-  font-size: 1.2em;
+  font-size: 1.3em;
   color: rgb(61, 153, 252);
 }
 
@@ -1116,6 +1115,10 @@ footer {
   h2 {
     font-size: 1.4rem !important;
   }
+  
+  .homeContent {
+    margin-top: 200px;
+  }
 
 }
 
@@ -1205,7 +1208,6 @@ footer {
     height: 300px;
   }
 
-
   .nav-link,
   .nav .signIn {
     font-size: 0.9rem;
@@ -1225,4 +1227,5 @@ footer {
     font-size: 1rem;
 
   }
+  
 }
